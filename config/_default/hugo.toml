@@ -51,3 +51,7 @@ enableEmoji = true
 
 [taxonomies]
 series = "series"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
