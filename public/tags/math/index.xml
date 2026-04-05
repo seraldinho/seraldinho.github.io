@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math on blog de cosas etc etc</title>
+    <link>http://localhost:1313/tags/math/</link>
+    <description>Recent content in Math on blog de cosas etc etc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <managingEditor>nseral@proton.me (Nicolás Seral)</managingEditor>
+    <webMaster>nseral@proton.me (Nicolás Seral)</webMaster>
+    <copyright>© 2026 Nicolás Seral</copyright>
+    <atom:link href="http://localhost:1313/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Entendiendo los tensores, Pt.1</title>
+      <link>http://localhost:1313/notas/matematicas/tensores_1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/matematicas/tensores_1/</guid>
+      <description>de todo un poco</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/notas/matematicas/tensores_1/featured.jpg" />
+    </item>
+    
+  </channel>
+</rss>

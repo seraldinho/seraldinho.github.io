@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Subdominio on blog de cosas etc etc</title>
+    <link>http://localhost:1313/tags/subdominio/</link>
+    <description>Recent content in Subdominio on blog de cosas etc etc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <managingEditor>nseral@proton.me (Nicolás Seral)</managingEditor>
+    <webMaster>nseral@proton.me (Nicolás Seral)</webMaster>
+    <copyright>© 2026 Nicolás Seral</copyright>
+    <lastBuildDate>Sat, 28 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/subdominio/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HackTheBox - Pterodactyl</title>
+      <link>http://localhost:1313/writeups/pterodactyl/</link>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/writeups/pterodactyl/</guid>
+      <description>OS: Linux | Dificultad: Medium | Conceptos: Pterodactyl Server Manager, CVE Público, Redis, MySQL, Trivy, UDisks2</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/writeups/pterodactyl/featured.png" />
+    </item>
+    
+    <item>
+      <title>HackTheBox - Analytics</title>
+      <link>http://localhost:1313/writeups/analytics/</link>
+      <pubDate>Sat, 24 Jan 2026 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/writeups/analytics/</guid>
+      <description>OS: Linux | Dificultad: Easy | Conceptos: Subdominio, Docker, RCE, Metabase</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/writeups/analytics/featured.png" />
+    </item>
+    
+  </channel>
+</rss>

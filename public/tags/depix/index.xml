@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Depix on blog de cosas etc etc</title>
+    <link>http://localhost:1313/tags/depix/</link>
+    <description>Recent content in Depix on blog de cosas etc etc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <managingEditor>nseral@proton.me (Nicolás Seral)</managingEditor>
+    <webMaster>nseral@proton.me (Nicolás Seral)</webMaster>
+    <copyright>© 2026 Nicolás Seral</copyright>
+    <lastBuildDate>Tue, 04 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/depix/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HackTheBox - Greenhorn</title>
+      <link>http://localhost:1313/writeups/greenhorn/</link>
+      <pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/writeups/greenhorn/</guid>
+      <description>OS: Linux | Dificultad: Easy | Conceptos: Pluck, Gitea, CVE, Depix</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/writeups/greenhorn/featured.png" />
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,23 @@
+[[main]]
+  name = "Writeups"
+  pre = "code"
+  pageRef = "writeups"
+  weight = 10
+
+[[main]]
+  name = "Notas"
+  pre = "pencil"
+  pageRef = "notas"
+  weight = 20
+
+[[main]]
+    name = "Protocolos"
+    parent = "Notas"
+    pageRef = "protocolos"
+    weight = 10
+
+[[main]]
+    name = "Técnicas"
+    parent = "Notas"
+    pageRef = "tecnicas"
+    weight = 20

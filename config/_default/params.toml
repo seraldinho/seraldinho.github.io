@@ -1,0 +1,66 @@
+defaultAppearance = "dark"
+autoSwitchAppearance = true
+
+enableA11y = false
+enableSearch = true
+enableCodeCopy = true
+enableStructuredBreadcrumbs = true
+enableStyledScrollbar = true
+defaultBackgroundImage = "/img/EPF2.png"
+
+[footer]
+  showMenu = true
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = false
+  showScrollToTop = true
+
+[article]
+    showDate = false
+    showViews = false
+    showLikes = false
+    showDateOnlyInArticle = false
+    showDateUpdated = false
+    showAuthor = true
+    # showAuthorBottom = false
+    showHero = false
+    # heroStyle = "basic" # valid options: basic, big, background, thumbAndBackground
+    # layoutBackgroundBlur = true # only used when heroStyle equals background or thumbAndBackground
+    # layoutBackgroundHeaderSpace = true # only used when heroStyle equals background
+    showBreadcrumbs = true
+    showDraftLabel = true
+    showEdit = false
+    # editURL = "https://github.com/username/repo/"
+    editAppendPath = true
+    seriesOpened = false
+    showHeadingAnchors = true
+    showPagination = true
+    invertPagination = false
+    showReadingTime = true
+    showTableOfContents = true
+    showRelatedContent = true
+    relatedContentLimit = 3
+    showTaxonomies = false # use showTaxonomies OR showCategoryOnly, not both
+    showCategoryOnly = false # use showTaxonomies OR showCategoryOnly, not both
+    showAuthorsBadges = false
+    showWordCount = false
+    sharingLinks = [ "linkedin", "twitter", "reddit", "facebook", "whatsapp"]
+    # showZenMode = true
+    # externalLinkForceNewTab = false # disable to allow external links in the same tab (defaults to true)
+
+[list]
+      showHero = true
+      heroStyle = "background" # valid options: basic, big, background, thumbAndBackground
+      layoutBackgroundBlur = true # only used when heroStyle equals background or thumbAndBackground
+      layoutBackgroundHeaderSpace = true # only used when heroStyle equals background
+      showBreadcrumbs = true
+      showSummary = true
+      showViews = false
+      showLikes = false
+      showTableOfContents = true
+      showCards = true
+      orderByWeight = false
+      groupByYear = true
+      cardView = true
+      cardViewScreenWidth = true
+      constrainItemsWidth = false

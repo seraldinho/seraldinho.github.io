@@ -1,0 +1,72 @@
+@font-face {
+    font-family: "Average";
+    src: url("/fonts/average.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jetbrains";
+    src: url("/fonts/jetbrainsmono.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Gabarito";
+    src: url("/fonts/gabarito.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* TODAS LAS PÁGINAS */
+html,
+body {
+    font-family: "average", monospace !important;
+    font-size: 12.5pt;
+}
+
+/* BLOQUES DE CÓDIGO */
+pre,
+code {
+    font-family: "Jetbrains", monospace !important;
+}
+
+/* TÍTULOS  */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Gabarito", display !important;
+    letter-spacing: 1px;
+}
+
+/* IMAGEN DE FONDO */
+/*
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url("/img/fondo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    filter: blur(6px) brightness(0.4);
+
+    z-index: -10;
+}
+
+body {
+    background-color: transparent !important;
+}
+*/

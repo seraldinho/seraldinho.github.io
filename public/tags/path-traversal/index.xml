@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Path Traversal on blog de cosas etc etc</title>
+    <link>http://localhost:1313/tags/path-traversal/</link>
+    <description>Recent content in Path Traversal on blog de cosas etc etc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <managingEditor>nseral@proton.me (Nicolás Seral)</managingEditor>
+    <webMaster>nseral@proton.me (Nicolás Seral)</webMaster>
+    <copyright>© 2026 Nicolás Seral</copyright>
+    <lastBuildDate>Sat, 21 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/path-traversal/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HackTheBox - Variatype</title>
+      <link>http://localhost:1313/writeups/variatype/</link>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/writeups/variatype/</guid>
+      <description>OS: Linux | Dificultad: Medium | Conceptos: designspace, fonttools, .git, Path Traversal, CVE Público</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/writeups/variatype/featured.png" />
+    </item>
+    
+  </channel>
+</rss>

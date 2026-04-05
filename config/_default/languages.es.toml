@@ -1,0 +1,35 @@
+title = 'blog de cosas etc etc'
+
+
+[params]
+  showAppearanceSwitcher = false        # Blowfish theme param
+  colorScheme = "avocado"                 # Blowfish color scheme
+  defaultAppearance = "dark"            # Blowfish light/dark mode default
+  autoSwitchAppearance = false          # Blowfish auto‑switch appearance
+  mainSections = ["writeups", "mates"]
+
+  [params.author]
+    name = "Nicolás Seral"
+    email = "nseral@proton.me"
+    image = "/img/pinguino3.png"
+    headline = "blog personal"
+    bio = "bla bla bla bla"
+    links = [
+      { email = "nseral@proton.me" },
+      { linkedin = "https://www.linkedin.com/in/nseral/" },
+      { github = "https://github.com/seraldinho" },
+      { hackthebox = "https://app.hackthebox.com/users/1297012"}
+    ]
+
+
+  [params.homepage]
+    layout = "background"
+    showRecent = true
+    layoutBackgroundBlur = true
+    homepageImage = "/img/wallpaper.png"
+    showRecentItems = 6
+    showMoreLink = false
+    # showMoreLinkDest = "/posts/"
+    cardView = true
+    cardViewScreenWidth = false
+    disableHeroImageFilter = false

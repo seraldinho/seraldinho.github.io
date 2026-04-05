@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Técnicas on blog de cosas etc etc</title>
+    <link>http://localhost:1313/notas/tecnicas/</link>
+    <description>Recent content in Técnicas on blog de cosas etc etc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <managingEditor>nseral@proton.me (Nicolás Seral)</managingEditor>
+    <webMaster>nseral@proton.me (Nicolás Seral)</webMaster>
+    <copyright>© 2026 Nicolás Seral</copyright>
+    <atom:link href="http://localhost:1313/notas/tecnicas/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Enumeración de Infraestructuras</title>
+      <link>http://localhost:1313/notas/tecnicas/inf-enum/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/tecnicas/inf-enum/</guid>
+      <description>&lt;h2 class=&#34;relative group&#34;&gt;Introducción&#xA;    &lt;div id=&#34;introducción&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#introducci%c3%b3n&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;La enumeración de la infraestructura de una empresa u organización empieza desde el punto de vista más global, desde los sistemas autónomos (AS), y se va volviendo más específico hasta llegar a IPs y servidores específicos.&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;1. Sistemas Autónomos (AS)&#xA;    &lt;div id=&#34;1-sistemas-autónomos-as&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#1-sistemas-aut%c3%b3nomos-as&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Un AS es una colección de redes IP (&lt;a href=&#34;https://aws.amazon.com/es/what-is/cidr/&#34;  target=&#34;_blank&#34; rel=&#34;noreferrer&#34;&gt;rangos CIDR&lt;/a&gt;) que están bajo el control de una misma entidad administrativa, como pueden ser ISPs o empresas.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Pass-The-Hash</title>
+      <link>http://localhost:1313/notas/tecnicas/pth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/tecnicas/pth/</guid>
+      <description>&lt;h2 class=&#34;relative group&#34;&gt;Introducción&#xA;    &lt;div id=&#34;introducción&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#introducci%c3%b3n&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Tanto en entornos AD y sistemas Windows independientes es posible realizar un ataque PtH, que consiste en usar el hash NTLM de un usuario ya autenticado y usarlo para autenticarnos en otros servicios, sin necesidad de una contraseña conocida.&lt;/p&gt;&#xA;&lt;p&gt;Esto es posible debido al funcionamiento de la autenticación NTLM:&lt;/p&gt;&#xA;&lt;blockquote&gt;&lt;p&gt;En sistemas Windows sin AD, las credenciales del usuario se almacenan en el SAM como hashes NT, mientras que en entornos AD se almacenan (también como hashes) en los controladores de dominio (DC).&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Port Forwarding</title>
+      <link>http://localhost:1313/notas/tecnicas/port-forwarding/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/tecnicas/port-forwarding/</guid>
+      <description>&lt;h2 class=&#34;relative group&#34;&gt;Local Port Forwarding con SSH&#xA;    &lt;div id=&#34;local-port-forwarding-con-ssh&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#local-port-forwarding-con-ssh&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;blockquote&gt;&lt;p&gt;Esto &lt;strong&gt;no&lt;/strong&gt; requiere privilegios administrativos en la cuenta del servidor SSH. Para hacer port forwarding local:&lt;/p&gt;&#xA;&lt;/blockquote&gt;&lt;div class=&#34;highlight-wrapper&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ssh -L 4321:localhost:3306 usuario@10.10.11.87&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;blockquote&gt;&lt;p&gt;Con esto estamos mapeando el socket &lt;code&gt;localhost:3306&lt;/code&gt; abierto en la máquina con dirección (accesible) &lt;code&gt;10.10.11.87&lt;/code&gt; en &lt;em&gt;nuestro&lt;/em&gt; socket &lt;code&gt;localhost:4321&lt;/code&gt; (El &lt;code&gt;localhost&lt;/code&gt; en nuestro dispositivo va implícito al usar &lt;code&gt;-L&lt;/code&gt;) mediante SSH, conectándonos como &lt;code&gt;usuario&lt;/code&gt;.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>PSExec</title>
+      <link>http://localhost:1313/notas/tecnicas/psexec/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/tecnicas/psexec/</guid>
+      <description>&lt;h2 class=&#34;relative group&#34;&gt;Explicación e implementación básica&#xA;    &lt;div id=&#34;explicación-e-implementación-básica&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#explicaci%c3%b3n-e-implementaci%c3%b3n-b%c3%a1sica&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;PsExec es una herramienta que permite ejecutar procesos en otros sistemas de la red sin tener que instalar nada manualmente. Hay varias implementaciones de la herramienta:&lt;/p&gt;&#xA;&lt;p&gt;Por defecto, al ejecutar &lt;code&gt;psexec.exe&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;El programa copia el ejecutable &lt;code&gt;PSEXESVC.exe&lt;/code&gt;, ubicado dentro del propio &lt;code&gt;psexec.exe&lt;/code&gt;, al share &lt;code&gt;ADMIN$&lt;/code&gt; del objetivo (A través de SMB, y que apunta a &lt;code&gt;C:\Windows&lt;/code&gt;)&lt;/li&gt;&#xA;&lt;li&gt;Mediante el API de servicios de Windows (SVCCTL RPC), contactando con él a través de MSRPC (p135) o de named pipes (Share &lt;code&gt;$IPC&lt;/code&gt;, p139,445), crea un nuevo servicio con el ejecutable subido antes, con privilegios &lt;code&gt;SYSTEM&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Ese nuevo servicio crea varios named pipes nuevos en el share a través de los cuales tendrá lugar la comunicación.&lt;/li&gt;&#xA;&lt;li&gt;Al terminar, PsExec detiene el servicio y lo borra del sistema, pero &lt;em&gt;el binario de &lt;code&gt;C:\Windows&lt;/code&gt; puede quedar ahí, lo que deja rastro de la conexión&lt;/em&gt;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Por esto último hay otras implementaciones, algunas que siguen el modelo original, pero reescritas en otros lenguajes, y otras que se ejecutan únicamente en memoria.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Python Cache Poisoning</title>
+      <link>http://localhost:1313/notas/tecnicas/python-cache-poisoning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/tecnicas/python-cache-poisoning/</guid>
+      <description>&lt;p&gt;El &lt;strong&gt;python cache poisoning&lt;/strong&gt; es una vulnerabilidad (o técnica, según se mire) que permite escalar privilegios aprovechando la confianza de Python en archivos bytecode (&lt;code&gt;.pyc&lt;/code&gt;) precompilados de scripts que ejecuta (normalmente con privilegios elevados).&lt;/p&gt;&#xA;&lt;p&gt;Cuando Python ejecuta un script o importa una librería, hace lo siguiente:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Si &lt;strong&gt;no existe&lt;/strong&gt; una versión precompilada, compila el código fuente a bytecode, que normalmente se almacena en &lt;code&gt;__pycache__/NOMBRELIB.cpython-VERSION.pyc&lt;/code&gt; o (menos común) bajo un prefijo &lt;code&gt;PYTHONPYCACHEPREFIX&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Si &lt;strong&gt;existe&lt;/strong&gt; una versión precompilada, comprueba la cabecera (Magic Number que depende de la versión de Python, flags, metadatos como &lt;code&gt;timestamp&lt;/code&gt;, &lt;code&gt;size&lt;/code&gt; o &lt;code&gt;hash&lt;/code&gt;), y, si al compararla con el &lt;code&gt;.py&lt;/code&gt; original está bien, la ejecuta confiando en el &lt;code&gt;.pyc&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;div class=&#34;admonition relative overflow-hidden rounded-lg border-l-4 my-3 px-4 py-3 shadow-sm&#34; data-type=&#34;danger&#34;&gt;&#xA;      &lt;div class=&#34;flex items-center gap-2 font-semibold text-inherit&#34;&gt;&#xA;        &lt;div class=&#34;flex shrink-0 h-5 w-5 items-center justify-center text-lg&#34;&gt;&lt;span class=&#34;relative block icon&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&#xA;&lt;path fill=&#34;currentColor&#34;  d=&#34;M159.3 5.4c7.8-7.3 19.9-7.2 27.7 .1c27.6 25.9 53.5 53.8 77.7 84c11-14.4 23.5-30.1 37-42.9c7.9-7.4 20.1-7.4 28 .1c34.6 33 63.9 76.6 84.5 118c20.3 40.8 33.8 82.5 33.8 111.9C448 404.2 348.2 512 224 512C98.4 512 0 404.1 0 276.5c0-38.4 17.8-85.3 45.4-131.7C73.3 97.7 112.7 48.6 159.3 5.4zM225.7 416c25.3 0 47.7-7 68.8-21c42.1-29.4 53.4-88.2 28.1-134.4c-2.8-5.6-5.6-11.2-9.8-16.8l-50.6 58.8s-81.4-103.6-87.1-110.6C133.1 243.8 112 273.2 112 306.8C112 375.4 162.6 416 225.7 416z&#34;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/div&gt;&#xA;        &lt;div class=&#34;grow&#34;&gt;&#xA;          Nota: Escalada de privilegios&#xA;        &lt;/div&gt;&#xA;      &lt;/div&gt;&lt;div class=&#34;admonition-content mt-3 text-base leading-relaxed text-inherit&#34;&gt;&lt;p&gt;&lt;em&gt;Si un proceso con más privilegios ejecuta un .py o importa un módulo cuyo .pyc ha sido manipulado por un usuario menos privilegiado (y pasa la comprobación de cabecera), el payload corre con esos privilegios elevados.&lt;/em&gt;&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>Python Library Hijacking</title>
+      <link>http://localhost:1313/notas/tecnicas/python-library-hijacking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/tecnicas/python-library-hijacking/</guid>
+      <description>&lt;p&gt;El Python Library Hijacking es una técnica de escalada de privilegios que consiste en aprovechar la forma en la que Python busca las librerías para cargar código malicioso en lugar de las librerías originales.&lt;/p&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Funcionamiento&#xA;    &lt;div id=&#34;funcionamiento&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#funcionamiento&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Python busca módulos en un órden específico definido por &lt;code&gt;sys.path&lt;/code&gt;, que puede verse de la siguiente manera:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight-wrapper&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ python3 -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;import sys; print(sys.path)&amp;#39;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/usr/lib/python312.zip&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/usr/lib/python3.12&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/usr/lib/python3.12/lib-dynload&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/usr/local/lib/python3.12/dist-packages&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/usr/lib/python3/dist-packages&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&#xA;&lt;p&gt;Normalmente, el orden es el siguiente:&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>SSRF</title>
+      <link>http://localhost:1313/notas/tecnicas/ssrf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/tecnicas/ssrf/</guid>
+      <description>&lt;h1 class=&#34;relative group&#34;&gt;Server-Side Request Forgery&#xA;    &lt;div id=&#34;server-side-request-forgery&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#server-side-request-forgery&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Una vulnerabilidad SSRF se da cuando un atacante manipula una aplicación para realizar solicitudes a URLs arbitrarias.&lt;/p&gt;&#xA;&lt;p&gt;Por ejemplo, si un servidor debe solicitar datos de otros servidores en función del input de un usuario, un atacante puede hacer que las solicitudes se hagan a sitios o recursos en los que el desarrollador no había pensado en un primer momento.&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>SSTI</title>
+      <link>http://localhost:1313/notas/tecnicas/ssti/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/tecnicas/ssti/</guid>
+      <description>&lt;h1 class=&#34;relative group&#34;&gt;Server-Side Template Injection&#xA;    &lt;div id=&#34;server-side-template-injection&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#server-side-template-injection&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&#xA;&lt;h2 class=&#34;relative group&#34;&gt;Template Engines&#xA;    &lt;div id=&#34;template-engines&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#template-engines&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Un &lt;strong&gt;Template Engine&lt;/strong&gt; es &lt;em&gt;un software que combina plantillas predefinidas con datos generados dinámicamente y que las apps web suelen utilizar para generar respuestas dinámicas.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Por ejemplo, una página web con un header que &amp;ldquo;saluda al usuario&amp;rdquo; podría contener un código como:&lt;/p&gt;</description>
+      
+    </item>
+    
+    <item>
+      <title>XSS</title>
+      <link>http://localhost:1313/notas/tecnicas/xss/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>nseral@proton.me (Nicolás Seral)</author>
+      <guid>http://localhost:1313/notas/tecnicas/xss/</guid>
+      <description>&lt;h1 class=&#34;relative group&#34;&gt;Cross-Site Scripting&#xA;    &lt;div id=&#34;cross-site-scripting&#34; class=&#34;anchor&#34;&gt;&lt;/div&gt;&#xA;    &#xA;    &lt;span&#xA;        class=&#34;absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none&#34;&gt;&#xA;        &lt;a class=&#34;text-primary-300 dark:text-neutral-700 !no-underline&#34; href=&#34;#cross-site-scripting&#34; aria-label=&#34;Ancla&#34;&gt;#&lt;/a&gt;&#xA;    &lt;/span&gt;&#xA;    &#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Una aplicación web normal funciona recibiendo código HTML del servidor backend y renderizándolo en el navegador del cliente.&lt;/p&gt;&#xA;&lt;p&gt;Si una app. web no valida ni limpia el input del usuario correctamente, un usuario puede introducir código js en un campo de input para que, cuando él mismo u otro usuario vea la página ese código js se ejecute en su navegador.&lt;/p&gt;</description>
+      
+    </item>
+    
+  </channel>
+</rss>
