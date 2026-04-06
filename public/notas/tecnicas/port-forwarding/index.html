@@ -248,7 +248,7 @@
     "keywords": ["Infrastructure"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "923"
+    "wordCount": "932"
   },
   {
     "@context": "https://schema.org",
@@ -256,7 +256,7 @@
     "itemListElement": [{
             "@type": "ListItem",
             "position":  1 ,
-            "name": "Técnicas",
+            "name": "Técnicas \u0026 Herramientas",
             "item": "http://localhost:1313/notas/tecnicas/"
           },{
             "@type": "ListItem",
@@ -415,7 +415,7 @@
                 aria-label="Técnicas"
                 class="flex items-center bf-icon-color-hover">
                 
-                <span class="text-sm font-sm" title="Técnicas">
+                <span class="text-sm font-sm" title="Técnicas &amp; Herramientas">
                   Técnicas
                 </span>
               </a>
@@ -571,7 +571,7 @@
                   
                   class="flex items-center gap-3 p-2 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
                   
-                  <span title="Técnicas" class="text-lg">
+                  <span title="Técnicas &amp; Herramientas" class="text-lg">
                     Técnicas
                   </span>
                 </a>
@@ -715,7 +715,7 @@
   
   <li class="inline">
     <a class="hover:underline decoration-neutral-300 dark:underline-neutral-600" href="/notas/tecnicas/"
-      >Técnicas</a
+      >Técnicas &amp; Herramientas</a
     ><span class="px-1 text-primary-500">/</span>
   </li>
 
@@ -954,16 +954,44 @@
     class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#local-port-forwarding-con-ssh">Local Port Forwarding con SSH</a></li>
-    <li><a href="#dynamic-port-forwarding-con-ssh--socks">Dynamic Port Forwarding con SSH &amp; SOCKS</a>
+    <li><a href="#linux--multi">Linux / Multi</a>
       <ul>
-        <li><a href="#herramientas-a-través-de-proxies-ssh--socks">Herramientas a través de proxies SSH &amp; SOCKS</a></li>
+        <li><a href="#ssh-local-pf">SSH: Local PF</a></li>
+        <li><a href="#ssh-reverse-pf">SSH: Reverse PF</a></li>
+        <li><a href="#socat-local-pf">Socat: Local PF</a></li>
       </ul>
     </li>
-    <li><a href="#reverseremote-port-forwarding-con-ssh">Reverse/Remote Port Forwarding con SSH</a></li>
-    <li><a href="#socat-alternativa-a-ssh-sin-credenciales">Socat (Alternativa a SSH, sin credenciales)</a></li>
-    <li><a href="#plink-putty-windows-lotl">Plink (PuTTY, Windows LotL)</a></li>
-    <li><a href="#sshuttle-auto-routing-a-través-de-pivote-por-ssh">Sshuttle (Auto-routing a través de pivote por SSH)</a></li>
+    <li><a href="#windows">Windows</a>
+      <ul>
+        <li><a href="#netsh-portproxy-local-pf">Netsh (Portproxy): Local PF</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#linux--multi-1">Linux / Multi</a>
+      <ul>
+        <li><a href="#ssh-dynamic-pf">SSH: Dynamic PF</a></li>
+      </ul>
+    </li>
+    <li><a href="#windows-1">Windows</a>
+      <ul>
+        <li><a href="#plink-putty-dynamic-pf">Plink (PuTTY): Dynamic PF</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#linux-atacante">Linux (Atacante)</a>
+      <ul>
+        <li><a href="#sshuttle">Sshuttle</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -977,16 +1005,44 @@
     class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#local-port-forwarding-con-ssh">Local Port Forwarding con SSH</a></li>
-    <li><a href="#dynamic-port-forwarding-con-ssh--socks">Dynamic Port Forwarding con SSH &amp; SOCKS</a>
+    <li><a href="#linux--multi">Linux / Multi</a>
       <ul>
-        <li><a href="#herramientas-a-través-de-proxies-ssh--socks">Herramientas a través de proxies SSH &amp; SOCKS</a></li>
+        <li><a href="#ssh-local-pf">SSH: Local PF</a></li>
+        <li><a href="#ssh-reverse-pf">SSH: Reverse PF</a></li>
+        <li><a href="#socat-local-pf">Socat: Local PF</a></li>
       </ul>
     </li>
-    <li><a href="#reverseremote-port-forwarding-con-ssh">Reverse/Remote Port Forwarding con SSH</a></li>
-    <li><a href="#socat-alternativa-a-ssh-sin-credenciales">Socat (Alternativa a SSH, sin credenciales)</a></li>
-    <li><a href="#plink-putty-windows-lotl">Plink (PuTTY, Windows LotL)</a></li>
-    <li><a href="#sshuttle-auto-routing-a-través-de-pivote-por-ssh">Sshuttle (Auto-routing a través de pivote por SSH)</a></li>
+    <li><a href="#windows">Windows</a>
+      <ul>
+        <li><a href="#netsh-portproxy-local-pf">Netsh (Portproxy): Local PF</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#linux--multi-1">Linux / Multi</a>
+      <ul>
+        <li><a href="#ssh-dynamic-pf">SSH: Dynamic PF</a></li>
+      </ul>
+    </li>
+    <li><a href="#windows-1">Windows</a>
+      <ul>
+        <li><a href="#plink-putty-dynamic-pf">Plink (PuTTY): Dynamic PF</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#linux-atacante">Linux (Atacante)</a>
+      <ul>
+        <li><a href="#sshuttle">Sshuttle</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -1004,101 +1060,71 @@
 
         <div class="article-content max-w-prose mb-20">
           
-<h2 class="relative group">Local Port Forwarding con SSH
-    <div id="local-port-forwarding-con-ssh" class="anchor"></div>
+<h1 class="relative group">Port Forwarding Estático
+    <div id="port-forwarding-estático" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#local-port-forwarding-con-ssh" aria-label="Ancla">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#port-forwarding-est%c3%a1tico" aria-label="Ancla">#</a>
+    </span>
+    
+</h1>
+<div class="admonition relative overflow-hidden rounded-lg border-l-4 my-3 px-4 py-3 shadow-sm" data-type="tip">
+      <div class="flex items-center gap-2 font-semibold text-inherit">
+        <div class="flex shrink-0 h-5 w-5 items-center justify-center text-lg"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM191.4 .0132C89.44 .3257 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.61 288.9-.2837 191.4 .0132zM192 96.01c-44.13 0-80 35.89-80 79.1C112 184.8 104.8 192 96 192S80 184.8 80 176c0-61.76 50.25-111.1 112-111.1c8.844 0 16 7.159 16 16S200.8 96.01 192 96.01z"/></svg>
+</span></div>
+        <div class="grow">
+          Nota: Objetivo
+        </div>
+      </div><div class="admonition-content mt-3 text-base leading-relaxed text-inherit"><p>Mapear un puerto específico de una máquina a otra (relación 1 a 1). Útil para acceder a un servicio interno concreto o para recibir una reverse shell desde una subred aislada.</p></div></div><ul>
+<li>El <strong>PF Local</strong> trae un puerto remoto a la máquina local (P.ej traer un puerto interno de MySQL a nuestro dispositivo)</li>
+<li>El <strong>PF Remoto</strong> envía un puerto local al servidor remoto. (P.ej para hacer público un puerto de nuestra máquina hacia una subred y redirigir todo lo que llegue hacia nosotros)</li>
+</ul>
+
+<h2 class="relative group">Linux / Multi
+    <div id="linux--multi" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#linux--multi" aria-label="Ancla">#</a>
     </span>
     
 </h2>
-<blockquote><p>Esto <strong>no</strong> requiere privilegios administrativos en la cuenta del servidor SSH. Para hacer port forwarding local:</p>
-</blockquote><div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -L 4321:localhost:3306 usuario@10.10.11.87</span></span></code></pre></div></div>
-<blockquote><p>Con esto estamos mapeando el socket <code>localhost:3306</code> abierto en la máquina con dirección (accesible) <code>10.10.11.87</code> en <em>nuestro</em> socket <code>localhost:4321</code> (El <code>localhost</code> en nuestro dispositivo va implícito al usar <code>-L</code>) mediante SSH, conectándonos como <code>usuario</code>.</p>
-</blockquote><p>Si quisiésemos especificar explícitamente la IP de nuestra máquina a la que se mapea la remota, la sintaxis completa sería:</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -L <span style="color:#f92672">[</span>IP_Local<span style="color:#f92672">]</span>:<span style="color:#f92672">[</span>Puerto_Local<span style="color:#f92672">]</span>:<span style="color:#f92672">[</span>IP_Destino<span style="color:#f92672">]</span>:<span style="color:#f92672">[</span>Puerto_Destino<span style="color:#f92672">]</span> usuario@10.10.11.87</span></span></code></pre></div></div>
-<p>Podemos hacer port forwarding de varios servicios a la vez:</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -L 4321:localhost:3306 8000:localhost:80 usuario@10.10.11.87</span></span></code></pre></div></div>
-<blockquote><p>En la mayoría de implementaciones de OpenSSH, la capacidad de tunelizar dinámicamente con <code>-L</code> está activada por defecto.</p>
-</blockquote>
-<h2 class="relative group">Dynamic Port Forwarding con SSH &amp; SOCKS
-    <div id="dynamic-port-forwarding-con-ssh--socks" class="anchor"></div>
+
+<h3 class="relative group">SSH: Local PF
+    <div id="ssh-local-pf" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#dynamic-port-forwarding-con-ssh--socks" aria-label="Ancla">#</a>
-    </span>
-    
-</h2>
-<blockquote><p>Esto <strong>no</strong> requiere privilegios administrativos en la cuenta del servidor SSH. El <code>-L</code> en LPF es una relación 1 a 1, un puerto nuestro = un puerto e IP de destino específicos. Si queremos escanear una subred entera accesible desde la víctima, tendríamos que abrir muchos túneles independientes manualmente.</p>
-</blockquote><p>Para solucionar esto está el Dynamic Port Forwarding, que abre un puerto local como proxy y convierte a la máquina víctima (por SSH) en un router por el que pasa el proxy.</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -D <span style="color:#ae81ff">9050</span> usuario@10.10.11.87</span></span></code></pre></div></div>
-<p>Desde ahí, todo lo que hagas a través de <code>localhost:9050</code> se hará en realidad desde la máquina con IP <code>10.10.11.87</code>.</p>
-<blockquote><p>En la mayoría de implementaciones de OpenSSH, la capacidad de tunelizar dinámicamente con <code>-D</code> está activada por defecto.</p>
-</blockquote>
-<h3 class="relative group">Herramientas a través de proxies SSH &amp; SOCKS
-    <div id="herramientas-a-través-de-proxies-ssh--socks" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#herramientas-a-trav%c3%a9s-de-proxies-ssh--socks" aria-label="Ancla">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ssh-local-pf" aria-label="Ancla">#</a>
     </span>
     
 </h3>
-<blockquote><p>Aquí hay que tener cuidado si nos preocupa además ocultar nuestra IP, pues según que herramienta usemos, puede que se filtre. <code>ping</code> usa ICMP (capa 3), que ignora por completo los proxies (y o no funcionará o filtrará nuestra IP directamente); nmap con <code>-sT</code> funciona, pero los escaneos con ping o <code>-sS</code> no funcionan y algunos scripts tampoco lo harán.</p>
-</blockquote><p>Podemos usar proxychains para ejecutar herramientas a través de proxies, como pueden ser <code>tor</code> (127.0.0.1:9050) o incluso un servidor SSH que hayamos comprometido (con <code>-D</code>). Proxychains debe estar configurado con el proxy que queramos (Normalmente en <code>/etc/proxychains.conf</code>).</p>
-
-<h4 class="relative group">Nmap
-    <div id="nmap" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#nmap" aria-label="Ancla">#</a>
-    </span>
-    
-</h4>
-<p>Para escanear una IP específica a través del proxy (debe ser escaneo -sT con ICMP echo desactivado):</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>proxychains nmap -Pn -sT -v 10.10.12.88</span></span></code></pre></div></div>
-<p>Para escanear una subred entera en busca de algunos dispositivos vivos podemos usar:</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>proxychains nmap -sT -Pn -n -v --top-ports<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span> 10.10.12.0/24</span></span></code></pre></div></div>
-<p>Esto mira los 10 puertos más comunes (se pueden aumentar) en todas las direcciones IP de la subred <code>10.10.11.0/24</code> usando el TCP Full scan. <code>-Pn</code> desactiva ICMP pings, <code>-n</code> desactiva resoluciones DNS.</p>
-
-<h4 class="relative group">RDP
-    <div id="rdp" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#rdp" aria-label="Ancla">#</a>
-    </span>
-    
-</h4>
-<p>Si tenemos un proxy por SSH configurado en proxychains, también podemos conectarnos a un servidor de una red interna si tiene en escucha, p.ej, RDP.</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>xfreerdp /v:10.10.12.88 /u:user52 /p:p@sSw0rd</span></span></code></pre></div></div>
-
-<h2 class="relative group">Reverse/Remote Port Forwarding con SSH
-    <div id="reverseremote-port-forwarding-con-ssh" class="anchor"></div>
-    
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#reverseremote-port-forwarding-con-ssh" aria-label="Ancla">#</a>
-    </span>
-    
-</h2>
-<p>Si queremos conseguir una reverse shell desde una máquina en una subred interna, no podremos ejecutar el payload sin más, dado que la máquina interna no tiene una ruta definida para llegar hasta nuestra IP. Es por esto que necesitamos configurar un port forwarding <em>remoto</em> (<em><code>-R</code></em>).</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -R &lt;IP_Interna_Pivote&gt;:&lt;Puerto_Pivote&gt;:&lt;IP_Atacante_Local&gt;:&lt;Puerto_Local&gt;</span></span></code></pre></div></div>
-<p>P.ej, si tenemos una máquina pivote con ip pública <code>10.10.11.87</code> e ip en una subred <code>10.10.12.87</code> en <code>10.10.12.0/24</code>, y una máquina objetivo con ip <code>10.10.12.88</code>:</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Si nuestra IP (atacante) es 80.81.50.27</span>
-</span></span><span style="display:flex;"><span>ssh -R 10.10.12.87:8080:127.0.0.1:4321 usuario@10.10.11.87
+<p>Esto <strong>no</strong> requiere privilegios <strong>administrativos</strong> en la cuenta del servidor SSH, pero evidentemente sí requiere unas credenciales de usuario. Además, en la mayoría de implementaciones de OpenSSH, la capacidad de hacer PF local con <code>-L</code> está activada por defecto.</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -L <span style="color:#f92672">([</span>IP_LOCAL<span style="color:#f92672">]</span>:<span style="color:#f92672">)[</span>PUERTO_LOCAL<span style="color:#f92672">]</span>:<span style="color:#f92672">[</span>IP_INTERNA_SERVER<span style="color:#f92672">]</span>:<span style="color:#f92672">[</span>PUERTO_DESTINO<span style="color:#f92672">]</span> &lt;user&gt;@<span style="color:#f92672">[</span>IP_PUBLICA_SERVER<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># También valdrían 80.81.50.27 o 0.0.0.0 (localhost) en lugar de 127.0.0.1, </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># solo habría que cambiar la interfaz en la que escuchamos con el listener.</span></span></span></code></pre></div></div>
-<p>Este comando creará un túnel bidireccional que hará que los datos vayan en dos direcciones:</p>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># &#34;[IP_LOCAL]:&#34; es opcional, si no se incluye se asume localhost</span></span></span></code></pre></div></div>
+<p>Podemos hacer port forwarding de varios servicios a la vez:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -L 4321:localhost:3306 8000:localhost:80 usuario@10.10.11.87</span></span></code></pre></div></div>
+
+<h3 class="relative group">SSH: Reverse PF
+    <div id="ssh-reverse-pf" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ssh-reverse-pf" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Si queremos conseguir una reverse shell desde una máquina en una subred interna, no podremos ejecutar el payload sin más, dado que la máquina interna no tiene una ruta definida para llegar hasta nuestra IP. Por esto mismo necesitamos configurar un port forwarding remoto (o reverso).</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -R <span style="color:#f92672">[</span>IP_SERVIDOR<span style="color:#f92672">]</span>:<span style="color:#f92672">[</span>PUERTO_SERVIDOR<span style="color:#f92672">]</span>:<span style="color:#f92672">[</span>IP_LOCAL_ATACANTE<span style="color:#f92672">]</span>:<span style="color:#f92672">[</span>PUERTO_LOCAL_ATACANTE<span style="color:#f92672">]</span></span></span></code></pre></div></div>
+<p>Este comando creará un túnel bidireccional:</p>
 <ul>
-<li><code>NuestraMáquina:4321</code> &lt;-&gt; <code>10.10.12.87:8080</code></li>
+<li><code>[IP_SERVIDOR]:[PUERTO_SERVIDOR]</code> &lt;-&gt; <code>[IP_LOCAL_ATACANTE]:[PUERTO_LOCAL_ATACANTE]</code></li>
 </ul>
-<p>Todo lo que llegue a 10.10.12.87 irá a parar a nuestra máquina (127.0.0.1 como hemos especificado), al puerto 4321, y viceversa.</p>
-<p> </p>
+<p>Todo lo que llegue a <code>[IP_SERVIDOR]:[PUERTO_SERVIDOR]</code> irá a parar a nuestra máquina, y viceversa.</p>
+<p>P.ej, si tenemos una máquina pivote con ip pública <code>10.10.11.87</code> e ip en una subred <code>10.10.12.87</code> en <code>10.10.12.0/24</code>, y una máquina objetivo con ip <code>10.10.12.88</code>:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -R 10.10.12.87:8080:127.0.0.1:4321 usuario@10.10.11.87</span></span></code></pre></div></div>
 <p><figure><img
     class="my-0 rounded-md"
     loading="lazy"
@@ -1113,54 +1139,183 @@
     data-zoom-src="/notas/tecnicas/port-forwarding/remoteportforward.png"></figure>
 </p>
 
-<h2 class="relative group">Socat (Alternativa a SSH, sin credenciales)
-    <div id="socat-alternativa-a-ssh-sin-credenciales" class="anchor"></div>
+<h3 class="relative group">Socat: Local PF
+    <div id="socat-local-pf" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#socat-alternativa-a-ssh-sin-credenciales" aria-label="Ancla">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#socat-local-pf" aria-label="Ancla">#</a>
     </span>
     
-</h2>
-<p>Socat es una herramienta que sirve para crear vías de comunicación bidireccionales entre 2 canales de red independientes <strong>sin necesitar usar túneles SSH</strong>. Necesitamos acceso a la víctima, pero no necesariamente sus credenciales (que sí necesitamos para hacerlo por ssh).</p>
-<p>P.ej, usar el siguiente comando pondrá en escucha el puerto <code>8080</code> de todas las interfaces (<code>0.0.0.0</code>) de la máquina víctima y redirigirá todo el tráfico que llegue al puerto <code>80</code> de la IP <code>10.10.12.90</code>:</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>victima@10.10.11.87:~$ socat TCP4-LISTEN:8080,fork TCP4:10.10.12.90:80</span></span></code></pre></div></div>
+</h3>
+<p>Socat es una herramienta que sirve para crear vías de comunicación bidireccionales. Necesitamos acceso a la víctima, pero <strong>no sus credenciales</strong>.</p>
+<p>Para hacer PF Local</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>victima@10.10.11.87:~$ socat TCP4-LISTEN:<span style="color:#f92672">[</span>PUERTO_PIVOTE<span style="color:#f92672">]</span>,fork TCP4:<span style="color:#f92672">[</span>IP_INTERNA_SERVER<span style="color:#f92672">]</span>:<span style="color:#f92672">[</span>PUERTO_SERVER_INTERNO<span style="color:#f92672">]</span></span></span></code></pre></div></div>
 <ul>
-<li><code>TCP4-LISTEN:8080</code> pone en escucha <code>0.0.0.0:8080</code>
+<li><code>TCP4-LISTEN:[PUERTO_PIVOTE]</code> pone en escucha <code>0.0.0.0:[PUERTO_PIVOTE]</code>
 <ul>
 <li><code>fork</code> hace que con cada conexión se cree un proceso hijo que la gestione (lo que permite manejar varias a la vez)</li>
 </ul>
 </li>
-<li><code>TCP4:10.10.12.90:80</code> es el socket al que se redirigen los datos</li>
+<li><code>TCP4:[IP_INTERNA_SERVER]:[PUERTO_SERVER_INTERNO]</code> es el socket al que se redirigen los datos</li>
 </ul>
 
-<h2 class="relative group">Plink (PuTTY, Windows LotL)
-    <div id="plink-putty-windows-lotl" class="anchor"></div>
+<h2 class="relative group">Windows
+    <div id="windows" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#plink-putty-windows-lotl" aria-label="Ancla">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#windows" aria-label="Ancla">#</a>
     </span>
     
 </h2>
-<p>Plink (PuTTY Link) es una herramienta de Windows que permite conectarse por SSH a otros dispositivos. Hasta 2018, Windows no tenía un cliente ssh nativo, así que los administradores se tenían que descargar uno, y, en su momento, el de preferencia era PuTTY.</p>
-<p>Podemos crear un túnel similar al de SSH (<code>-D</code>) de la siguiente manera:</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>plink -ssh -D <span style="color:#ae81ff">9050</span> user@10.10.11.87</span></span></code></pre></div></div>
-<p>Esto creará un túnel en <code>127.0.0.1:9050</code> hasta <code>10.10.11.87</code>, que actuará como proxy.</p>
 
-<h2 class="relative group">Sshuttle (Auto-routing a través de pivote por SSH)
-    <div id="sshuttle-auto-routing-a-través-de-pivote-por-ssh" class="anchor"></div>
+<h3 class="relative group">Netsh (Portproxy): Local PF
+    <div id="netsh-portproxy-local-pf" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#sshuttle-auto-routing-a-trav%c3%a9s-de-pivote-por-ssh" aria-label="Ancla">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#netsh-portproxy-local-pf" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Netsh es una herramienta incluida por defecto en Windows que sirve para gestionar interfaces de red, conexiones, y, además, proxies. Para crear un proxy en una máquina pivote necesitaremos <strong>privilegios de administrador</strong>.</p>
+<p>Para crear un redireccionamiento que reciba conexiones en un puerto de la IP pública del pivote y las redirija hacia un servidor interno:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>C:<span style="color:#ae81ff">\W</span>indows<span style="color:#ae81ff">\s</span>ystem32&gt; netsh.exe interface portproxy add v4tov4 listenport<span style="color:#f92672">=[</span>PUERTO_PÚBLICO_PIVOTE<span style="color:#f92672">]</span> listenaddress<span style="color:#f92672">=[</span>IP_PÚBLICA_PIVOTE<span style="color:#f92672">]</span> connectport<span style="color:#f92672">=[</span>PUERTO_SERVER_INTERNO<span style="color:#f92672">]</span> connectaddress<span style="color:#f92672">=[</span>IP_SERVER_INTERNO<span style="color:#f92672">]</span></span></span></code></pre></div></div>
+
+<h1 class="relative group">Acceso dinámico a subredes (PF Dinámico, SOCKS Proxying)
+    <div id="acceso-dinámico-a-subredes-pf-dinámico-socks-proxying" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#acceso-din%c3%a1mico-a-subredes-pf-din%c3%a1mico-socks-proxying" aria-label="Ancla">#</a>
+    </span>
+    
+</h1>
+<div class="admonition relative overflow-hidden rounded-lg border-l-4 my-3 px-4 py-3 shadow-sm" data-type="tip">
+      <div class="flex items-center gap-2 font-semibold text-inherit">
+        <div class="flex shrink-0 h-5 w-5 items-center justify-center text-lg"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM191.4 .0132C89.44 .3257 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.61 288.9-.2837 191.4 .0132zM192 96.01c-44.13 0-80 35.89-80 79.1C112 184.8 104.8 192 96 192S80 184.8 80 176c0-61.76 50.25-111.1 112-111.1c8.844 0 16 7.159 16 16S200.8 96.01 192 96.01z"/></svg>
+</span></div>
+        <div class="grow">
+          Nota: Objetivo
+        </div>
+      </div><div class="admonition-content mt-3 text-base leading-relaxed text-inherit"><p>Convertir a la máquina víctima en un router/proxy. Permite interactuar con toda una subred interna sin tener que abrir múltiples túneles independientes manualmente.</p></div></div>
+<h4 class="relative group">Consideraciones sobre herramientas (Proxychains)
+    <div id="consideraciones-sobre-herramientas-proxychains" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#consideraciones-sobre-herramientas-proxychains" aria-label="Ancla">#</a>
+    </span>
+    
+</h4>
+<p>Aquí hay que tener cuidado si nos preocupa además ocultar nuestra IP, pues según que herramienta usemos, puede que se filtre. <code>ping</code> usa ICMP (capa 3), que ignora por completo los proxies (y o no funcionará o filtrará nuestra IP directamente); nmap con <code>-sT</code> funciona, pero los escaneos con ping o <code>-sS</code> no funcionan, y algunos de sus scripts tampoco lo harán.</p>
+<p>Podemos usar proxychains para ejecutar herramientas a través de proxies, como pueden ser <code>tor</code> (127.0.0.1:9050) o incluso un servidor SSH que hayamos comprometido (con <code>-D</code>), pero en cualquier caso proxychains debe estar configurado con el proxy que queramos usar (<code>/etc/proxychains.conf</code>).</p>
+
+<h5 class="relative group">Nmap a través de proxychains
+    <div id="nmap-a-través-de-proxychains" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#nmap-a-trav%c3%a9s-de-proxychains" aria-label="Ancla">#</a>
+    </span>
+    
+</h5>
+<p>Para escanear una IP específica a través del proxy (debe ser escaneo -sT con ICMP echo desactivado):</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>proxychains nmap -Pn -sT -v 10.10.12.88</span></span></code></pre></div></div>
+<p>Para escanear una subred entera en busca de algunos dispositivos vivos podemos usar:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>proxychains nmap -sT -Pn -n -v --top-ports<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span> 10.10.12.0/24</span></span></code></pre></div></div>
+<p>Esto mira los 10 puertos más comunes (se pueden aumentar) en todas las direcciones IP de la subred <code>10.10.11.0/24</code> usando el TCP Full scan. <code>-Pn</code> desactiva ICMP pings, <code>-n</code> desactiva resoluciones DNS.</p>
+
+<h2 class="relative group">Linux / Multi
+    <div id="linux--multi-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#linux--multi-1" aria-label="Ancla">#</a>
     </span>
     
 </h2>
-<p>Sshuttle es una herramienta que automatiza la configuración de iptables y de rutas para que la máquina atacante pueda acceder a otra máquina en una subred interna a través de un pivote de forma &ldquo;directa&rdquo; (o al menos transparente).</p>
-<p>P.ej, para poder acceder a la subred <code>172.16.15.0/23</code>, a la que solo es posible acceder desde <code>10.10.11.87</code>, directamente, necesitaríamos usar ssh o similares, pero con <code>sshuttle</code> podemos hacer lo siguiente:</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sshuttle -r user@10.10.11.87 172.16.15.0/24 -v </span></span></code></pre></div></div>
-<p>E inmediatamente intentar acceder con cualquier otra herramienta a una IP en la subred de forma directa, sin necesitar usar <code>proxychains</code>.</p>
+
+<h3 class="relative group">SSH: Dynamic PF
+    <div id="ssh-dynamic-pf" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#ssh-dynamic-pf" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<blockquote><p>Esto <strong>no</strong> requiere privilegios <strong>administrativos</strong> en la cuenta del servidor SSH, pero evidentemente sí requiere unas credenciales de usuario.</p>
+</blockquote><p>Para abrir un puerto local que actúe como proxy SOCKS:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -D <span style="color:#f92672">[</span>PUERTO_LOCAL_PROXY<span style="color:#f92672">]</span> &lt;user&gt;@<span style="color:#f92672">[</span>IP_SERVIDOR<span style="color:#f92672">]</span></span></span></code></pre></div></div>
+<p>Desde ahí, todo el tráfico enviado a <code>127.0.0.1:[PUERTO_LOCAL_PROXY]</code> será enrutado y ejecutado desde la máquina pivote (<code>[IP_SERVIDOR]</code>).</p>
+<blockquote><p>En la mayoría de implementaciones de OpenSSH, la capacidad de tunelizar dinámicamente con <code>-D</code> está activada por defecto.</p>
+</blockquote>
+<h2 class="relative group">Windows
+    <div id="windows-1" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#windows-1" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">Plink (PuTTY): Dynamic PF
+    <div id="plink-putty-dynamic-pf" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#plink-putty-dynamic-pf" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Plink (PuTTY Link) es una herramienta de CLI de Windows que permite conectarse por SSH a otros dispositivos. Hasta 2018, Windows no tenía un cliente ssh nativo, así que los administradores se tenían que descargar uno, y, en su momento, el de preferencia era PuTTY. Si el sistema tiene SSH, posiblemente tenga PuTTY, y por lo tanto Plink.</p>
+<p>Podemos crear un túnel dinámico (igual al de <code>ssh -D</code>) de la siguiente manera:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>plink -ssh -D <span style="color:#f92672">[</span>PUERTO_LOCAL_PROXY<span style="color:#f92672">]</span> &lt;user&gt;@<span style="color:#f92672">[</span>IP_SERVIDOR<span style="color:#f92672">]</span></span></span></code></pre></div></div>
+<p>Esto creará un túnel desde <code>127.0.0.1:[PUERTO_LOCAL_PROXY]</code> hasta <code>[IP_SERVIDOR]</code>, que actuará como nuestro proxy.</p>
+
+<h1 class="relative group">Enrutamiento transparente (Auto-routing, VPN-like)
+    <div id="enrutamiento-transparente-auto-routing-vpn-like" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#enrutamiento-transparente-auto-routing-vpn-like" aria-label="Ancla">#</a>
+    </span>
+    
+</h1>
+<div class="admonition relative overflow-hidden rounded-lg border-l-4 my-3 px-4 py-3 shadow-sm" data-type="tip">
+      <div class="flex items-center gap-2 font-semibold text-inherit">
+        <div class="flex shrink-0 h-5 w-5 items-center justify-center text-lg"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M112.1 454.3c0 6.297 1.816 12.44 5.284 17.69l17.14 25.69c5.25 7.875 17.17 14.28 26.64 14.28h61.67c9.438 0 21.36-6.401 26.61-14.28l17.08-25.68c2.938-4.438 5.348-12.37 5.348-17.7L272 415.1h-160L112.1 454.3zM191.4 .0132C89.44 .3257 16 82.97 16 175.1c0 44.38 16.44 84.84 43.56 115.8c16.53 18.84 42.34 58.23 52.22 91.45c.0313 .25 .0938 .5166 .125 .7823h160.2c.0313-.2656 .0938-.5166 .125-.7823c9.875-33.22 35.69-72.61 52.22-91.45C351.6 260.8 368 220.4 368 175.1C368 78.61 288.9-.2837 191.4 .0132zM192 96.01c-44.13 0-80 35.89-80 79.1C112 184.8 104.8 192 96 192S80 184.8 80 176c0-61.76 50.25-111.1 112-111.1c8.844 0 16 7.159 16 16S200.8 96.01 192 96.01z"/></svg>
+</span></div>
+        <div class="grow">
+          Nota: Objetivo
+        </div>
+      </div><div class="admonition-content mt-3 text-base leading-relaxed text-inherit"><p>Interactuar con la red interna directamente modificando las tablas de enrutamiento del sistema atacante, eliminando la necesidad de usar wrappers como proxychains.</p></div></div>
+<h2 class="relative group">Linux (Atacante)
+    <div id="linux-atacante" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#linux-atacante" aria-label="Ancla">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">Sshuttle
+    <div id="sshuttle" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#sshuttle" aria-label="Ancla">#</a>
+    </span>
+    
+</h3>
+<p>Sshuttle es una herramienta que automatiza la configuración de <code>iptables</code> y de rutas en la propia máquina atacante para poder acceder a una subred interna a través de un pivote de forma transparente.</p>
+<p>P.ej, para poder acceder a la subred <code>[SUBRED_INTERNA]</code>, a la que solo es posible acceder desde <code>[PIVOTE]</code>, directamente, necesitaríamos usar SSH o similares, pero con <code>sshuttle</code> podemos hacer lo siguiente:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo sshuttle -r &lt;user&gt;@<span style="color:#f92672">[</span>PIVOTE<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>SUBRED_INTERNA<span style="color:#f92672">]</span> -v </span></span></code></pre></div></div>
+<p>E inmediatamente intentar acceder con cualquier otra herramienta a una IP de <code>[SUBRED_INTERNA]</code> de forma directa, sin necesidad de usar <code>proxychains</code>.</p>
 
           
           

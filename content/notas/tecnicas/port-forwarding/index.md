@@ -7,20 +7,21 @@ showToc = true
 math = true
 +++
 
-## Local Port Forwarding con SSH
+# Port Forwarding Estático
+> [!tip] Nota: Objetivo
+> Mapear un puerto específico de una máquina a otra (relación 1 a 1). Útil para acceder a un servicio interno concreto o para recibir una reverse shell desde una subred aislada.
 
-> Esto **no** requiere privilegios administrativos en la cuenta del servidor SSH. Para hacer port forwarding local:
+- El **PF Local** trae un puerto remoto a la máquina local (P.ej traer un puerto interno de MySQL a nuestro dispositivo)
+- El **PF Remoto** envía un puerto local al servidor remoto. (P.ej para hacer público un puerto de nuestra máquina hacia una subred y redirigir todo lo que llegue hacia nosotros)
+
+## Linux / Multi
+### SSH: Local PF
+Esto **no** requiere privilegios **administrativos** en la cuenta del servidor SSH, pero evidentemente sí requiere unas credenciales de usuario. Además, en la mayoría de implementaciones de OpenSSH, la capacidad de hacer PF local con `-L` está activada por defecto.
 
 ```bash
-ssh -L 4321:localhost:3306 usuario@10.10.11.87
-```
+ssh -L ([IP_LOCAL]:)[PUERTO_LOCAL]:[IP_INTERNA_SERVER]:[PUERTO_DESTINO] <user>@[IP_PUBLICA_SERVER]
 
-> Con esto estamos mapeando el socket `localhost:3306` abierto en la máquina con dirección (accesible) `10.10.11.87` en _nuestro_ socket `localhost:4321` (El `localhost` en nuestro dispositivo va implícito al usar `-L`) mediante SSH, conectándonos como `usuario`.
-
-Si quisiésemos especificar explícitamente la IP de nuestra máquina a la que se mapea la remota, la sintaxis completa sería:
-
-```bash
-ssh -L [IP_Local]:[Puerto_Local]:[IP_Destino]:[Puerto_Destino] usuario@10.10.11.87
+# "[IP_LOCAL]:" es opcional, si no se incluye se asume localhost
 ```
 
 Podemos hacer port forwarding de varios servicios a la vez:
@@ -29,105 +30,98 @@ Podemos hacer port forwarding de varios servicios a la vez:
 ssh -L 4321:localhost:3306 8000:localhost:80 usuario@10.10.11.87
 ```
 
-> En la mayoría de implementaciones de OpenSSH, la capacidad de tunelizar dinámicamente con `-L` está activada por defecto.
-
-## Dynamic Port Forwarding con SSH & SOCKS
-
-> Esto **no** requiere privilegios administrativos en la cuenta del servidor SSH. El `-L` en LPF es una relación 1 a 1, un puerto nuestro = un puerto e IP de destino específicos. Si queremos escanear una subred entera accesible desde la víctima, tendríamos que abrir muchos túneles independientes manualmente.
-
-Para solucionar esto está el Dynamic Port Forwarding, que abre un puerto local como proxy y convierte a la máquina víctima (por SSH) en un router por el que pasa el proxy.
+### SSH: Reverse PF
+Si queremos conseguir una reverse shell desde una máquina en una subred interna, no podremos ejecutar el payload sin más, dado que la máquina interna no tiene una ruta definida para llegar hasta nuestra IP. Por esto mismo necesitamos configurar un port forwarding remoto (o reverso).
 
 ```bash
-ssh -D 9050 usuario@10.10.11.87
+ssh -R [IP_SERVIDOR]:[PUERTO_SERVIDOR]:[IP_LOCAL_ATACANTE]:[PUERTO_LOCAL_ATACANTE]
 ```
 
-Desde ahí, todo lo que hagas a través de `localhost:9050` se hará en realidad desde la máquina con IP `10.10.11.87`.
+Este comando creará un túnel bidireccional:
 
-> En la mayoría de implementaciones de OpenSSH, la capacidad de tunelizar dinámicamente con `-D` está activada por defecto.
+* `[IP_SERVIDOR]:[PUERTO_SERVIDOR]` <-> `[IP_LOCAL_ATACANTE]:[PUERTO_LOCAL_ATACANTE]`
 
-### Herramientas a través de proxies SSH & SOCKS
-
-> Aquí hay que tener cuidado si nos preocupa además ocultar nuestra IP, pues según que herramienta usemos, puede que se filtre. `ping` usa ICMP (capa 3), que ignora por completo los proxies (y o no funcionará o filtrará nuestra IP directamente); nmap con `-sT` funciona, pero los escaneos con ping o `-sS` no funcionan y algunos scripts tampoco lo harán.
-
-Podemos usar proxychains para ejecutar herramientas a través de proxies, como pueden ser `tor` (127.0.0.1:9050) o incluso un servidor SSH que hayamos comprometido (con `-D`). Proxychains debe estar configurado con el proxy que queramos (Normalmente en `/etc/proxychains.conf`).
-
-#### Nmap
-
-Para escanear una IP específica a través del proxy (debe ser escaneo -sT con ICMP echo desactivado):
-
-```bash
-proxychains nmap -Pn -sT -v 10.10.12.88
-```
-
-Para escanear una subred entera en busca de algunos dispositivos vivos podemos usar:
-
-```bash
-proxychains nmap -sT -Pn -n -v --top-ports=10 10.10.12.0/24
-```
-
-Esto mira los 10 puertos más comunes (se pueden aumentar) en todas las direcciones IP de la subred `10.10.11.0/24` usando el TCP Full scan. `-Pn` desactiva ICMP pings, `-n` desactiva resoluciones DNS.
-
-#### RDP
-
-Si tenemos un proxy por SSH configurado en proxychains, también podemos conectarnos a un servidor de una red interna si tiene en escucha, p.ej, RDP.
-
-```bash
-xfreerdp /v:10.10.12.88 /u:user52 /p:p@sSw0rd
-```
-
-## Reverse/Remote Port Forwarding con SSH
-
-Si queremos conseguir una reverse shell desde una máquina en una subred interna, no podremos ejecutar el payload sin más, dado que la máquina interna no tiene una ruta definida para llegar hasta nuestra IP. Es por esto que necesitamos configurar un port forwarding _remoto_ (_`-R`_).
-
-```bash
-ssh -R <IP_Interna_Pivote>:<Puerto_Pivote>:<IP_Atacante_Local>:<Puerto_Local>
-```
+Todo lo que llegue a `[IP_SERVIDOR]:[PUERTO_SERVIDOR]` irá a parar a nuestra máquina, y viceversa.
 
 P.ej, si tenemos una máquina pivote con ip pública `10.10.11.87` e ip en una subred `10.10.12.87` en `10.10.12.0/24`, y una máquina objetivo con ip `10.10.12.88`:
-
 ```bash
-# Si nuestra IP (atacante) es 80.81.50.27
 ssh -R 10.10.12.87:8080:127.0.0.1:4321 usuario@10.10.11.87
-
-# También valdrían 80.81.50.27 o 0.0.0.0 (localhost) en lugar de 127.0.0.1, 
-# solo habría que cambiar la interfaz en la que escuchamos con el listener.
 ```
-
-Este comando creará un túnel bidireccional que hará que los datos vayan en dos direcciones:
-
-* `NuestraMáquina:4321` <-> `10.10.12.87:8080`
-
-Todo lo que llegue a 10.10.12.87 irá a parar a nuestra máquina (127.0.0.1 como hemos especificado), al puerto 4321, y viceversa.
-
-&#x20;
 
 ![](remoteportforward.png)
 
-## Socat (Alternativa a SSH, sin credenciales)
-Socat es una herramienta que sirve para crear vías de comunicación bidireccionales entre 2 canales de red independientes **sin necesitar usar túneles SSH**. Necesitamos acceso a la víctima, pero no necesariamente sus credenciales (que sí necesitamos para hacerlo por ssh).
+### Socat: Local PF
+Socat es una herramienta que sirve para crear vías de comunicación bidireccionales. Necesitamos acceso a la víctima, pero **no sus credenciales**.
 
-P.ej, usar el siguiente comando pondrá en escucha el puerto `8080` de todas las interfaces (`0.0.0.0`) de la máquina víctima y redirigirá todo el tráfico que llegue al puerto `80` de la IP `10.10.12.90`:
+Para hacer PF Local
 ```bash
-victima@10.10.11.87:~$ socat TCP4-LISTEN:8080,fork TCP4:10.10.12.90:80
+victima@10.10.11.87:~$ socat TCP4-LISTEN:[PUERTO_PIVOTE],fork TCP4:[IP_INTERNA_SERVER]:[PUERTO_SERVER_INTERNO]
 ```
-- `TCP4-LISTEN:8080` pone en escucha `0.0.0.0:8080`
+- `TCP4-LISTEN:[PUERTO_PIVOTE]` pone en escucha `0.0.0.0:[PUERTO_PIVOTE]`
   - `fork` hace que con cada conexión se cree un proceso hijo que la gestione (lo que permite manejar varias a la vez)
-- `TCP4:10.10.12.90:80` es el socket al que se redirigen los datos
+- `TCP4:[IP_INTERNA_SERVER]:[PUERTO_SERVER_INTERNO]` es el socket al que se redirigen los datos
 
-## Plink (PuTTY, Windows LotL)
-Plink (PuTTY Link) es una herramienta de Windows que permite conectarse por SSH a otros dispositivos. Hasta 2018, Windows no tenía un cliente ssh nativo, así que los administradores se tenían que descargar uno, y, en su momento, el de preferencia era PuTTY.
+## Windows
+### Netsh (Portproxy): Local PF
+Netsh es una herramienta incluida por defecto en Windows que sirve para gestionar interfaces de red, conexiones, y, además, proxies. Para crear un proxy en una máquina pivote necesitaremos **privilegios de administrador**.
 
-Podemos crear un túnel similar al de SSH (`-D`) de la siguiente manera:
-```bash
-plink -ssh -D 9050 user@10.10.11.87
+Para crear un redireccionamiento que reciba conexiones en un puerto de la IP pública del pivote y las redirija hacia un servidor interno:
+```shell
+C:\Windows\system32> netsh.exe interface portproxy add v4tov4 listenport=[PUERTO_PÚBLICO_PIVOTE] listenaddress=[IP_PÚBLICA_PIVOTE] connectport=[PUERTO_SERVER_INTERNO] connectaddress=[IP_SERVER_INTERNO]
 ```
-Esto creará un túnel en `127.0.0.1:9050` hasta `10.10.11.87`, que actuará como proxy.
 
-## Sshuttle (Auto-routing a través de pivote por SSH)
-Sshuttle es una herramienta que automatiza la configuración de iptables y de rutas para que la máquina atacante pueda acceder a otra máquina en una subred interna a través de un pivote de forma "directa" (o al menos transparente).
+# Acceso dinámico a subredes (PF Dinámico, SOCKS Proxying)
+> [!tip] Nota: Objetivo
+> Convertir a la máquina víctima en un router/proxy. Permite interactuar con toda una subred interna sin tener que abrir múltiples túneles independientes manualmente.
 
-P.ej, para poder acceder a la subred `172.16.15.0/23`, a la que solo es posible acceder desde `10.10.11.87`, directamente, necesitaríamos usar ssh o similares, pero con `sshuttle` podemos hacer lo siguiente:
+#### Consideraciones sobre herramientas (Proxychains)
+Aquí hay que tener cuidado si nos preocupa además ocultar nuestra IP, pues según que herramienta usemos, puede que se filtre. `ping` usa ICMP (capa 3), que ignora por completo los proxies (y o no funcionará o filtrará nuestra IP directamente); nmap con `-sT` funciona, pero los escaneos con ping o `-sS` no funcionan, y algunos de sus scripts tampoco lo harán.
+
+Podemos usar proxychains para ejecutar herramientas a través de proxies, como pueden ser `tor` (127.0.0.1:9050) o incluso un servidor SSH que hayamos comprometido (con `-D`), pero en cualquier caso proxychains debe estar configurado con el proxy que queramos usar (`/etc/proxychains.conf`).
+
+##### Nmap a través de proxychains
+Para escanear una IP específica a través del proxy (debe ser escaneo -sT con ICMP echo desactivado):
 ```bash
-sudo sshuttle -r user@10.10.11.87 172.16.15.0/24 -v 
+proxychains nmap -Pn -sT -v 10.10.12.88
 ```
-E inmediatamente intentar acceder con cualquier otra herramienta a una IP en la subred de forma directa, sin necesitar usar `proxychains`.
+Para escanear una subred entera en busca de algunos dispositivos vivos podemos usar:
+```bash
+proxychains nmap -sT -Pn -n -v --top-ports=10 10.10.12.0/24
+```
+Esto mira los 10 puertos más comunes (se pueden aumentar) en todas las direcciones IP de la subred `10.10.11.0/24` usando el TCP Full scan. `-Pn` desactiva ICMP pings, `-n` desactiva resoluciones DNS.
+
+## Linux / Multi
+### SSH: Dynamic PF
+> Esto **no** requiere privilegios **administrativos** en la cuenta del servidor SSH, pero evidentemente sí requiere unas credenciales de usuario. 
+
+Para abrir un puerto local que actúe como proxy SOCKS:
+```bash
+ssh -D [PUERTO_LOCAL_PROXY] <user>@[IP_SERVIDOR]
+```
+
+Desde ahí, todo el tráfico enviado a `127.0.0.1:[PUERTO_LOCAL_PROXY]` será enrutado y ejecutado desde la máquina pivote (`[IP_SERVIDOR]`).
+
+> En la mayoría de implementaciones de OpenSSH, la capacidad de tunelizar dinámicamente con `-D` está activada por defecto.
+## Windows
+### Plink (PuTTY): Dynamic PF
+Plink (PuTTY Link) es una herramienta de CLI de Windows que permite conectarse por SSH a otros dispositivos. Hasta 2018, Windows no tenía un cliente ssh nativo, así que los administradores se tenían que descargar uno, y, en su momento, el de preferencia era PuTTY. Si el sistema tiene SSH, posiblemente tenga PuTTY, y por lo tanto Plink.
+
+Podemos crear un túnel dinámico (igual al de `ssh -D`) de la siguiente manera:
+```bash
+plink -ssh -D [PUERTO_LOCAL_PROXY] <user>@[IP_SERVIDOR]
+```
+Esto creará un túnel desde `127.0.0.1:[PUERTO_LOCAL_PROXY]` hasta `[IP_SERVIDOR]`, que actuará como nuestro proxy.
+
+# Enrutamiento transparente (Auto-routing, VPN-like)
+> [!tip] Nota: Objetivo
+> Interactuar con la red interna directamente modificando las tablas de enrutamiento del sistema atacante, eliminando la necesidad de usar wrappers como proxychains.
+
+## Linux (Atacante)
+### Sshuttle
+Sshuttle es una herramienta que automatiza la configuración de `iptables` y de rutas en la propia máquina atacante para poder acceder a una subred interna a través de un pivote de forma transparente.
+
+P.ej, para poder acceder a la subred `[SUBRED_INTERNA]`, a la que solo es posible acceder desde `[PIVOTE]`, directamente, necesitaríamos usar SSH o similares, pero con `sshuttle` podemos hacer lo siguiente:
+```bash
+sudo sshuttle -r <user>@[PIVOTE] [SUBRED_INTERNA] -v 
+```
+E inmediatamente intentar acceder con cualquier otra herramienta a una IP de `[SUBRED_INTERNA]` de forma directa, sin necesidad de usar `proxychains`.
