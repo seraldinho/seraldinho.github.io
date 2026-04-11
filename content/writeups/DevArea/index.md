@@ -17,7 +17,7 @@ showRelated = true
 ## Nmap Scan
 
 Tras realizar un escaneo nmap completo, se encuentran los siguientes puertos abiertos:
-```bash
+```bash {hl_lines=[2,18,22,25,28,50]}
 PORT     STATE SERVICE VERSION
 21/tcp   open  ftp     vsftpd 3.0.5
 | ftp-syst: 

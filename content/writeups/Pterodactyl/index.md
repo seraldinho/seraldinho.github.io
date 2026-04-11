@@ -18,7 +18,7 @@ date = "2026-02-28T00:00:00"
 
 Empezamos haciendo un escaneo de todos los puertos en TCP:
 
-```bash
+```bash 
 $ nmap -sT -Pn -n -p- --open 10.129.4.98 -v                
 Starting Nmap 7.98 ( https://nmap.org ) at 2026-02-24 17:47 -0500
 Initiating Connect Scan at 17:47
@@ -34,7 +34,7 @@ RTTVAR has grown to over 2.3 seconds, decreasing to 2.0
 
 Como al parecer tarda mucho, limitamos la cantidad de puertos a la predeterminada de nmap (Top 1000 puertos) y escaneamos servicios después:
 
-```bash
+```bash {hl_lines=[8,12]}
 $ nmap -sT -Pn -n --open 10.129.4.98
 PORT   STATE SERVICE
 22/tcp open  ssh

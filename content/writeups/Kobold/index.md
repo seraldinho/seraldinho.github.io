@@ -17,7 +17,7 @@ date = "2026-03-24T00:00:00"
 ## Nmap Scan
 
 Tras realizar un escaneo nmap completo, se encuentran los siguientes puertos abiertos:
-```bash
+```bash {hl_lines=[2,6,9,21]}
 PORT     STATE SERVICE  VERSION
 22/tcp   open  ssh      OpenSSH 9.6p1 Ubuntu 3ubuntu13.15 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 

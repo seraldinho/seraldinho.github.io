@@ -9,6 +9,13 @@ enableEmoji = true
 [imaging]
   anchor = 'Center'
 
+[markup]
+    [markup.highlight]
+        codeFences = true
+        guessSyntax = true
+        lineNos = true
+        style = "monokai"
+        tabWidth = 4
 
 [markup.goldmark.renderer]
   unsafe = true

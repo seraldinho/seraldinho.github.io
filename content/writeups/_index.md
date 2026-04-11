@@ -1,7 +1,6 @@
 +++
 title = "Writeups"
 description = "Writeups de máquinas, no sólo con la solución final, sino con el proceso general: Errores cometidos y conceptos que tuve que aprender y que eran desconocidos al momento de resolver la máquina."
-defaultBackgroundImage = "/img/EPF2.png"
 
 [params]
 cardView = false

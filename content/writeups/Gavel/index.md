@@ -18,7 +18,7 @@ showRelated = true
 
 Tras realizar un escaneo nmap completo, se encuentran los siguientes puertos abiertos:
 
-```bash
+```bash {hl_lines=[2,6]}
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.13 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 

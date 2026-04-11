@@ -18,7 +18,7 @@ showRelated = true
 
 Tras realizar un escaneo nmap completo, se encuentran los siguientes puertos abiertos:
 
-```bash
+```bash {hl_lines=[4,7]}
 $ nmap -sT -Pn --disable-arp-ping -p22,80 -sVC --open cctv.htb
 
 PORT   STATE SERVICE VERSION

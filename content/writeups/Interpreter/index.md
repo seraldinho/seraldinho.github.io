@@ -16,7 +16,7 @@ showRelated = true
 
 ### Nmap Scan y enumeración
 Tras hacer un scan nmap completo, encontramos lo siguiente:
-```bash
+```bash {hl_lines=[4,8,12]}
 $ nmap -sT -Pn -n -p22,80,443,6661 -sVC --open 10.129.2.190
 
 PORT     STATE SERVICE  VERSION

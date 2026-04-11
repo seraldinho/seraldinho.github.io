@@ -17,7 +17,7 @@ showRelated = true
 ### Nmap Scan
 
 Tras hacer un escaneo de puertos, habiendo añadido `variatype.htb` previamente a `/etc/hosts`, se encuentra lo siguiente:
-```bash
+```bash {hl_lines=[2,6]}
 PORT   STATE SERVICE VERSION
 22/tcp open  ssh     OpenSSH 9.2p1 Debian 2+deb12u7 (protocol 2.0)
 | ssh-hostkey: 
