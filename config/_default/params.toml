@@ -45,7 +45,7 @@ defaultBackgroundImage = "/img/EPF2.png"
     showAuthorsBadges = false
     showWordCount = false
     sharingLinks = [ "linkedin", "twitter", "reddit", "facebook", "whatsapp"]
-    # showZenMode = true
+    showZenMode = false
     # externalLinkForceNewTab = false # disable to allow external links in the same tab (defaults to true)
 
 [list]

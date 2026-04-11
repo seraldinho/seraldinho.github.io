@@ -11,7 +11,7 @@ title = 'seraldinho.github.io'
   [params.author]
     name = "Nicolás Seral"
     email = "nseral@proton.me"
-    image = "/img/pinguino3.png"
+    image = "img/pinguino3.png"
     headline = "blog personal"
     bio = "bla bla bla bla"
     links = [
@@ -30,6 +30,6 @@ title = 'seraldinho.github.io'
     showRecentItems = 6
     showMoreLink = false
     # showMoreLinkDest = "/posts/"
-    cardView = true
+    cardView = false
     cardViewScreenWidth = false
     disableHeroImageFilter = false

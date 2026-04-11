@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Average";
-    src: url("/fonts/average.ttf") format("truetype");
+    src: url("../fonts/average.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -8,7 +8,15 @@
 
 @font-face {
     font-family: "Jetbrains";
-    src: url("/fonts/jetbrainsmono.ttf") format("truetype");
+    src: url("../fonts/jetbrainsmono.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "FiraCode";
+    src: url("../fonts/firacode.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -16,23 +24,45 @@
 
 @font-face {
     font-family: "Gabarito";
-    src: url("/fonts/gabarito.ttf") format("truetype");
+    src: url("../fonts/gabarito.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 /* TODAS LAS PÁGINAS */
+/* TAMAÑOS POR DEFECTO (MÓVIL) */
 html,
 body {
-    font-family: "average", monospace !important;
-    font-size: 12.5pt;
+    font-family: "Average", serif !important;
+    font-size: 10pt; /* Más pequeño para que respire en móvil */
+}
+
+h1 {
+    font-size: 1.8rem !important;
+}
+h2 {
+    font-size: 1.5rem !important;
+}
+
+/* TAMAÑOS PARA PANTALLAS GRANDES (TABLET/PC) */
+@media (min-width: 768px) {
+    html,
+    body {
+        font-size: 12pt; /* Vuelve a tu tamaño original en PC */
+    }
+    h1 {
+        font-size: 2rem !important;
+    }
+    h2 {
+        font-size: 1.3rem !important;
+    }
 }
 
 /* BLOQUES DE CÓDIGO */
 pre,
 code {
-    font-family: "Jetbrains", monospace !important;
+    font-family: "FiraCode", monospace !important;
 }
 
 /* TÍTULOS  */
@@ -42,31 +72,18 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Gabarito", display !important;
+    font-family: "Gabarito", sans-serif !important;
     letter-spacing: 1px;
 }
 
-/* IMAGEN DE FONDO */
-/*
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-
-    background-image: url("/img/fondo.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    filter: blur(6px) brightness(0.4);
-
-    z-index: -10;
+#TableOfContents a {
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
 }
 
-body {
-    background-color: transparent !important;
+#TableOfContents a.toc-active {
+    font-weight: bold !important;
+    transform: scale(1.05);
+    transform-origin: left;
+    color: #abffb2 !important; /* Azul claro muy visible para hacer la prueba */
 }
-*/

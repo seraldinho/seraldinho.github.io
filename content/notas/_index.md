@@ -15,14 +15,17 @@ cardView = false
 cardViewScreenWidth = true
 constrainItemsWidth = false
 
+
+
 [cascade]
 showSummary = false
 groupByYear = false
 showHero = true
 heroStyle = "background"
 hideFeatureImage = true
-featureimage = "img/dojo.png"
+featureimage = "img/circle.png"
 showRelatedContent = true
+
 +++
 
 Notas de ciberseguridad, informática y posiblemente más cosas en un futuro.
