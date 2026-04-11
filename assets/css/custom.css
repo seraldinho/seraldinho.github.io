@@ -35,7 +35,7 @@
 html,
 body {
     font-family: "Average", serif !important;
-    font-size: 10pt; /* Más pequeño para que respire en móvil */
+    font-size: 10pt;
 }
 
 h1 {
@@ -49,7 +49,7 @@ h2 {
 @media (min-width: 768px) {
     html,
     body {
-        font-size: 12pt; /* Vuelve a tu tamaño original en PC */
+        font-size: 12pt;
     }
     h1 {
         font-size: 2rem !important;
@@ -85,5 +85,5 @@ h6 {
     font-weight: bold !important;
     transform: scale(1.05);
     transform-origin: left;
-    color: #abffb2 !important; /* Azul claro muy visible para hacer la prueba */
+    color: #abffb2 !important;
 }
