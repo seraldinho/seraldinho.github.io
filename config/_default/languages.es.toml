@@ -16,7 +16,6 @@ title = 'seraldinho.github.io'
     bio = "bla bla bla bla"
     links = [
       { email = "nseral@proton.me" },
-      { linkedin = "https://www.linkedin.com/in/nseral/" },
       { github = "https://github.com/seraldinho" },
       { hackthebox = "https://app.hackthebox.com/users/1297012"}
     ]

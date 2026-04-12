@@ -190,7 +190,7 @@ Service Info: Host: gavel.htb
 ```
 
 > [!TIP]+ Scans de Nmap
-> _Y es aquí cuando aprendo que nmap activa unos u otros scripts (-sC) también en función de si trabaja sobre **una IP** o si lo hace sobre un **nombre de dominio** (Algo evidente pero que no hubiese pensado que marcaría una diferencia). Además, antes es muy probable que no hubiese encontrado el repositorio porque ni siquiera pudiese haber llegado a él, dado que cualquier solicitud resultaba en un redirect a `gavel.htb` que no daba ninguna información nueva._
+> _Aquí aprendo que nmap también activa unos u otros scripts (-sC) en función de si trabaja sobre **una IP** o si lo hace sobre un **nombre de dominio** (Algo evidente pero que no hubiese pensado que marcaría una diferencia). Además, antes es muy probable que no hubiese encontrado el repositorio porque ni siquiera pudiese haber llegado a él, dado que cualquier solicitud resultaba en un redirect a `gavel.htb` que no daba ninguna información nueva._
 
 > [!NOTE]+ _**Conclusión**_
 > _Hacer futuros escaneos de nmap que vayan a servicios HTTP **después de tener el nombre de dominio** (si se nos redirige automáticamente), para que nmap pueda usar sus scripts completos._
@@ -311,9 +311,9 @@ Para solucionar eso, los creadores de PHP hicieron un parser dentro del código 
 
 * Si se ve una comilla simple (') o un backtick (\`), se considera un string literal y no se reemplaza ningún `?` hasta que no se cierra el string.
 
-El problema en esto es que el parser define que los caracteres válidos que puede haber dentro de un string literal (entre comillas) con cualquier cosa entre `\001` y `\377`, es decir, que si pasamos un Null Byte (`0x00`) `\0`, el parser se lía porque `\0` no está en la lista de permitidos, lo que hace que retroceda (backtrack).
+El problema en esto es que el parser define que los caracteres válidos que puede haber dentro de un string (entre comillas) son cualquier cosa entre `\001` y `\377`, es decir, que si pasamos un Null Byte (`0x00`) `\0`, el parser se lía porque `\0` no está en la lista de permitidos, lo que hace que retroceda (backtrack).
 
-Este backtrack provoca que el parser vuelva al inicio de string, pero con el backtick o la comilla original pasando a ser ignorados, lo que provoca que cuando se vea el signo de interrogación del usuario `?` se tome como un parámetro válido y se sustituyan los datos en ese `?`.
+Este backtrack provoca que el parser vuelva al inicio de string, pero con el backtick o la comilla original pasando a ser ignorados, lo que hará que cuando se vea el signo de interrogación del usuario `?` se tome como un parámetro válido y se sustituyan los datos en ese `?`.
 
 #### Explotación
 
@@ -362,9 +362,9 @@ En `user_id`:
 
 * `x` es un caracter de relleno, valdría cualquiera.
 * (\`) sirve para cerrar el string que define el nombre de la columna
-* (...) es una subconsulta SQL
-  * El AS dentro fuerza a que la subconsulta devuelva una columna llamada igual que la columna original (`'x`), dado que si el nombre no es igual la consulta dará un error.
-* `;-- -` es un comentario que t
+* `(SELECT ... FROM users)` es una subconsulta SQL
+  * El `AS` dentro fuerza a que la subconsulta devuelva una columna llamada igual que la columna original (`'x`), dado que, si el nombre no es igual, la consulta dará un error.
+* `;-- -` es un comentario que termina la consulta.
 
 Mandamos el payload codificado para URL y:
 

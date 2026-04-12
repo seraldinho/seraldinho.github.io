@@ -176,13 +176,7 @@ Files with capabilities (limited to 50):
 /usr/bin/ping cap_net_raw=ep
 ```
 
-En las capabilities tenemos 3 cosas: snap (con `setuid`), que no nos sirve de mucho; ping, con permiso `cap_net_raw=ep` (que permite abrir sockets) y tcpdump, con `cap_net_raw=eip`.
-
-`cat_net_raw` es una capability que permite abrir y crear sockets a medida desde cero, los flags son:
-
-* `p`: Permitted, el binario tiene autorización para usar el cap, pero no necesariamente está activado por defecto.
-* `e`: Effective, el cap está encendido y activo desde el instante en que se ejecuta el programa.
-* `i`: Inheritable, si este programa crea un proceso hijo, el hijo hereda el cap.
+No parece haber nada relevante.
 
 ### Identificando servicios de red
 

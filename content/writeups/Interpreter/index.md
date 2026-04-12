@@ -72,6 +72,7 @@ En HTTP(s) tenemos Mirth Connect. Como HL7 FHIR es la versión moderna y trabaja
 
 De momento tenemos prácticamente confirmado que HL7 2.x está activo en el 6661, solo quedaría confirmar si FHIR también lo está en el 80/443 y, dado que esa versión opera como API REST, necesitaremos encontrar su endpoint. Al buscar en Internet, veo:
 > In Mirth Connect, there is no single fixed FHIR API endpoint. Instead, the endpoint is determined by how a specific FHIR Listener channel is configured within the Mirth Administrator.
+
 Así que necesitaremos acceder a Mirth Administrator para ver su endpoint (o sacarlo a fuerza bruta).
 
 ## TCP/6661 - HL7
