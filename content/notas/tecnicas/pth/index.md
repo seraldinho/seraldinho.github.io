@@ -19,9 +19,9 @@ Cuando un usuario solicita iniciar sesión en una cuenta:
 3. El servidor hace lo mismo con la credencial almacenada del usuario.
 4. Si las respuestas coinciden, se concede acceso.
 
-Esto se hizo con la idea de ni enviar contraseñas por la red ni almacenarlas en texto plano, pero si un atacante ya dispone del hash de las credenciales (p.ej, al extraerlas de memoria), éste parte del paso 2, con el hash de la contraseña real ya calculado, lo que implica que *es suficiente con solicitar al servidor un challenge y cifrarlo con el hash para iniciar sesión sin tener la contraseña.*
+Esto se hizo con la idea de ni enviar contraseñas por la red ni almacenarlas en texto plano, pero si un atacante ya dispone del hash de las credenciales (p.ej, al extraerlas de memoria), parte del paso 2, con el hash de la contraseña real ya calculado, lo que implica que *es suficiente con solicitar al servidor un challenge y cifrarlo con el hash para iniciar sesión sin tener la contraseña.*
 
-## Técnica: Pass-the-Hash
+## Técnica
 La aplicación de la técnica puede hacerse con herramientas como `netexec`, si ya tenemos el hash:
 ```bash
 netexec smb 10.10.11.87 -u Administrator -H <hash>

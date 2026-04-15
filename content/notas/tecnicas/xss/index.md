@@ -8,25 +8,21 @@ math = true
 +++
 
 # Cross-Site Scripting
-Una aplicación web normal funciona recibiendo código HTML del servidor backend y renderizándolo en el navegador del cliente.
-
-Si una app. web no valida ni limpia el input del usuario correctamente, un usuario puede introducir código js en un campo de input para que, cuando él mismo u otro usuario vea la página ese código js se ejecute en su navegador.
+Una aplicación web normal funciona recibiendo código HTML del servidor y renderizándolo en el navegador del cliente. Si una aplicación web no valida ni limpia el input del usuario correctamente, el usuario puede introducir código js en un campo de input para que, cuando él mismo u otro usuario vea la página, ese código js se ejecute en su navegador.
 
 > *Las vulnerabilidades XSS son muy comunes, pero no afectan al servidor directamente, sólo al cliente que las ejecuta.*
 
-Aunque sólo afectan al lado del cliente y están limitados al motor JS del navegador y al dominio del sitio vulnerable (no afectan al SO del cliente), pueden ser muy peligrosos. Mediante XSS, un atacante puede, por ejemplo, *robar cookies de sesión o tomar acciones en nombre de otro usuario.*
+Aunque sólo afectan al lado del cliente y están limitadas al motor JS del navegador y al dominio del sitio vulnerable (no afectan al SO del cliente), pueden ser muy peligrosas. Mediante XSS, un atacante puede, por ejemplo, *robar cookies de sesión o tomar acciones en nombre de otro usuario.*
 
 ## Tipos de XSS
 ### Persistente
 Si el payload XSS se guarda en el backend, p.ej, en una base de datos, y luego se muestra al visitar la página, tenemos un XSS persistente.
 
-Un ejemplo de este tipo es el .
-
 > Como ataque, este tipo es el más peligroso por el potencial de infección que tiene (véase el [samy worm](https://w.wiki/HJs9)). Basta con inyectar el código en una página, que el servidor lo guarde, y que ese código se ejecute en el navegador de los clientes cada vez que accedan a la página.
 ### Reflejado
 Si el payload llega hasta el servidor backend y luego se nos devuelve tal cual sin ser filtrado o saneado, tendremos un caso de XSS reflejado.
 
-Podemos distinguir entre este y el anterior porque, en este, al recargar la página nuestro payload habrá desaparecido. 
+Podemos distinguir entre este y el anterior porque, en este, al recargar la página, nuestro payload habrá desaparecido. 
 
 > Este tipo puede usarse como ataque mandando a alguien un enlace a una página vulnerable que contenga nuestro payload. (Mediante phishing)
 ### Basado en DOM
@@ -65,7 +61,7 @@ En el caso de que `<script>` no esté permitido, también podemos usar este:
 <img src="1" onerror=alert(window.origin)>
 ```
 
-## Robo de Cookies (Session Hijacking), Staged XSS.
+## Robo de Cookies (Session Hijacking).
 El session hijacking es uno de los ataques más críticos que pueden hacerse mediante XSS. El proceso de ataque varía en función del tipo de XSS (Stored/Reflected/DOM) pero es bastante similar en todos los casos:
 1. El atacante identifica un punto vulnerable a XSS
 2. Se envía un payload que hace que el navegador del usuario tome las cookies guardadas y las mande a un servidor en escucha del atacante.
