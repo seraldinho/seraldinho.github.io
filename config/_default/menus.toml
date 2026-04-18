@@ -4,6 +4,12 @@
   pageRef = "writeups"
   weight = 10
 
+#  [[main]]
+#    name = "Posts"
+#    pre = "firma"
+#    pageRef = "posts"
+#    weight = 30
+
 [[main]]
   name = "Notas"
   pre = "pencil"
