@@ -228,4 +228,15 @@ Aunque podríamos sacarlo a mano, sería más conveniente poder cambiar el tipo 
 
 ![](graverobber3.png)
 
-Y finalmente tenemos el flag.
+Y tenemos el flag.
+
+Podríamos preguntarnos que cómo es que `strings` no nos ha mostrado el flag al inicio si es que `parts` era un array completamente estático que estaba ahí desde el inicio. El problema es la codificación. 
+
+El flag estaba en UTF32 (Unicode32), y `strings`, por defecto, busca solamente cadenas codificadas en ASCII formadas por 4 o más caracteres. Esto significa que por un lado no estaba detectando el flag por estar en UTF32, y por otro lado no estaba mostrando las letras del flag individualmente porque todas tenían una longitud de 1 en ASCII (Todas eran la letra seguida de 3 `0x00`'s, por lo que cada letra era un string de longitud 1 + el null byte).
+
+Si ahora, sabiendo esto, probamos a ejecutar `strings` con el parámetro `-e L`, se nos mostrarán todas las cadenas formadas por caracteres en Little Endian y de 32 bits, por lo que obtendremos el flag directamente sin descompilar ni tocar nada.
+
+```bash
+strings -e L robber
+HTB{br34k1n9_d0wn_th3_sysc4ll5}
+```
