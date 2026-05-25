@@ -1,6 +1,6 @@
 +++
 title = "HackTheBox - Principal"
-draft = true
+draft = false
 description = "Resolución de la máquina Principal"
 summary = "OS: Linux | Dificultad: Medium | Conceptos: Jetty, JWT, CVE Público, Reutilización de contraseñas, TOCTOU"
 tags = ["HTB", "Linux", "Medium", "Jetty", "CVE", "SSH", "TOCTOU", "JWE", "Password Reuse"]
