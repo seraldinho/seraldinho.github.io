@@ -6,7 +6,7 @@ summary = "OS: Linux | Dificultad: Medium | Conceptos: Jetty, JWT, CVE Público,
 tags = ["HTB", "Linux", "Medium", "Jetty", "CVE", "SSH", "TOCTOU", "JWE", "Password Reuse"]
 categories = ["Writeups"]
 showToc = true
-date = "2026-05-20T00:00:00"
+date = "2026-05-25T00:00:00"
 showRelated = true
 +++
 
