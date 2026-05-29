@@ -2,7 +2,7 @@
 title = "HackTheBox - Greenhorn"
 draft = false
 description = "Resolución de la máquina Greenhorn"
-tags = ["HTB", "Linux", "Pluck", "Gitea", "CVE", "Depix"]
+tag = ["HTB", "Linux", "Pluck", "Gitea", "CVE", "Depix"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: Pluck, Gitea, CVE, Depix"
 categories = ["Writeups"]
 showToc = true

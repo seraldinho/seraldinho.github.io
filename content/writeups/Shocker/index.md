@@ -2,7 +2,7 @@
 title = "HackTheBox - Shocker"
 draft = false
 description = "Resolución de la máquina Shocker"
-tags = ["HTB", "Linux", "Easy", "Perl", "CVE", "Shellshock", "CGI"]
+tag = ["HTB", "Linux", "Easy", "Perl", "CVE", "Shellshock", "CGI"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: Perl, CVE Público, Shellshock, CGI"
 categories = ["Writeups"]
 showToc = true

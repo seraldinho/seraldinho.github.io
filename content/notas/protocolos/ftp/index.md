@@ -2,7 +2,7 @@
 title = 'FTP'
 draft = false
 description = "Explicación del funcionamiento del protocolo FTP"
-tags = ["FTP", "Protocolo"]
+tag = ["FTP", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

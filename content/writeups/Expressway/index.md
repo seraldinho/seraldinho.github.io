@@ -2,7 +2,7 @@
 title = "HackTheBox - Expressway"
 draft = false
 description = "Resolución de la máquina Expressway"
-tags = ["HTB", "Linux", "Easy", "IPSec", "Cisco", "TFTP", "Sudo", "CVE"]
+tag = ["HTB", "Linux", "Easy", "IPSec", "Cisco", "TFTP", "Sudo", "CVE"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: IPSec, Cisco, TFTP, Sudo, CVE Público"
 categories = ["Writeups"]
 showToc = true

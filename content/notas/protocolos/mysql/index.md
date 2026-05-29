@@ -2,7 +2,7 @@
 title = 'MySQL'
 draft = false
 description = "Explicación del funcionamiento del protocolo MySQL"
-tags = ["MySQL", "Protocolo"]
+tag = ["MySQL", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

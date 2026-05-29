@@ -2,7 +2,7 @@
 title = "HackTheBox - Nunchucks"
 draft = false
 description = "Resolución de la máquina Nunchucks"
-tags = ["HTB", "Linux", "Easy", "Nunjucks", "SSTI", "Perl", "Capabilities"]
+tag = ["HTB", "Linux", "Easy", "Nunjucks", "SSTI", "Perl", "Capabilities"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: SSTI, Nunjucks, Perl, Capabilities"
 categories = ["Writeups"]
 showToc = true

@@ -2,7 +2,7 @@
 title = 'IPSec'
 draft = false
 description = "Explicación del funcionamiento del protocolo IPSec"
-tags = ["IPSec", "Protocolo"]
+tag = ["IPSec", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

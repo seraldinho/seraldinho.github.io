@@ -2,7 +2,7 @@
 title = 'MSSQL'
 draft = false
 description = "Explicación del funcionamiento del protocolo MSSQL"
-tags = ["MSSQL", "Protocolo"]
+tag = ["MSSQL", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

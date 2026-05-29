@@ -2,7 +2,7 @@
 title = "HackTheBox - Facts"
 draft = false
 description = "Resolución de la máquina Facts"
-tags = ["HTB", "Linux", "MinIO", "CamaleonCMS", "CVE", "SSH Key", "Custom Binary"]
+tag = ["HTB", "Linux", "MinIO", "CamaleonCMS", "CVE", "SSH Key", "Custom Binary"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: MinIO, S3, CamaleonCMS, CVE Público, Binario Custom"
 categories = ["Writeups"]
 showToc = true

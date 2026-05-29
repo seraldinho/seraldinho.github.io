@@ -2,7 +2,7 @@
 title = "HackTheBox - CCTV"
 draft = false
 description = "Resolución de la máquina CCTV"
-tags = ["HTB", "Linux", "Easy", "MotionEye", "SQLi", "ZoneMinder", "CVE"]
+tag = ["HTB", "Linux", "Easy", "MotionEye", "SQLi", "ZoneMinder", "CVE"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: Videovigilancia, MotionEye, SQLi, ZoneMinder, CVE Público"
 categories = ["Writeups"]
 showToc = true

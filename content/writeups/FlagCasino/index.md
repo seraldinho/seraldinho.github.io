@@ -2,7 +2,7 @@
 title = "HackTheBox - FlagCasino"
 draft = false
 description = "Resolución del challenge FlagCasino"
-tags = ["HTB", "ELF", "Ghidra", "Reversing", "Random", "Easy"]
+tag = ["HTB", "ELF", "Ghidra", "Reversing", "Random", "Easy"]
 summary = "Dificultad: Easy | Conceptos: Ghidra, Reversing, PRNG"
 categories = ["Writeups"]
 showToc = true

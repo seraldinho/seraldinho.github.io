@@ -2,7 +2,7 @@
 title = 'POP3'
 draft = false
 description = "Explicación del funcionamiento del protocolo POP3"
-tags = ["POP3", "Protocolo"]
+tag = ["POP3", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

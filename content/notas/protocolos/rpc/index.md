@@ -2,7 +2,7 @@
 title = 'RPC'
 draft = false
 description = "Explicación del funcionamiento del protocolo RPC"
-tags = ["RPC", "Protocolo"]
+tag = ["RPC", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

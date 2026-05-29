@@ -2,7 +2,7 @@
 title = 'TNS'
 draft = false
 description = "Explicación del funcionamiento del protocolo TNS"
-tags = ["TNS", "Protocolo"]
+tag = ["TNS", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

@@ -2,7 +2,7 @@
 title = 'DNS'
 draft = false
 description = "Explicación del funcionamiento del protocolo DNS"
-tags = ["DNS", "Protocolo"]
+tag = ["DNS", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

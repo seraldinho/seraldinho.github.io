@@ -28,7 +28,7 @@ enableEmoji = true
 
 [related]
     threshold = 0
-    toLower = false
+    toLower = true
 
     [[related.indices]]
         name = "tags"
@@ -36,7 +36,7 @@ enableEmoji = true
 
     [[related.indices]]
         name = "categories"
-        weight = 100
+        weight = 90
 
     [[related.indices]]
         name = "series"
@@ -57,7 +57,10 @@ enableEmoji = true
         weight = 10
 
 [taxonomies]
-series = "series"
+  tag = "tags"
+  category = "categories"
+  author = "authors"
+  series = "series"
 
 [caches]
   [caches.images]
