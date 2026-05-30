@@ -1,0 +1,84 @@
+{{ define "main" }} {{ .Scratch.Set "scope" "list" }} {{ $showHero :=
+.Params.showHero | default site.Params.taxonomy.showHero | default false }} {{
+if $showHero }} {{ $heroStyle := print "hero/" site.Params.taxonomy.heroStyle
+".html" }} {{ if templates.Exists ( printf "partials/%s" $heroStyle ) }} {{
+partial $heroStyle . }} {{ else }} {{ partial "hero/basic.html" . }} {{ end }}
+{{- end -}}
+
+<header class="mt-5">
+    {{ if .Params.showBreadcrumbs | default
+    (site.Params.taxonomy.showBreadcrumbs | default false) }} {{ partial
+    "breadcrumbs.html" . }} {{ end }}
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        {{ .Title }}
+    </h1>
+    <div
+        class="mt-1 mb-2 text-base text-neutral-500 dark:text-neutral-400 print:hidden"
+    >
+        {{ partial "article-meta/taxonomy.html" (dict "context" . "scope"
+        "single") }}
+    </div>
+</header>
+
+{{ if .Content }}
+<section
+    class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row"
+>
+    <div class="min-w-0 min-h-0 max-w-prose">{{ .Content }}</div>
+</section>
+{{ end }}
+
+<section
+    class="w-full grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-6"
+>
+    {{ range .Data.Terms.Alphabetical }} {{ $images := slice }} {{ range first 5
+    .Page.Pages }} {{ $img := .Resources.GetMatch "featured.*" }} {{ if $img }}
+    {{ $thumb := $img.Fill "56x56 webp Center" }} {{ $images = $images | append
+    $thumb }} {{ end }} {{ end }} {{ $extra := sub .Count 5 }}
+
+    <a
+        href="{{ .Page.Permalink }}"
+        style="padding-left: 1.2rem; padding-right: 1.2rem"
+        class="group flex items-center justify-between gap-4 py-4 rounded-2xl border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 hover:border-primary-400 dark:hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-neutral-700 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out no-underline"
+    >
+        {{/* Izquierda: nombre · cantidad */}}
+        <div class="flex items-center gap-2 min-w-0">
+            <span
+                class="font-semibold text-neutral-800 dark:text-neutral-100 truncate group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200"
+            >
+                {{ .Page.Title }}
+            </span>
+            <span class="text-neutral-300 dark:text-neutral-600 select-none"
+                >·</span
+            >
+            <span
+                class="shrink-0 text-sm font-bold text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors duration-200"
+            >
+                {{ .Count }}
+            </span>
+        </div>
+
+        {{/* Derecha: thumbnails apilados + desbordamiento */}} {{ if $images }}
+        <div class="flex items-center shrink-0 -space-x-2">
+            {{ range $images }}
+            <img
+                src="{{ .Permalink }}"
+                width="{{ .Width }}"
+                height="{{ .Height }}"
+                alt=""
+                class="w-8 h-8 rounded-full object-cover ring-2 ring-neutral-50 dark:ring-neutral-800 group-hover:ring-primary-50 dark:group-hover:ring-neutral-700 transition-all duration-200"
+            />
+            {{ end }} {{ if gt $extra 0 }}
+            <span
+                class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold bg-neutral-200 dark:bg-neutral-600 text-neutral-600 dark:text-neutral-300 ring-2 ring-neutral-50 dark:ring-neutral-800 group-hover:ring-primary-50 dark:group-hover:ring-neutral-700 group-hover:bg-primary-100 dark:group-hover:bg-primary-900 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-all duration-200"
+            >
+                +{{ $extra }}
+            </span>
+            {{ end }}
+        </div>
+        {{ end }}
+    </a>
+    {{ end }}
+</section>
+
+{{ end }}

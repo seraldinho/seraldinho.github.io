@@ -2,7 +2,7 @@
 title = "HackTheBox - Kobold"
 draft = false
 description = "Resolución de la máquina Kobold"
-tag = ["HTB", "Linux", "Easy", "Docker", "Privatebin", "MCP", "LFI"]
+tags = ["HTB", "Linux", "Easy", "Docker", "Privatebin", "MCP", "LFI"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: Privatebin, MCP, LFI, Docker"
 categories = ["Writeups"]
 showToc = true

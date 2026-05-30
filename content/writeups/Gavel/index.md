@@ -2,7 +2,7 @@
 title = "HackTheBox - Gavel"
 draft = false
 description = "Resolución de la máquina Gavel"
-tag = ["HTB", "Linux", "Medium", "SQLi", "PDO", "Reversing", "Ghidra", "Custom Binary"]
+tags = ["HTB", "Linux", "Medium", "SQLi", "PDO", "Reversing", "Ghidra", "Custom Binary"]
 summary = "OS: Linux | Dificultad: Medium | Conceptos: SQLi, PHP PDO, Reversing, Custom Binary"
 categories = ["Writeups"]
 showToc = true

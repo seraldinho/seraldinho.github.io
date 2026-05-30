@@ -2,7 +2,7 @@
 title = "HackTheBox - Graverobber"
 draft = false
 description = "Resolución del challenge Graverobber"
-tag = ["HTB", "Reversing", "Medium", "Ghidra"]
+tags = ["HTB", "Reversing", "Medium", "Ghidra"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: Reversing, Ghidra."
 categories = ["Writeups"]
 showToc = true

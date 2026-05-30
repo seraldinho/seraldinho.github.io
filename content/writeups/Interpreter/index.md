@@ -2,7 +2,7 @@
 title = "HackTheBox - Interpreter"
 draft = false
 description = "Resolución de la máquina Nibbles"
-tag = ["HTB", "Linux", "Medium", "HL7", "Mirth", "CVE", "DB", "Local Service"]
+tags = ["HTB", "Linux", "Medium", "HL7", "Mirth", "CVE", "DB", "Local Service"]
 summary = "OS: Linux | Dificultad: Medium | Conceptos: HL7, Mirth, CVE Público, MariaDB, Red Sanitaria"
 categories = ["Writeups"]
 showToc = true

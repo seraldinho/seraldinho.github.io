@@ -2,7 +2,7 @@
 title = 'IKE'
 draft = false
 description = "Explicación del funcionamiento del protocolo IKE"
-tag = ["IKE", "Protocolo"]
+tags = ["IKE", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

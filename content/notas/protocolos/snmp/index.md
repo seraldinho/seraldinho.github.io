@@ -2,7 +2,7 @@
 title = 'SNMP'
 draft = false
 description = "Explicación del funcionamiento del protocolo SNMP"
-tag = ["SNMP", "Protocolo"]
+tags = ["SNMP", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

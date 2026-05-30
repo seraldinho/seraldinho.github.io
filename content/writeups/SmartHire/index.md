@@ -3,7 +3,7 @@ title = "HackTheBox - SmartHire"
 draft = false
 description = "Resolución de la máquina SmartHire"
 summary = "OS: Linux | Dificultad: Medium | Conceptos: Subdominio, Machine Learning, Python Privesc, .pth"
-tag = ["HTB", "Linux", "Medium", "pth", "Python", "Autorun", "Sudo", "ML", "CSV", "Default Credentials", "CVE", "Subdominio"]
+tags = ["HTB", "Linux", "Medium", "pth", "Python", "Autorun", "Sudo", "ML", "CSV", "Default Credentials", "CVE", "Subdominio"]
 categories = ["Writeups"]
 showToc = true
 date = "2026-05-28T00:00:00"
@@ -15,7 +15,7 @@ showRelated = true
 * **Datos Iniciales**: `10.129.245.215`
 
 ### Nmap Scan y enumeración
-```bash
+```bash {hl_lines=[7,11]}
 $ sudo nmap -sT -Pn -p- 10.129.245.215 # Devuelve puertos 22,80
 $ sudo nmap -sT -Pn -sVC 10.129.245.215 -p22,80 # Indica "Did not follow redirect to http://smarthire.htb/"
 # Añadimos smarthire.htb a /etc/hosts

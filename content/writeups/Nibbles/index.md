@@ -2,7 +2,7 @@
 title = "HackTheBox - Nibbles"
 draft = false
 description = "Resolución de la máquina Nibbles"
-tag = ["HTB", "Linux", "Easy", "Nibbleblog", "CVE", "Metasploit"]
+tags = ["HTB", "Linux", "Easy", "Nibbleblog", "CVE", "Metasploit"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: Nibbleblog, CVE Público, Metasploit"
 categories = ["Writeups"]
 showToc = true

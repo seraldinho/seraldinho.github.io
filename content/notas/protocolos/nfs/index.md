@@ -2,7 +2,7 @@
 title = 'NFS'
 draft = false
 description = "Explicación del funcionamiento del protocolo NFS"
-tag = ["NFS", "Protocolo"]
+tags = ["NFS", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

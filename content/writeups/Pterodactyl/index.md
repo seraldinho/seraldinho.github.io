@@ -2,7 +2,7 @@
 title = "HackTheBox - Pterodactyl"
 draft = false
 description = "Resolución de la máquina Pterodactyl"
-tag = ["HTB", "Linux", "Medium", "Pterodactyl", "CVE", "DB", "Trivy", "UDisks2", "Subdominio"]
+tags = ["HTB", "Linux", "Medium", "Pterodactyl", "CVE", "DB", "Trivy", "UDisks2", "Subdominio"]
 summary = "OS: Linux | Dificultad: Medium | Conceptos: Pterodactyl Server Manager, CVE Público, Redis, MySQL, Trivy, UDisks2"
 categories = ["Writeups"]
 showToc = true

@@ -2,7 +2,7 @@
 title = "HackTheBox - Simple Encryptor"
 draft = false
 description = "Resolución del desafío Simple Encryptor"
-tag = ["HTB", "Reversing", "Easy", "Ghidra", "Encryption"]
+tags = ["HTB", "Reversing", "Easy", "Ghidra", "Encryption"]
 summary = "Dificultad: Easy | Conceptos: Reversing, Ghidra, Cifrado, XOR, Rotaciones"
 categories = ["Writeups"]
 showToc = true

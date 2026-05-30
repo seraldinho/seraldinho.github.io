@@ -2,7 +2,7 @@
 title = "HackTheBox - Validation"
 draft = false
 description = "Resolución de la máquina Validation"
-tag = ["HTB", "Linux", "Easy", "SQLi", "Password Reuse"]
+tags = ["HTB", "Linux", "Easy", "SQLi", "Password Reuse"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: Second Order SQLi, MySQL, Reutilización de contraseñas, SQL R/W"
 categories = ["Writeups"]
 showToc = true

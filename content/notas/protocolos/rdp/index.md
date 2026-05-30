@@ -2,7 +2,7 @@
 title = 'RDP'
 draft = false
 description = "Comandos y funcionamiento del protocolo RDP"
-tag = ["RDP", "Protocolo"]
+tags = ["RDP", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

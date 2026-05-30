@@ -2,7 +2,7 @@
 title = 'TFTP'
 draft = false
 description = "Explicación del funcionamiento del protocolo TFTP"
-tag = ["TFTP", "Protocolo"]
+tags = ["TFTP", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

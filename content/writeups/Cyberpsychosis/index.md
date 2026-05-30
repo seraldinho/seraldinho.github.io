@@ -2,7 +2,7 @@
 title = "HackTheBox - Cyberpsychosis"
 draft = false
 description = "Resolución del challenge Cyberpsychosis"
-tag = ["HTB", "ELF", "Rootkit", "Ghidra", "Reversing", "Easy"]
+tags = ["HTB", "ELF", "Rootkit", "Ghidra", "Reversing", "Easy"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: Rootkit (diamorphine), Reversing, Ghidra"
 categories = ["Writeups"]
 showToc = true

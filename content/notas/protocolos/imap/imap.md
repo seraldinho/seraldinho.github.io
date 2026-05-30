@@ -2,7 +2,7 @@
 title = 'IMAP'
 draft = false
 description = "Explicación del funcionamiento del protocolo IMAP"
-tag = ["IMAP", "Protocolo"]
+tags = ["IMAP", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

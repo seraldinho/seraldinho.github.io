@@ -4,11 +4,23 @@
   pageRef = "writeups"
   weight = 10
 
-#  [[main]]
-#    name = "Posts"
-#    pre = "firma"
-#    pageRef = "posts"
-#    weight = 30
+[[main]]
+    name = "Easy"
+    parent = "Writeups"
+    pageRef = "tags/easy"
+    weight = 10
+
+[[main]]
+    name = "Medium"
+    parent = "Writeups"
+    pageRef = "tags/medium"
+    weight = 20
+
+[[main]]
+    name = "Hard"
+    parent = "Writeups"
+    pageRef = "tags/hard"
+    weight = 30
 
 [[main]]
   name = "Notas"
@@ -27,3 +39,9 @@
     parent = "Notas"
     pageRef = "tecnicas"
     weight = 20
+
+[[main]]
+    name = "Tags"
+    pre = "firma"
+    pageRef = "tags"
+    weight = 30

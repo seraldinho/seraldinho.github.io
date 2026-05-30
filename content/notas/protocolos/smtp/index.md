@@ -2,7 +2,7 @@
 title = 'SMTP'
 draft = false
 description = "Explicación del funcionamiento del protocolo SMTP"
-tag = ["SMTP", "Protocolo"]
+tags = ["SMTP", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

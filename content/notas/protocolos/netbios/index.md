@@ -2,7 +2,7 @@
 title = 'NetBIOS'
 draft = false
 description = "Explicación del funcionamiento del protocolo NetBIOS"
-tag = ["NetBIOS", "Protocolo"]
+tags = ["NetBIOS", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++

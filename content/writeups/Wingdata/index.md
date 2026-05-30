@@ -2,7 +2,7 @@
 title = "HackTheBox - Wingdata"
 draft = false
 description = "Resolución de la máquina Wingdata"
-tag = ["HTB", "Linux", "Easy", "WingFTP", "CVE", "Tar", "SSH Key"]
+tags = ["HTB", "Linux", "Easy", "WingFTP", "CVE", "Tar", "SSH"]
 summary = "OS: Linux | Dificultad: Easy | Conceptos: WingFTP, CVE Público, Tarfiles"
 categories = ["Writeups"]
 showToc = true

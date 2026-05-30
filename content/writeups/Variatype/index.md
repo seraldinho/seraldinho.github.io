@@ -2,7 +2,7 @@
 title = "HackTheBox - Variatype"
 draft = false
 description = "Resolución de la máquina Variatype"
-tag = ["HTB", "Linux", "Medium", "designspace", "fonttools", ".git", "Path Traversal", "CVE"]
+tags = ["HTB", "Linux", "Medium", "designspace", "fonttools", ".git", "Path Traversal", "CVE"]
 summary = "OS: Linux | Dificultad: Medium | Conceptos: designspace, fonttools, .git, Path Traversal, CVE Público"
 categories = ["Writeups"]
 showToc = true

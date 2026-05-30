@@ -2,7 +2,7 @@
 title = 'SMB'
 draft = false
 description = "Explicación del funcionamiento del protocolo SMB"
-tag = ["SMB", "Protocolo"]
+tags = ["SMB", "Protocolo"]
 showToc = true
 showRelatedContent = false
 +++
