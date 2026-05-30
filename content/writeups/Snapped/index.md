@@ -11,7 +11,7 @@ showRelated = true
 +++
 
 * Dificultad: `hard`
-* Tiempo aprox.
+* Tiempo aprox. `4h`
 * **Datos Iniciales**: `10.129.5.202`
 
 ### Enumeración inicial
